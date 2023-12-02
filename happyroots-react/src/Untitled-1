@@ -1,0 +1,12 @@
+curl --location --request POST 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAVnFCPhpPV5bKty0oPAf7knfLzFWOTWyA
+' \
+--header 'content-type: application/json' \
+--data-raw '{
+    "email": "artur.uff@gmail.com",
+    "password": "Arty6613",
+    "returnSecureToken": true
+}'
+
+curl --location --request GET 'http://localhost:8080/plants/test' \
+--header 'Authorization: Bearer [TOKEN]' \
+

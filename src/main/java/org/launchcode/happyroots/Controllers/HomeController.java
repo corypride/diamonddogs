@@ -13,19 +13,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/plants")
 public class HomeController {
 
-//    @CrossOrigin("*")
     @GetMapping("/")
     public String getAll() {
         return "Hello world";
     }
 
-//    @CrossOrigin("*")
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserData userData) {
         try {
             UserRecord user = FirebaseAuth.getInstance().getUserByEmail(userData.getEmail());
-
-
 
             // TODO: verify password || token
 
@@ -35,7 +31,6 @@ public class HomeController {
         }
     }
 
-//    @CrossOrigin("*")
     @PostMapping("/signup")
     public ResponseEntity<String> signUp(@RequestBody UserData userData) {
         try {
