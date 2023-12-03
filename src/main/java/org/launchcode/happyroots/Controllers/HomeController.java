@@ -13,24 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/plants")
 public class HomeController {
 
-    @GetMapping("/")
-    public String getAll() {
-        return "Hello world";
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserData userData) {
-        try {
-            UserRecord user = FirebaseAuth.getInstance().getUserByEmail(userData.getEmail());
-
-            // TODO: verify password || token
-
-            return ResponseEntity.ok(user);
-        } catch (FirebaseAuthException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
-        }
-    }
-
     @PostMapping("/signup")
     public ResponseEntity<String> signUp(@RequestBody UserData userData) {
         try {
@@ -46,6 +28,11 @@ public class HomeController {
         } catch (FirebaseAuthException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating user: " + e.getMessage());
         }
+    }
+
+    @GetMapping("/")
+    public String getAll() {
+        return "Hello world from public";
     }
 
     @GetMapping("/test")
