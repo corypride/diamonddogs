@@ -1,5 +1,29 @@
-.App {
+div {
   text-align: center;
+  padding: 20px;
+}
+
+button {
+  max-width: 300px;
+  background-color: #4caf50; 
+  color: white; 
+  padding: 10px 20px; 
+  margin: 5px; 
+  cursor: pointer; 
+  border: none;
+  border-radius: 5px;
+}
+
+#buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+button:hover {
+  background-color: #45a049;
 }
 
 .App-logo {

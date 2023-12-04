@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { getUserFromLocalStorage } from '../Helpers/authHelpers';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../Helpers/firebase';
-import '../App.css';
 import { getTest, logout } from '../Controllers/AuthController';
+import NavigationBar from './Components/NavigationBar';
+import '../App.css';
 
 const HomeScreen = () => {
   const navigate = useNavigate();
@@ -32,16 +33,22 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
+  <>
+    <NavigationBar />
+    <div>
+      
         <img src="https://cdn.openai.com/labs/images/A%20cat%20riding%20a%20motorcycle.webp?v=1" className="App-logo" alt="logo" />
         <br></br>
         <br></br>
         <br></br>
-        <button onClick={handleClick}>Test</button>
-        <button onClick={handleLogout}>Logout</button>
-      </header>
+        <ul id="buttons">
+          <li class="newbutton"><button onClick={handleClick}>Test</button></li>
+          <li class="newbutton"><button onClick={handleLogout}>Logout</button></li>
+        </ul>
+        
+        
     </div>
+  </>
   );
 
 }

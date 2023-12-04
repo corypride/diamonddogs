@@ -1,7 +1,7 @@
 import { useState } from "react";
-import './styles/signup.css';
 import { getTest, signup } from "../Controllers/AuthController";
 import { Link } from "react-router-dom";
+import './styles/signup.css';
 
 const RegisterScreen = () => {
   const [email,  setEmail] = useState('');
@@ -71,7 +71,7 @@ const RegisterScreen = () => {
         </form>
         <hr className="divider" />
         <p className="login-link">
-          <Link to="/">Login</Link>
+          <Link to="/login">Login</Link>
         </p>
         <button onClick={handleTestClick} className="test-button">
           Click me to test
