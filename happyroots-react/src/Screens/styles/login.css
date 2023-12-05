@@ -1,16 +1,15 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0; 
+  background-color: #f0f0f0;
 }
 
 .App-header {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 180vh;
+  width: 160vh;
   background-color: #282c34;
   color: #61dafb;
   text-align: center;

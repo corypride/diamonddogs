@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14180e3f-84b1-40dc-af1b-ebc66ef6a4e0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/HomeScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/RegisterScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/RegisterScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/NavigationBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/login.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
