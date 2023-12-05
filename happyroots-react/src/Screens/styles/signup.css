@@ -1,0 +1,94 @@
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #282c34;
+  }
+  
+  .App-header {
+    text-align: center;
+    width: 300px;
+    padding: 20px;
+    color: #61dafb;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  label {
+    font-size: 16px;
+    color: #61dafb;
+  }
+  
+  input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #61dafb;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 12px;
+    width: 100%;
+    background-color: #61dafb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #2185d0;
+  }
+  
+  .divider {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #61dafb;
+  }
+  
+  .login-link {
+    font-size: 16px;
+    color: #61dafb;
+    margin-bottom: 10px;
+  }
+  
+  .test-button {
+    padding: 12px;
+    background-color: #61dafb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .test-button:hover {
+    background-color: #2185d0;
+  }
+  
+  a {
+    color: #61dafb;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
