@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { getUserFromLocalStorage } from '../Helpers/authHelpers';
 import { useNavigate } from 'react-router-dom';
 import NavigationBar from './Components/NavigationBar';
+import { Link } from 'react-router-dom';
+
 import '../App.css';
 
 const HomeScreen = () => {
@@ -27,7 +29,8 @@ const HomeScreen = () => {
         <p>Email: {user.email}</p>
         <p>Phone Number:{user.phoneNumber}</p>
         <p>Photo URL:{user.photoURL}</p>
-        <p><button>Favorites</button></p>
+        <p><Link to="/favorites"><button>Favorites</button></Link></p>
+
     </div>
   </>
   );

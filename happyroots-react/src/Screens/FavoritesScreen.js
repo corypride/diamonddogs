@@ -21,6 +21,10 @@ const FavoritesScreen = () => {
             console.log('User not logged in');
             navigate('/login');
         }
+
+        // const fetchFavorites = async () => {
+        //     const response = fetch()
+        // }
     }, []);
 
   return (
