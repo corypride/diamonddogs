@@ -32,7 +32,7 @@ function App() {
 
   );
 }
-
+/*
 function Home() {
   return (
     <>
@@ -63,6 +63,6 @@ function About() {
     </>
   );
 }
-
+*/
 
 export default App;
