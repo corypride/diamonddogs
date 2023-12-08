@@ -1,4 +1,12 @@
 package org.launchcode.happyroots.Models;
 
-public class User {
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class User extends AbstractEntity {
+
+    public User() {
+    }
+
 }
