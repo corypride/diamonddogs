@@ -32,12 +32,17 @@ const FavoritesScreen = ({token, uid}) => {
         
     }, [token, uid]);
 
+    const handleHello = () => {
+        console.log("hello")
+
+    }
+
   return (
   <>
     <NavigationBar />
     <div>
         <p>list or grid of favorites</p>
-        <button onClick={handleClick}>Test</button>
+        <button onClick={handleHello}>Test</button>
 
     </div>
   </>

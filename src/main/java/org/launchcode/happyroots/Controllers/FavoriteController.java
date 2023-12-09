@@ -26,11 +26,11 @@ public class FavoriteController {
 
     @GetMapping("/")
     public String getAll() {
-        return "index";
+        return "favorites get";
     }
 
     @GetMapping("/{userId}")
-    public String getUserFavorites(Model model, @PathVariable String userId, UserData userData) {
+    public String getUserFavorites(@PathVariable String userId) {
 //        model.addAttribute(userData.getEmail());
 //                return userData.getEmail();
 //        return "{\"cities\":[\"New York\",\"Bangalore\",\"San Francisco\"],\"name\":\"Pankaj Kumar\",\"age\":32}\n";
@@ -38,6 +38,12 @@ public class FavoriteController {
     }
 
 
+
+    @PostMapping("/")
+    public String saveToDB () {
+
+        return "please route me";
+    }
 
 
 

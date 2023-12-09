@@ -23,11 +23,15 @@ const SearchScreen = () => {
         }
     }, []);
 
+    const handleSearch = () => {
+        console.log("search")
+    }
+
   return (
   <>
     <NavigationBar />
     <div>
-        <p><button>Search</button></p>
+        <p><button onClick={handleSearch}>Search</button></p>
     </div>
   </>
   );
