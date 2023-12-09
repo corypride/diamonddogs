@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.jwt.*;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 
-
 @Configuration
 public class SecurityConfig {
 
