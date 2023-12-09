@@ -10,9 +10,7 @@ import FavoritesScreen from "./Screens/FavoritesScreen";
 import SearchScreen from "./Screens/SearchScreen";
 
 function App() {
-  // const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
-  console.log('9999', user)
   const token = user?.stsTokenManager?.accessToken
 
   useEffect(() => {
