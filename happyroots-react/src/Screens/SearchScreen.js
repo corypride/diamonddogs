@@ -24,7 +24,7 @@ const SearchScreen = () => {
     }, []);
 
     const handleSearch = () => {
-        console.log("search")
+        console.log("search test")
     }
 
   return (

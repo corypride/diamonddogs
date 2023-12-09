@@ -31,9 +31,6 @@ public class FavoriteController {
 
     @GetMapping("/{userId}")
     public String getUserFavorites(@PathVariable String userId) {
-//        model.addAttribute(userData.getEmail());
-//                return userData.getEmail();
-//        return "{\"cities\":[\"New York\",\"Bangalore\",\"San Francisco\"],\"name\":\"Pankaj Kumar\",\"age\":32}\n";
         return "we did it";
     }
 
