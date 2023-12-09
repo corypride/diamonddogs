@@ -9,6 +9,12 @@ import { getFavorites } from '../Controllers/FavoritesController';
 
 
 const FavoritesScreen = ({token, uid}) => {
+
+    const handleClick = () => {
+        getFavorites(token, uid);
+        // console.log("gti s1")
+      }
+
     const [data, setData] = useState(null);
   
     const fetchFavorites = async () => {
@@ -31,6 +37,8 @@ const FavoritesScreen = ({token, uid}) => {
     <NavigationBar />
     <div>
         <p>list or grid of favorites</p>
+        <button onClick={handleClick}>Test</button>
+
     </div>
   </>
   );
