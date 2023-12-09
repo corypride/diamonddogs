@@ -5,27 +5,26 @@ import { auth } from '../Helpers/firebase';
 import { getTest, logout } from '../Controllers/AuthController';
 import NavigationBar from './Components/NavigationBar';
 import '../App.css';
+import { getFavorites } from '../Controllers/FavoritesController';
 
 
-const FavoritesScreen = () => {
-    const [user, setUser] = useState("");
-    const navigate = useNavigate();
+const FavoritesScreen = ({token, uid}) => {
+    const [data, setData] = useState(null);
   
-    useEffect(() => {
-        const user = getUserFromLocalStorage();
-
-        if (user) {
-            console.log('User:', user);
-            setUser(user.providerData[0]);
-        } else {
-            console.log('User not logged in');
-            navigate('/login');
+    const fetchFavorites = async () => {
+        const data = await getFavorites(token, uid)
+        if (data) {
+            setData(data)
         }
+    }
 
-        // const fetchFavorites = async () => {
-        //     const response = fetch()
-        // }
-    }, []);
+    useEffect(() => {
+        // call api when user is logged in
+        if (uid) {
+            fetchFavorites()
+        }
+        
+    }, [token, uid]);
 
   return (
   <>
