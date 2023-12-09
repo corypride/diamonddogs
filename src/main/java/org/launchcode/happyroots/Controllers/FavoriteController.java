@@ -42,7 +42,7 @@ public class FavoriteController {
     @PostMapping("/")
     public String saveToDB () {
 
-        return "please route me";
+        return "please route me for posting";
     }
 
 
