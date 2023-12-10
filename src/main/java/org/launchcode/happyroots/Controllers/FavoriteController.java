@@ -17,10 +17,10 @@ public class FavoriteController {
     @Autowired
     FavoriteService favoriteService;
 
-//    @GetMapping("/")
-//    public String getAll() {
-//        return "favorites get";
-//    }
+    @GetMapping("/")
+    public String getAll() {
+        return "favorites get";
+    }
 //
 //    @GetMapping("/{userId}")
 //    public String getUserFavorites(@PathVariable String userId) {
