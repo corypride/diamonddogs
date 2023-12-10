@@ -22,11 +22,9 @@ public class DataItem {
     private List<SectionItem> section;
     private String cycle;
 
-    @JsonProperty("watering")
-    private String wateringBrief;
+    private String watering;
 
-    @JsonProperty("sunlight")
-    private List<String> sunlightBrief;
+    private List<String> sunlight;
 
     @JsonProperty("default_image")
     private ImageInfo defaultImage;
@@ -80,20 +78,20 @@ public class DataItem {
         this.cycle = cycle;
     }
 
-    public String getWateringBrief() {
-        return wateringBrief;
+    public String getWatering() {
+        return watering;
     }
 
-    public void setWateringBrief(String wateringBrief) {
-        this.wateringBrief = wateringBrief;
+    public void setWatering(String watering) {
+        this.watering = watering;
     }
 
-    public List<String> getSunlightBrief() {
-        return sunlightBrief;
+    public List<String> getSunlight() {
+        return sunlight;
     }
 
-    public void setSunlightBrief(List<String> sunlightBrief) {
-        this.sunlightBrief = sunlightBrief;
+    public void setSunlight(List<String> sunlight) {
+        this.sunlight = sunlight;
     }
 
     public ImageInfo getDefaultImage() {
