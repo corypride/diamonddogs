@@ -13,14 +13,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Service
 public class ApiService {
 
+    // Fields
     private static final Logger log = LoggerFactory.getLogger(ApiService.class);
 
+    private static final int MAX_PAGES = 5; // Maximum number of pages to fetch
+    private static final int ITEMS_PER_PAGE = 30; // Items per page as defined by the API
+
+    //   Perenual api key
     @Value("${perenual.api.key}")
     private String apiKey;
 
@@ -31,6 +37,7 @@ public class ApiService {
         this.restTemplate = restTemplate;
     }
 
+//    Api calls
     public CareInformation getCareInformationById(int speciesId) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-care-guide-list")
                 .queryParam("key", apiKey)
@@ -94,6 +101,34 @@ public class ApiService {
         return Objects.requireNonNull(response.getBody().getData());
     }
 
+//    Gets multiple(5) pages of species list data at once
+    public List<DataItem> getAllSpecies() {
+        List<DataItem> allSpecies = new ArrayList<>();
+        int page = 1; // Start from page 1
+
+        while (page <= MAX_PAGES) {
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-list")
+                    .queryParam("key", apiKey)
+                    .queryParam("page", page)
+                    .queryParam("per_page", ITEMS_PER_PAGE);
+            String url = builder.toUriString();
+
+            ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
+            ApiResponse apiResponse = response.getBody();
+
+            if (apiResponse != null && apiResponse.getData() != null) {
+                allSpecies.addAll(apiResponse.getData());
+                page++; // Increment to get the next page in the next iteration
+            } else {
+                // If the API response is null or doesn't contain any data, stop fetching more pages
+                break;
+            }
+        }
+
+        return allSpecies;
+    }
+
+//    Care Info pulled from JSON
     public CareInformation extractCareInformation(ApiResponse apiResponse) {
         CareInformation careInfo = new CareInformation();
         for (DataItem item : apiResponse.getData()) {
@@ -113,5 +148,9 @@ public class ApiService {
         }
         return careInfo;
     }
+
+
+
+
 
 }
