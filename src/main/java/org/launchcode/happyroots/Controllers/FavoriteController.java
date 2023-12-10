@@ -1,22 +1,12 @@
 package org.launchcode.happyroots.Controllers;
 
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
-import com.google.firebase.auth.UserRecord;
-import jakarta.validation.Valid;
-import org.launchcode.happyroots.Models.Data.FavoriteRepository;
 import org.launchcode.happyroots.Models.Favorite;
-import org.launchcode.happyroots.Models.UserData;
+import org.launchcode.happyroots.Service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 
 @RestController
@@ -24,14 +14,28 @@ import java.util.Optional;
 @RequestMapping("/favorites")
 public class FavoriteController {
 
-    @GetMapping("/")
-    public String getAll() {
-        return "favorites get";
+    @Autowired
+    FavoriteService favoriteService;
+
+//    @GetMapping("/")
+//    public String getAll() {
+//        return "favorites get";
+//    }
+//
+//    @GetMapping("/{userId}")
+//    public String getUserFavorites(@PathVariable String userId) {
+//        return "we did it";
+//    }
+
+    @GetMapping
+    public List<Favorite> findALlFavorites (){
+        return favoriteService.findAllFavorites();
     }
 
-    @GetMapping("/{userId}")
-    public String getUserFavorites(@PathVariable String userId) {
-        return "we did it";
+
+    @PostMapping("/add")
+    public String addFavorite(@RequestBody Favorite favorite){
+        return favoriteService.addFavorite(favorite);
     }
 
 
