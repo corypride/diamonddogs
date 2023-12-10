@@ -8,6 +8,7 @@ import HomeScreen from "./Screens/HomeScreen";
 import ProfileScreen from "./Screens/ProfileScreen";
 import FavoritesScreen from "./Screens/FavoritesScreen";
 import SearchScreen from "./Screens/SearchScreen";
+import SplashScreen from "./Screens/SplashScreen";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -25,6 +26,7 @@ function App() {
   return (
     <BrowserRouter>      
         <Routes>
+          <Route exact path="/splash" element={<SplashScreen />} />
           <Route exact path="/" element={<HomeScreen token={token}/>} />
           <Route exact path="/login" element={<LoginScreen token={token}/>} />
           <Route exact path="/favorites" element={<FavoritesScreen uid={user?.uid} token={token}/>} />

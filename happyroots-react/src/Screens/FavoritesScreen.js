@@ -12,7 +12,7 @@ const FavoritesScreen = ({token, uid}) => {
 
     const handleClick = () => {
         getFavorites(token, uid);
-        // console.log("gti s1")
+        console.log(uid)
       }
 
     const [data, setData] = useState(null);
@@ -42,7 +42,7 @@ const FavoritesScreen = ({token, uid}) => {
     <NavigationBar />
     <div>
         <p>list or grid of favorites</p>
-        <button onClick={handleHello}>Test</button>
+        <button onClick={handleClick}>Test</button>
 
     </div>
   </>

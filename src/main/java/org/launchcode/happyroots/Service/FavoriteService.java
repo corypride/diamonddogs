@@ -6,6 +6,7 @@ import org.launchcode.happyroots.Repositories.FavoriteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -29,5 +30,9 @@ public class FavoriteService implements FavoriteServiceInterface {
     public List<Favorite> findAllFavorites() {
 //        return favoriteRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
         return (List<Favorite>) favoriteRepository.findAll();
+    }
+
+    public String findById(@PathVariable String userId) {
+        return String.valueOf(favoriteRepository.findById(Integer.valueOf(userId)));
     }
 }
