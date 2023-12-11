@@ -13,22 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/plants")
 public class HomeController {
 
-    @PostMapping("/signup")
-    public ResponseEntity<String> signUp(@RequestBody UserData userData) {
-        try {
-            UserRecord.CreateRequest request = new UserRecord.CreateRequest()
-                    .setEmail(userData.getEmail())
-                    .setPassword(userData.getPassword())
-                    .setDisabled(false);
 
-            UserRecord userRecord = FirebaseAuth.getInstance().createUser(request);
-            System.out.println("Successfully created new user: " + userRecord.getUid());
-
-            return ResponseEntity.ok("User created successfully");
-        } catch (FirebaseAuthException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating user: " + e.getMessage());
-        }
-    }
 
     @GetMapping("/")
     public String getAll() {

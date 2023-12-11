@@ -9,9 +9,14 @@ import '../App.css';
 const HomeScreen = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState('');
-  
+  const [error, setError] = useState('');
   const handleClick = () => {
-    getTest(token);
+    try {
+      getTest(token);  
+    } catch (error) {
+      setError(error);
+    }
+    
   }
 
   const handleLogout = () => {
@@ -45,7 +50,7 @@ const HomeScreen = () => {
           <li class="newbutton"><button onClick={handleClick}>Test</button></li>
           <li class="newbutton"><button onClick={handleLogout}>Logout</button></li>
         </ul>
-        
+        <p>{error}</p>
         
     </div>
   </>
