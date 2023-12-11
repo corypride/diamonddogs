@@ -28,11 +28,15 @@ public class FavoriteService implements FavoriteServiceInterface {
 
     @Override
     public List<Favorite> findAllFavorites() {
-//        return favoriteRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
         return (List<Favorite>) favoriteRepository.findAll();
+//        return (List<Favorite>) favoriteRepository.findAll();
     }
 
     public String findById(@PathVariable String userId) {
         return String.valueOf(favoriteRepository.findById(Integer.valueOf(userId)));
     }
+//    @Override
+//    public List<Student> findAllStudent() {
+//        return studentRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+//    }
 }

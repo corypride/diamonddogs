@@ -5,7 +5,8 @@ import { auth } from '../Helpers/firebase';
 import { getTest, logout } from '../Controllers/AuthController';
 import NavigationBar from './Components/NavigationBar';
 import '../App.css';
-import { getFavorites } from '../Controllers/FavoritesController';
+import { getFavorites, getAllFavorites } from '../Controllers/FavoritesController';
+
 
 
 const FavoritesScreen = ({token, uid}) => {
@@ -19,6 +20,13 @@ const FavoritesScreen = ({token, uid}) => {
   
     const fetchFavorites = async () => {
         const data = await getFavorites(token, uid)
+        if (data) {
+            setData(data)
+        }
+    }
+
+    const fetchAllFavorites = async () => {
+        const data = await getAllFavorites(token)
         if (data) {
             setData(data)
         }
@@ -42,8 +50,8 @@ const FavoritesScreen = ({token, uid}) => {
     <NavigationBar />
     <div>
         <p>list or grid of favorites</p>
-        <button onClick={handleClick}>Test</button>
-
+        <button onClick={handleClick}>user id in response body</button>
+        <button onClick={fetchAllFavorites}>fetch all</button>
     </div>
   </>
   );

@@ -3,10 +3,13 @@ import { getUserFromLocalStorage } from '../Helpers/authHelpers';
 import { useNavigate } from 'react-router-dom';
 import NavigationBar from './Components/NavigationBar';
 import { Link } from 'react-router-dom';
+import { getFavorites } from '../Controllers/FavoritesController';
+
 
 import '../App.css';
 
-const HomeScreen = () => {
+const ProfileScreen = ({token, uid}) => {
+
     const [user, setUser] = useState("");
     const navigate = useNavigate();
   
@@ -22,19 +25,49 @@ const HomeScreen = () => {
         }
     }, []);
 
+
+
+    const handleUID = () => {
+        getFavorites(token, uid);
+        console.log(uid)
+      }
+
+      const [data, setData] = useState(null);
+    
+
+      const fetchFavorites = async () => {
+        const data = await getFavorites(token, uid)
+        if (data) {
+            setData(data)
+        }
+    }
+
+
+
+    // useEffect(() => {
+    //     // call api when user is logged in
+    //     if (uid) {
+    //         fetchFavorites()
+    //     }
+        
+    // }, [token, uid]);
+    
+    const userID = uid;
+
   return (
   <>
     <NavigationBar />
     <div>
         <p>Email: {user.email}</p>
+        <p>user id = {uid}</p>
         <p>Phone Number:{user.phoneNumber}</p>
         <p>Photo URL:{user.photoURL}</p>
-        <p><Link to="/favorites"><button>Favorites</button></Link></p>
-
+        {/* <p><Link to="/favorites"><button>Favorites</button></Link></p> */}
+        <p><button onClick={handleUID}>get favorites by user id</button></p>
     </div>
   </>
   );
 
 }
 
-export default HomeScreen;
+export default ProfileScreen;

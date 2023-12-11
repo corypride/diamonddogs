@@ -18,11 +18,21 @@ export const getFavorites =  async (token, userId) => {
             'Authorization': `Bearer ${token}`
         },
     })
-
-
-
-
     return handleResponse(response)
 
-    
+}
+
+
+
+
+export const getAllFavorites =  async (token, userId) => {
+
+    const response = await fetch(baseUrl + "all", {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+    })
+    return handleResponse(response)
 }

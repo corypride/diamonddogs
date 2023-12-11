@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/login" element={<LoginScreen token={token}/>} />
           <Route exact path="/favorites" element={<FavoritesScreen uid={user?.uid} token={token}/>} />
           <Route exact path="/signup" element={<RegisterScreen />} />
-          <Route exact path="/profile" element={<ProfileScreen />} />
+          <Route exact path="/profile" element={<ProfileScreen uid={user?.uid} token={token}/>} />
           <Route exact path="/search" element={<SearchScreen />} />
         </Routes>
     </BrowserRouter>

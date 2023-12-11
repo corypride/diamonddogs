@@ -26,17 +26,26 @@ public class FavoriteController {
 
     @GetMapping("/")
     public String getAll() {
-        return "favorites get";
+        return favoriteService.findAllFavorites().toString();
+//        return "favorites get";
     }
 
     @GetMapping("/{userId}")
     public String getUserFavorites(@PathVariable String userId) {
-        return favoriteService.findById(userId);
+//        return favoriteService.findById(userId);
+        return "fetching favorites by userid";
+
     }
 
     @GetMapping
     public List<Favorite> findALlFavorites (){
         return favoriteService.findAllFavorites();
+    }
+
+    @GetMapping(path="/all")
+    public @ResponseBody Iterable<Favorite> getAllUsers() {
+        // This returns a JSON or XML with the users
+        return favoriteRepository.findAll();
     }
 
 
