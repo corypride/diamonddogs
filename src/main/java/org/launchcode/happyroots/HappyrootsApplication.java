@@ -16,7 +16,8 @@ public class HappyrootsApplication {
 
 	public static void main(String[] args) throws IOException {
 		ClassLoader classLoader = HappyrootsApplication.class.getClassLoader();
-		File file = new File(Objects.requireNonNull(classLoader.getResource("serviceKey.json")).getFile());
+//		File file = new File(Objects.requireNonNull(classLoader.getResource("serviceKey.json")).getFile());
+		File file = new File(Objects.requireNonNull(classLoader.getResource("myServiceKey.json")).getFile());
 
 		FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
 

@@ -49,7 +49,7 @@ export const getAllFavorites =  async (token, userId) => {
     return handleResponse(response)
 }
 
-const addFave = '{"id" : "6", "name" : "dummy", "userId" : "fh3947fhweiuhf09w8"}';
+// const addFave = '{"id" : "6", "name" : "dummy", "userId" : "fh3947fhweiuhf09w8"}';
 
 
 export const addFavorites =  async (token, addFave) => {

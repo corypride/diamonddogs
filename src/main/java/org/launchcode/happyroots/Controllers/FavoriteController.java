@@ -1,11 +1,14 @@
 package org.launchcode.happyroots.Controllers;
 
 
+import org.launchcode.happyroots.Exception.ResourceNotFoundException;
 import org.launchcode.happyroots.Models.Favorite;
 import org.launchcode.happyroots.Repositories.FavoriteRepository;
 import org.launchcode.happyroots.Service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,23 +20,114 @@ import java.util.Optional;
 @RequestMapping("/favorites")
 public class FavoriteController {
 
+
+
     @Autowired
     FavoriteService favoriteService;
 
     @Autowired
     FavoriteRepository favoriteRepository;
 
-    @GetMapping("/")
-    public String getAll() {
-        return favoriteService.findAllFavorites().toString();
-//        return "favorites get";
+
+    @GetMapping
+    @ResponseBody
+    public List<Favorite> findALlFavorites () {
+//        return favoriteService.findAllFavorites();
+        return (List<Favorite>) favoriteRepository.findAll();
     }
+
+//    create favorite
+    @PostMapping("/addFave")
+    public Favorite createFavorite(@RequestBody Favorite favorite){
+//        return favoriteService.addFavorite(favorite);
+        return favoriteRepository.save(favorite);
+    }
+
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Favorite> getFavoriteById(@PathVariable int id) {
+        Favorite favorite =
+                favoriteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
+                        "favorite does not exist with id: " + id) );
+        return ResponseEntity.ok(favorite);
+    }
+
+
+
+//    update favorite
+    @PutMapping("/{id}")
+    public ResponseEntity<Favorite> updateFavorite(@PathVariable int id,
+                                                   @RequestBody Favorite favoriteDetails) {
+        Favorite updateFavorite =
+                favoriteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
+                        "favorite does not exist with id: " + id) );
+        updateFavorite.setName(favoriteDetails.getName());
+        updateFavorite.setUserId(favoriteDetails.getUserId());
+        updateFavorite.setPlantId(favoriteDetails.getPlantId());
+
+        favoriteRepository.save(updateFavorite);
+        return ResponseEntity.ok(updateFavorite);
+    }
+
+
+//    update single value
+    @PatchMapping("/{id}")
+    public ResponseEntity<Favorite> patchFavorite(@PathVariable int id,
+                                                   @RequestBody Favorite favoriteDetails) {
+        Favorite updateFavorite =
+                favoriteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
+                        "favorite does not exist with id: " + id) );
+        updateFavorite.setName(favoriteDetails.getName());
+        updateFavorite.setUserId(favoriteDetails.getUserId());
+        updateFavorite.setPlantId(favoriteDetails.getPlantId());
+
+        favoriteRepository.save(updateFavorite);
+        return ResponseEntity.ok(updateFavorite);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteFavorite(@PathVariable int id) {
+        Favorite favorite =
+                favoriteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
+                        "favorite does not exist with id: " + id) );
+
+
+        favoriteRepository.delete(favorite);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
+
+
+//    @GetMapping("/findId")
+//    public Optional<Favorite> getFavoriteById(Integer id) {
+////        Optional<Favorite> favorite = favoriteRepository.findById(id);
+//        return favoriteRepository.findById(id);
+//    }
+
+
+
+
+    @PostMapping("/")
+    public String saveToDB () {
+        return "please route me for posting";
+    }
+
 
     @PostMapping("/huh")
     public String postTest(Favorite favorite) {
         return "success";
-
     }
+
+
+//    @GetMapping("/")
+//    public String getAll() {
+//        return favoriteService.findAllFavorites().toString();
+////        return "favorites get";
+//    }
+
 
 //    @ResponseBody
 //    @GetMapping("/{id}")
@@ -43,11 +137,35 @@ public class FavoriteController {
 //    }
 
 
+//    return info from generated id
     @ResponseBody
     @GetMapping("/id")
     public Optional<Favorite> getUserFavorites(@RequestBody int id) {
         return favoriteRepository.findById(id);
     }
+
+//    @ResponseBody
+//    @GetMapping("/userID")
+//    public Optional<Favorite> getUserId(@RequestBody int id)  {
+//        Optional<Favorite> userId = favoriteRepository.findById(String.valueOf(id));
+//        return userId;
+//    }
+
+    @ResponseBody
+    @GetMapping("/name")
+    public List<Favorite> getName(@RequestBody String name) {
+        return favoriteRepository.findByName(name);
+    }
+
+    @ResponseBody
+    @GetMapping("/userId")
+    public List<Favorite> getUserId(@RequestBody String userId) {
+        return favoriteRepository.findByUserId(userId);
+    }
+
+
+//    posting name and userId(from firebase)
+
 
 
 //    @ResponseBody
@@ -64,12 +182,7 @@ public class FavoriteController {
 //
 //    }
 
-    @GetMapping
-    @ResponseBody
-    public List<Favorite> findALlFavorites () {
-        return favoriteService.findAllFavorites();
-//        return List.of();
-    }
+
 
 
 //    @GetMapping(path="/allfavorites")
@@ -88,16 +201,17 @@ public class FavoriteController {
 
 
 
-    @PostMapping("/add")
-    public String addFavorite(Model model, @RequestParam String name, @RequestParam String userId){
-//        favoriteService.addFavorite(new Favorite());
-//        model.addAttribute(new Favorite());
-        model.addAttribute("name", name);
-        model.addAttribute("userId", userId);
-//        favoriteRepository.save();
-//        return favoriteService.addFavorite(favorite);
-        return "added";
-    }
+//    @PostMapping("/add")
+//    public String addFavorite(Model model, Favorite newFavorite, @RequestParam String name,
+//                              @RequestParam String userId){
+//        favoriteService.addFavorite(newFavorite);
+////        model.addAttribute(new Favorite());
+//        model.addAttribute("name", name);
+//        model.addAttribute("userId", userId);
+////        favoriteRepository.save();
+////        return favoriteService.addFavorite(favorite);
+//        return "added";
+//    }
 
 
 
@@ -135,14 +249,6 @@ public class FavoriteController {
 //        favoriteRepository.save(newFavorite);
 //        return favoriteService.findAllFavorites().toString();
 //    }
-
-
-    @PostMapping("/")
-    public String saveToDB () {
-
-        return "please route me for posting";
-    }
-
 
 
 }
