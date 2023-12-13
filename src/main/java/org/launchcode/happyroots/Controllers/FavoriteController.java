@@ -6,9 +6,12 @@ import org.launchcode.happyroots.Models.Favorite;
 import org.launchcode.happyroots.Repositories.FavoriteRepository;
 import org.launchcode.happyroots.Service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,12 +32,101 @@ public class FavoriteController {
     FavoriteRepository favoriteRepository;
 
 
+
+//    @GetMapping("/search/{keyword}")
+//    @ResponseBody
+//    public Query searchTable(@PathVariable String keyword) {
+//        return (Query) favoriteRepository.findByName(keyword);
+//    }
+
+
+
+
+//    @GetMapping("/search")
+//    public String search(String keyword, Model model) {
+//        return searchByPage(keyword, model, 1);
+//    }
+//
+//    @GetMapping("/search/page/{pageNum}")
+//    public String searchByPage(String keyword, Model model,
+//                               @PathVariable(name = "pageNum") int pageNum) {
+//
+//        Page<Favorite> result = favoriteService.search(keyword, pageNum);
+//
+//        List<Favorite> listResult = result.getContent();
+//
+//        model.addAttribute("totalPages", result.getTotalPages());
+//        model.addAttribute("totalItems", result.getTotalElements());
+//        model.addAttribute("currentPage", pageNum);
+//
+//        long startCount = (pageNum - 1) * FavoriteService.SEARCH_RESULT_PER_PAGE + 1;
+//        model.addAttribute("startCount", startCount);
+//
+//        long endCount = startCount + FavoriteService.SEARCH_RESULT_PER_PAGE - 1;
+//        if (endCount > result.getTotalElements()) {
+//            endCount = result.getTotalElements();
+//        }
+//
+//        model.addAttribute("endCount", endCount);
+//        model.addAttribute("listResult", listResult);
+//        model.addAttribute("keyword", keyword);
+//
+//        return "search_result";
+//    }
+
+
+
+
+
+
+
+
+
+
     @GetMapping
     @ResponseBody
     public List<Favorite> findALlFavorites () {
 //        return favoriteService.findAllFavorites();
         return (List<Favorite>) favoriteRepository.findAll();
     }
+
+
+//    @GetMapping
+//    @ResponseBody
+//    public List<Favorite> findALlFavoritesSorted () {
+//        return (List<Favorite>) favoriteRepository.findAll(Sort.by(Sort.Direction.ASC,
+//                "name"));
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    @GetMapping
+//    public List<Favorite> sortFavorites() {
+//        return (List<Favorite>) favoriteRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+//    }
+//
+//
+//    @Query("SELECT u FROM User u WHERE u.status = 1")
+//    Collection<User> findAllActiveUsers();
+
+//    @GetMapping
+//    public Favorite searchFavorite(@Query("SElECT u FROM u Favorite WHERE ")) {
+//
+//    }
 
 //    create favorite
     @PostMapping("/addFave")
