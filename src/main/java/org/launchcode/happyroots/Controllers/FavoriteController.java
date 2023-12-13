@@ -146,8 +146,16 @@ public class FavoriteController {
     }
 
 
+//    create favorite
+    @PostMapping("/create")
+    public Favorite favorite(@RequestBody Favorite favorite ) {
+        return favoriteRepository.save(favorite);
+    }
 
-//    update favorite
+
+
+
+    //    update favorite
     @PutMapping("/{id}")
     public ResponseEntity<Favorite> updateFavorite(@PathVariable int id,
                                                    @RequestBody Favorite favoriteDetails) {
@@ -246,6 +254,7 @@ public class FavoriteController {
     @ResponseBody
     @GetMapping("/name")
     public List<Favorite> findByName(@RequestBody String name) {
+
         return favoriteRepository.findByName(name);
     }
 
