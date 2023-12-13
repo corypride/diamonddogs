@@ -6,14 +6,12 @@ import org.launchcode.happyroots.Models.Favorite;
 import org.launchcode.happyroots.Repositories.FavoriteRepository;
 import org.launchcode.happyroots.Service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +28,16 @@ public class FavoriteController {
 
     @Autowired
     FavoriteRepository favoriteRepository;
+
+
+
+
+//    @Query("SELECT id FROM favorite WHERE name = 'ryan'")
+//@ResponseBody
+//@GetMapping("/test")
+//public Collection<Favorite> getAllRyan() {
+//    return favoriteRepository.findAllActiveRyans();
+//}
 
 
 
@@ -80,6 +88,20 @@ public class FavoriteController {
 
 
 
+//    @ResponseBody
+//    @GetMapping("/name/{name}")
+//    public ResponseEntity<Favorite> findByName(@RequestParam String name) {
+//        Favorite favorite = (Favorite) favoriteRepository.findByName(name);
+////        return (ResponseEntity<Favorite>) favoriteRepository.findByName(name);
+//        return ResponseEntity.ok(favorite);
+//
+//    }
+
+
+
+//    @GetMapping("/getUser") public String getUser(@RequestParam(name = "name") String name)
+//    { return "It seems we have a record for email " + favoriteRepository.findByName(name); }
+
 
 
 
@@ -88,6 +110,15 @@ public class FavoriteController {
     public List<Favorite> findALlFavorites () {
 //        return favoriteService.findAllFavorites();
         return (List<Favorite>) favoriteRepository.findAll();
+    }
+
+
+
+
+    @GetMapping("/userId/{userId}")
+    public String getUserId(@PathVariable String userId) {
+        return userId;
+
     }
 
 
@@ -129,11 +160,11 @@ public class FavoriteController {
 //    }
 
 //    create favorite
-    @PostMapping("/addFave")
-    public Favorite createFavorite(@RequestBody Favorite favorite){
-//        return favoriteService.addFavorite(favorite);
-        return favoriteRepository.save(favorite);
-    }
+//    @PostMapping("/addFave")
+//    public Favorite createFavorite(@RequestBody Favorite favorite){
+////        return favoriteService.addFavorite(favorite);
+//        return favoriteRepository.save(favorite);
+//    }
 
 
 
@@ -251,18 +282,18 @@ public class FavoriteController {
 //        return userId;
 //    }
 
-    @ResponseBody
-    @GetMapping("/name")
-    public List<Favorite> findByName(@RequestBody String name) {
+//    @ResponseBody
+//    @GetMapping("/name")
+//    public List<Favorite> findByName(@RequestBody String name) {
+//
+//        return favoriteRepository.findByName(name);
+//    }
 
-        return favoriteRepository.findByName(name);
-    }
-
-    @ResponseBody
-    @GetMapping("/userId")
-    public List<Favorite> getUserId(@RequestBody String userId) {
-        return favoriteRepository.findByUserId(userId);
-    }
+//    @ResponseBody
+//    @GetMapping("/userId")
+//    public List<Favorite> getUserId(@RequestBody String userId) {
+//        return favoriteRepository.findByUserId(userId);
+//    }
 
 
 //    posting name and userId(from firebase)

@@ -1,5 +1,5 @@
 
-const baseUrl = "http://localhost:8080/favorites/"
+const baseUrl = "http://localhost:8080/favorites"
 
 const handleResponse = async (response) => {
     if(response.ok) {
@@ -9,60 +9,53 @@ const handleResponse = async (response) => {
     } else return false;
 }
 
-export const getFavorites =  async (token, userId) => {
-
-    const response = await fetch(baseUrl + userId, {
+export const getUserFavorites =  async (token, userId) => {
+    const response = await fetch(baseUrl + "/userId/" + userId, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
     })
-    return handleResponse(response)
+    // return handleResponse(response)
+    return console.log("test")
 
 }
 
-
-
-
-export const getAll =  async (token, userId) => {
-
-    const response = await fetch(baseUrl + "all", {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-    })
-    return handleResponse(response)
-}
 
 export const getAllFavorites =  async (token, userId) => {
-
-    const response = await fetch(baseUrl + "allfavorites", {
+try {
+    const response = await fetch(baseUrl, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
     })
-    return handleResponse(response)
-}
 
-// const addFave = '{"id" : "6", "name" : "dummy", "userId" : "fh3947fhweiuhf09w8"}';
+    if (!response.ok) {
+        throw Error;
+    }
+
+    const data = await response.json()
+    return data;
+} catch {
+    return null
+}}
 
 
-export const addFavorites =  async (token, addFave) => {
 
-    const response = await fetch(baseUrl + "add", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-    })
-    return handleResponse(response)
-}
+// export const addFavorites =  async (token, addFave) => {
+
+//     const response = await fetch(baseUrl + "add", {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': `Bearer ${token}`
+//         },
+//     })
+//     return handleResponse(response)
+// }
 
 
 // export const addFavorites = (token, data) => {

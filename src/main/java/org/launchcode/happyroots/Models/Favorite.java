@@ -4,7 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
-@Entity
+import java.util.Objects;
+
+@Entity(name = "favorite")
 @Table(name = "favorite")
 public class Favorite extends AbstractEntity {
 
@@ -46,4 +48,20 @@ public class Favorite extends AbstractEntity {
     public void setPlantId(String plantId) {
         this.plantId = plantId;
     }
+
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Favorite favorite)) return false;
+//        return Objects.equals(getName(), favorite.getName()) && Objects.equals(getUserId(), favorite.getUserId()) && Objects.equals(getPlantId(), favorite.getPlantId());
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(getName(), getUserId(), getPlantId());
+//    }
 }
+
+
+

@@ -3,7 +3,7 @@ import { getUserFromLocalStorage } from '../Helpers/authHelpers';
 import { useNavigate } from 'react-router-dom';
 import NavigationBar from './Components/NavigationBar';
 import { Link } from 'react-router-dom';
-import { getFavorites } from '../Controllers/FavoritesController';
+import { getUserFavorites } from '../Controllers/FavoritesController';
 
 
 import '../App.css';
@@ -28,15 +28,16 @@ const ProfileScreen = ({token, uid}) => {
 
 
     const handleUID = () => {
-        getFavorites(token, uid);
+        getUserFavorites(token, uid);
         console.log(uid)
+        console.log(token)
       }
 
       const [data, setData] = useState(null);
     
 
       const fetchFavorites = async () => {
-        const data = await getFavorites(token, uid)
+        const data = await getUserFavorites(token, uid)
         if (data) {
             setData(data)
         }

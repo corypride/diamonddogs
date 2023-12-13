@@ -2,20 +2,32 @@ package org.launchcode.happyroots.Repositories;
 
 
 import org.launchcode.happyroots.Models.Favorite;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Collection;
 import java.util.List;
 
 @Repository
 public interface FavoriteRepository extends JpaRepository <Favorite, Integer> {
 //public interface FavoriteRepository extends CrudRepository <Favorite, Integer> {
 //    public interface ProductRepository extends PagingAndSortingRepository<Product, Integer> {
+
+
+    @Query(value = "SELECT * FROM favorite WHERE name", nativeQuery = true)
+    public List<Favorite> findByName(String name);
+
+
+
+    public Favorite findByNameIs(String name);
+    public List<Favorite> findByUserId(String userId);
+
+
+
+
+
+
 //
 //        @Query(value = "SELECT * FROM favorite WHERE MATCH(name, plantId, " +
 //                "userID) "
@@ -41,8 +53,7 @@ public interface FavoriteRepository extends JpaRepository <Favorite, Integer> {
 
 
 //    public List<Favorite> findByName(String name);
-    public List<Favorite> findByName(String name);
-    public List<Favorite> findByUserId(String userId);
+
 //
 //
 //    Object findAll(Sort name);
