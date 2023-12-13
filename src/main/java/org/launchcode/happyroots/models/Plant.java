@@ -6,16 +6,18 @@ import jakarta.persistence.*;
 @Entity
 public class Plant {
 
+//    Fields
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private int speciesId;  //corresponds to 'species_id'
-    private String commonName;
-
     @OneToOne(cascade = CascadeType.ALL)
     private CareInformation careInformation;
 
+    private int speciesId;
+    private String commonName;
+
+//  Constructor
     public Plant(int id, int speciesId, String commonName, CareInformation careInformation) {
         this.id = id;
         this.speciesId = speciesId;
@@ -23,6 +25,7 @@ public class Plant {
         this.careInformation = careInformation;
     }
 
+//  Getters/Setters
     public int getId() {
         return id;
     }

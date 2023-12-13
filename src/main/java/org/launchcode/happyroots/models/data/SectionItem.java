@@ -2,8 +2,11 @@ package org.launchcode.happyroots.models.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+//Class represents subsection of DataItem. Models care instructions and their values
+
 public class SectionItem {
 
+//    Fields
     @JsonProperty("type")
     private String careType;
 
@@ -13,6 +16,7 @@ public class SectionItem {
     @JsonProperty("id")
     private int sectionId;
 
+//    Getters/Setters
     public String getCareType() {
         return careType;
     }

@@ -2,12 +2,14 @@ package org.launchcode.happyroots.models.data;
 
 import java.util.List;
 
+//Maps entire JSON response. Top-level class to encapsulate complete response structure
+
 public class ApiResponse {
 
+//    Fields
     private List<DataItem> data;
-    private Integer lastPage;
-    private Integer total;
 
+//  Getters/Setters
     public List<DataItem> getData() {
         return data;
     }
@@ -16,19 +18,4 @@ public class ApiResponse {
         this.data = data;
     }
 
-    public Integer getLastPage() {
-        return lastPage;
-    }
-
-    public void setLastPage(Integer lastPage) {
-        this.lastPage = lastPage;
-    }
-
-    public Integer getTotal() {
-        return total;
-    }
-
-    public void setTotal(Integer total) {
-        this.total = total;
-    }
 }

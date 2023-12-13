@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
+//Maps each individual item in data array of api response.
+//This is where core info (species id, name) are stored
+
 public class DataItem {
 
     //    Fields
@@ -19,15 +22,14 @@ public class DataItem {
     @JsonProperty("scientific_name")
     private List<String> scientificName;
 
-    private List<SectionItem> section;
-    private String cycle;
-
-    private String watering;
-
-    private List<String> sunlight;
-
     @JsonProperty("default_image")
     private ImageInfo defaultImage;
+
+    private List<SectionItem> section;
+    private String cycle;
+    private String watering;
+    private List<String> sunlight;
+
 
     //    Getters/Setters
     public int getPerenualId() {

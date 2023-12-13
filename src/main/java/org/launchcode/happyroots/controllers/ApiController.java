@@ -25,24 +25,25 @@ public class ApiController {
         return "hello world";
     }
 
+    // Returns care information for one plant when searching by species id
     @GetMapping("/careinfo/species/{speciesId}")
     public CareInformation getCareInfoBySpeciesId(@PathVariable int speciesId) {
         return apiService.getCareInformationById(speciesId);
     }
 
-    //  Works when searching one word common name, but data is null for two word common names
+    // Returns care information for one plant when searching by common name (ie navel+orange)
     @GetMapping("/careinfo/common/{commonName}")
     public CareInformation getCareInfoByCommonName(@PathVariable String commonName) {
         return apiService.getCareInformationByCommonName(commonName);
     }
 
-    //   Returns unsorted list of first 30 species with details
+    // Returns unsorted list of first 30 species with details
     @GetMapping("/specieslist")
     public List<DataItem> getSpeciesList() {
         return apiService.getSpeciesList();
     }
 
-    //    Options - full_shade, part_shade, sun-part_shade, full_sun
+    // Options - full_shade, part_shade, sun-part_shade, full_sun
     @GetMapping("/specieslist/sunlight/{sunlight}")
     public List<DataItem> getSpeciesListBySunlight(@PathVariable String sunlight) {
         return apiService.getSpeciesListSortBySunlight(sunlight);
@@ -60,7 +61,7 @@ public class ApiController {
         return apiService.getSpeciesListSortByCycle(cycle);
     }
 
-//    Gets 5 pages of species list data at once
+    // Gets 5 pages of species list data at once
     @GetMapping("/specieslist/more/")
     public List<DataItem> getMoreSpeciesList() {
         return apiService.getAllSpecies();

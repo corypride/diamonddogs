@@ -20,13 +20,13 @@ import java.util.Objects;
 @Service
 public class ApiService {
 
-    // Fields
+    // Logger to check for errors from the console
     private static final Logger log = LoggerFactory.getLogger(ApiService.class);
-
+    // Fields
     private static final int MAX_PAGES = 5; // Maximum number of pages to fetch
     private static final int ITEMS_PER_PAGE = 30; // Items per page as defined by the API
 
-    //   Perenual api key
+    //Perenual api key
     @Value("${perenual.api.key}")
     private String apiKey;
 
@@ -37,7 +37,7 @@ public class ApiService {
         this.restTemplate = restTemplate;
     }
 
-//    Api calls
+    //    Api call methods
     public CareInformation getCareInformationById(int speciesId) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-care-guide-list")
                 .queryParam("key", apiKey)
@@ -47,7 +47,7 @@ public class ApiService {
         ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
         return extractCareInformation(Objects.requireNonNull(response.getBody()));
     }
-
+    //    Returns care information by common name
     public CareInformation getCareInformationByCommonName(String commonName) {
         log.info("Common Name: " + commonName);
 
@@ -101,7 +101,7 @@ public class ApiService {
         return Objects.requireNonNull(response.getBody().getData());
     }
 
-//    Gets multiple(5) pages of species list data at once
+//    Gets multiple (5) pages of species list data at once
     public List<DataItem> getAllSpecies() {
         List<DataItem> allSpecies = new ArrayList<>();
         int page = 1; // Start from page 1
@@ -128,7 +128,7 @@ public class ApiService {
         return allSpecies;
     }
 
-//    Care Info pulled from JSON
+//    Care info pulled from JSON
     public CareInformation extractCareInformation(ApiResponse apiResponse) {
         CareInformation careInfo = new CareInformation();
         for (DataItem item : apiResponse.getData()) {
@@ -148,8 +148,6 @@ public class ApiService {
         }
         return careInfo;
     }
-
-
 
 
 

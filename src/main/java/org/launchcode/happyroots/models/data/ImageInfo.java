@@ -28,7 +28,6 @@ public class ImageInfo {
     private String thumbnail;
 
 //    Gettters/Setters
-
     public int getLicense() {
         return license;
     }

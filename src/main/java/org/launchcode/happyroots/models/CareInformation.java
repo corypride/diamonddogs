@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class CareInformation {
 
+//    Fields
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -16,6 +17,7 @@ public class CareInformation {
     private String sunlightDesc;
     private String pruningDesc;
 
+//  Constructors
     public CareInformation (){}
 
     public CareInformation(int id, String wateringDesc, String sunlightDesc, String pruningDesc) {
@@ -25,6 +27,7 @@ public class CareInformation {
         this.pruningDesc = pruningDesc;
     }
 
+//  Getter/Setters
     public int getId() {
         return id;
     }
