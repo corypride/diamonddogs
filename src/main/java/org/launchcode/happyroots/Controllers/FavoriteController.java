@@ -118,7 +118,6 @@ public class FavoriteController {
     @GetMapping("/userId/{userId}")
     public String getUserId(@PathVariable String userId) {
         return userId;
-
     }
 
 

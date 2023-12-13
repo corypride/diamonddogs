@@ -9,7 +9,21 @@ const handleResponse = async (response) => {
     } else return false;
 }
 
+// export const getUserFavorites =  async (token, userId) => {
+//     const response = await fetch(baseUrl + "/userId/" + userId, {
+//         method: 'GET',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': `Bearer ${token}`
+//         },
+//     })
+//     // return handleResponse(response)
+//     return console.log("test")
+
+// }
+
 export const getUserFavorites =  async (token, userId) => {
+try {
     const response = await fetch(baseUrl + "/userId/" + userId, {
         method: 'GET',
         headers: {
@@ -17,13 +31,20 @@ export const getUserFavorites =  async (token, userId) => {
             'Authorization': `Bearer ${token}`
         },
     })
-    // return handleResponse(response)
-    return console.log("test")
 
-}
+    if (!response.ok) {
+        throw Error;
+    }
+
+    const data = await response.json()
+    return data;
+} catch {
+    return null
+}}
 
 
-export const getAllFavorites =  async (token, userId) => {
+
+export const getAllFavorites =  async (token) => {
 try {
     const response = await fetch(baseUrl, {
         method: 'GET',
