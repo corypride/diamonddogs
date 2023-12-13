@@ -245,7 +245,7 @@ public class FavoriteController {
 
     @ResponseBody
     @GetMapping("/name")
-    public List<Favorite> getName(@RequestBody String name) {
+    public List<Favorite> findByName(@RequestBody String name) {
         return favoriteRepository.findByName(name);
     }
 
