@@ -4,7 +4,6 @@ package org.launchcode.happyroots.Controllers;
 import org.launchcode.happyroots.Exception.ResourceNotFoundException;
 import org.launchcode.happyroots.Models.Favorite;
 import org.launchcode.happyroots.Repositories.FavoriteRepository;
-import org.launchcode.happyroots.Service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +20,6 @@ public class FavoriteController {
 
 
 
-    @Autowired
-    FavoriteService favoriteService;
 
     @Autowired
     FavoriteRepository favoriteRepository;
