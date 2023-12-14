@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("http://localhost:3000/")
-@RequestMapping("/plants")
+@RequestMapping("/auth")
 public class HomeController {
 
     @PostMapping("/signup")

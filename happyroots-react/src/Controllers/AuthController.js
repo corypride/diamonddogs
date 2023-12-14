@@ -2,9 +2,9 @@ import { removeUserFromLocalStorage } from "../Helpers/authHelpers";
 import { auth } from '../Helpers/firebase';
 
 // TODO: change 'plants' route name
-const testUrl = "http://localhost:8080/plants/test"
-const signupUrl = 'http://localhost:8080/plants/signup';
-const loginUrl = 'http://localhost:8080/plants/login';
+const testUrl = "http://localhost:8080/auth/test"
+const signupUrl = 'http://localhost:8080/auth/signup';
+const loginUrl = 'http://localhost:8080/auth/login';
   
 
 export const getTest = (token) => {
