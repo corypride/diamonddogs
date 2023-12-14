@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14180e3f-84b1-40dc-af1b-ebc66ef6a4e0" name="Changes" comment="Added custom 404 error page, needs UI and components">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+    <list default="true" id="14180e3f-84b1-40dc-af1b-ebc66ef6a4e0" name="Changes" comment="Added Google Analytics connection">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/NotFound.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/NotFound.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,11 +52,16 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;OPEN&quot;
+    }
+  ],
   &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;aty13&quot;
+    &quot;state&quot;: &quot;OPEN&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">
@@ -67,6 +71,9 @@
         <option name="url" value="https://github.com/corypride/diamonddogs.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.txt" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -87,7 +94,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "android.gradle.sync.needed": "true",
-    "git-widget-placeholder": "custom404",
+    "git-widget-placeholder": "google-analytics",
     "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.General"
   }
 }]]></component>
@@ -122,6 +129,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.diamonddogs [bootRun]" />
         <item itemvalue="Gradle.diamonddogs [bootRun]" />
       </list>
     </recent_temporary>
@@ -208,6 +216,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="Add routing for 404 page" />
     <MESSAGE value="Added custom 404 error page, needs UI and components" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added custom 404 error page, needs UI and components" />
+    <MESSAGE value="Added Google Analytics connection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Google Analytics connection" />
   </component>
 </project>

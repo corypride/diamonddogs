@@ -6,7 +6,17 @@ import HomeScreen from "./Screens/HomeScreen";
 import ProfileScreen from "./Screens/ProfileScreen";
 import NotFound from './Screens/NotFound';
 import "./App.css";
+import ReactGA from 'react-ga4';
 
+const TRACKING_ID = "G-BSEN65VMZT"; // YOUR_OWN_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
+
+
+const Profile = () => (
+  <div>
+    <h2>Profile</h2>
+  </div>
+);
 
 function App() {
 
@@ -32,7 +42,7 @@ function App() {
 
   );
 }
-/*
+
 function Home() {
   return (
     <>
@@ -63,6 +73,6 @@ function About() {
     </>
   );
 }
-*/
 
-export default App;
+
+export default App ;
