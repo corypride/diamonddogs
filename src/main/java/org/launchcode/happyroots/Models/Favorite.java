@@ -1,11 +1,8 @@
 package org.launchcode.happyroots.Models;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import lombok.*;
 
-import java.util.Objects;
 
 @Entity
 @Getter
@@ -18,6 +15,8 @@ public class Favorite extends AbstractEntity {
     private String userId;
 
     private String plantId;
+
+}
 
 
 //    old getters and setters without lombok
@@ -68,7 +67,7 @@ public class Favorite extends AbstractEntity {
 //    public int hashCode() {
 //        return Objects.hash(getName(), getUserId(), getPlantId());
 //    }
-}
+//}
 
 
 

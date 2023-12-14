@@ -25,6 +25,7 @@ const handleResponse = async (response) => {
 export const getUserFavorites =  async (token, userId) => {
 try {
     const response = await fetch(baseUrl + "/userId/" + userId, {
+    // const response = await fetch(baseUrl + "/plantId/8", {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
