@@ -1,5 +1,5 @@
 
-const baseUrl = "http://localhost:8080/favorites"
+const baseUrl = "http://localhost:8080/favorite"
 
 const handleResponse = async (response) => {
     if(response.ok) {
