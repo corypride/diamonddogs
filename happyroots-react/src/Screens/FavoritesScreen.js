@@ -59,6 +59,7 @@ const FavoritesScreen = ({token, uid}) => {
 
     const handleData = () => {
         console.log(data)
+        console.log(data[3])
     }
 
   return (
@@ -66,9 +67,10 @@ const FavoritesScreen = ({token, uid}) => {
     <NavigationBar />
     <div>
         <p>list or grid of favorites</p>
-        <button onClick={handleClick}>user id in response body</button>
+        {/* <button onClick={handleClick}>user id in response body</button> */}
         <button onClick={fetchUserFavorites}>user favorites post</button>
         <button onClick={fetchAllFavorites}>fetch all favorites from service</button>
+        <button onClick={handleData}>show data</button>
         {/* {data?.map((favorite => <p>{favorite.name}</p>))} */}
         {data?.map((favorite => <ul>
             <li>{favorite.name}</li>
