@@ -22,11 +22,11 @@ export const login = async (email, password) => {
   }
 };
 
-export const signup = (data) => {
+export const signup = async (data) => {
     data['username'] = '';
     data['photoUrl'] = '';
     
-    fetch(`${baseUrl}${signupUrl}`, {
+    await fetch(`${baseUrl}${signupUrl}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

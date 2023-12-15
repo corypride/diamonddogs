@@ -12,6 +12,7 @@ const LoginScreen = () => {
       e.preventDefault();
     
       if (email === '' || password === '') {
+        alert('Something empty');
         return;
       }
     

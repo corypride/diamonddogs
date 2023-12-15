@@ -1,23 +1,26 @@
 import { useState } from "react";
 import { getTest, signup } from "../Controllers/AuthController";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './styles/signup.css';
 
 const RegisterScreen = () => {
+  const navigate = useNavigate();
   const [email,  setEmail] = useState('');
   const [password, setPassword] = useState('');  
   const [password2, setPassword2] = useState('');  
 
-  
-  const handleTestClick = () => {
-    getTest();
-  }
-  
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (password !== password2) {
       alert("Passwords don't match!");
+      setPassword('');
+      setPassword2('');
+      return;
+    }
+
+    if (password.length < 6) {
+      alert('The password needs to be no less than 6 characters.');
       return;
     }
     
@@ -26,7 +29,14 @@ const RegisterScreen = () => {
       password: password,
     };
 
-    signup(userData);
+    try {
+      await signup(userData);
+      alert('User created successfully, you can login now')
+      navigate('/login');
+    } catch (error) {
+      alert(error);
+    }
+    
   };
   
   return (
@@ -43,9 +53,6 @@ const RegisterScreen = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-          </div>
-  
-          <div className="form-group">
             <label htmlFor="password">Password:</label>
             <input
               type="password"
@@ -54,9 +61,6 @@ const RegisterScreen = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </div>
-  
-          <div className="form-group">
             <label htmlFor="password2">Repeat password:</label>
             <input
               type="password"
@@ -66,16 +70,10 @@ const RegisterScreen = () => {
               required
             />
           </div>
-  
           <button type="submit">Register</button>
         </form>
         <hr className="divider" />
-        <p className="login-link">
-          <Link to="/login">Login</Link>
-        </p>
-        <button onClick={handleTestClick} className="test-button">
-          Click me to test
-        </button>
+        <p className="login-link">Got an account?  <Link to="/login">Login</Link></p>
       </header>
     </div>
   );

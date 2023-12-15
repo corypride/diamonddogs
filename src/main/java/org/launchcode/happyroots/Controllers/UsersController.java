@@ -15,7 +15,7 @@ import java.security.Principal;
 @RequestMapping("/users")
 public class UsersController {
     @PostMapping("/signup")
-    public ResponseEntity<String> signUp(@RequestBody UserData userData) {
+    public ResponseEntity<UserRecord> signUp(@RequestBody UserData userData) {
         try {
             UserRecord.CreateRequest request = new UserRecord.CreateRequest()
                     .setEmail(userData.getEmail())
@@ -25,9 +25,9 @@ public class UsersController {
             UserRecord userRecord = FirebaseAuth.getInstance().createUser(request);
             System.out.println("Successfully created new user: " + userRecord.getUid());
 
-            return ResponseEntity.ok("User created successfully");
+            return ResponseEntity.ok(userRecord);
         } catch (FirebaseAuthException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating user: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
