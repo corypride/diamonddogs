@@ -15,21 +15,25 @@ import java.util.List;
 @NoArgsConstructor
 public class Profile extends AbstractEntity {
 
+//
+//    @OneToMany
+//    @JoinColumn(name = "favorite_id")
+//    private List<Plant> plants = new ArrayList<>();
 
-//    private String name;
+
+    private String name;
+
     private String userId;
     private String email;
     private String phoneNumber;
     private String imageURL;
 
-//
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "favorite_id", referencedColumnName = "id")
-//    private Favorite favorite;
 
 
-    //
-//    @OneToMany
-//    @JoinColumn(name = "favorite_id")
-//    private List<Plant> plants = new ArrayList<>();
+
+        @OneToMany(fetch = FetchType.LAZY, mappedBy = "profile")
+        private List<Plant> plants;
+
+
+
 }

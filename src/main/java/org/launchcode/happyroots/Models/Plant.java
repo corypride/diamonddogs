@@ -16,7 +16,16 @@ public class Plant extends AbstractEntity {
 
 
 
+
     private String speciesId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
+
+
+
+
 
 //    @ManyToOne
 //    @JoinColumn(name = "profileId")

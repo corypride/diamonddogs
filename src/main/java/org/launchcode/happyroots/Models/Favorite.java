@@ -12,12 +12,14 @@ import lombok.*;
 @NoArgsConstructor
 public class Favorite extends AbstractEntity {
 
-    private String name;
+//    private String name;
 
     private String userId;
 
 //    @OneToOne
-    private String profileId;
+//    private String profileId;
+
+    private String thumbnail;
 
 //    @ManyToMany
     private String plantId;

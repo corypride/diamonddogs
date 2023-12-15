@@ -73,9 +73,10 @@ const FavoritesScreen = ({token, uid}) => {
         <button onClick={handleData}>show data</button>
         {/* {data?.map((favorite => <img src={favorite.plantId}></img>))} */}
         {data?.map((favorite => <ul>
-            <li>{favorite.name}</li>
+            <li>{favorite.id}</li>
+            <li>{favorite.plantId}</li>
             <li>{favorite.userId}</li>
-            <img src={favorite.plantId}></img>
+            <img src={favorite?.thumbnail}></img>
         </ul>))}
         {/* <button onClick={fetchAddFavorites}>add</button> */}
         {/* <button onClick={handleData}>data</button> */}

@@ -3,7 +3,10 @@ package org.launchcode.happyroots.Controllers;
 
 import org.launchcode.happyroots.Exception.ResourceNotFoundException;
 import org.launchcode.happyroots.Models.Favorite;
+import org.launchcode.happyroots.Models.Plant;
 import org.launchcode.happyroots.Repositories.FavoriteRepository;
+import org.launchcode.happyroots.Repositories.PlantRepository;
+import org.launchcode.happyroots.Repositories.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +26,17 @@ public class FavoriteController {
 
     @Autowired
     FavoriteRepository favoriteRepository;
+    @Autowired
+    PlantRepository plantRepository;
+    @Autowired
+    ProfileRepository profileRepository;
 
 
     @GetMapping
     public Collection<Favorite> findALlFavorites () {
         return favoriteRepository.findAll();
     }
+
 
 
     @GetMapping("/userId/{userId}")

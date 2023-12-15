@@ -2,7 +2,9 @@ package org.launchcode.happyroots.Controllers;
 
 
 import org.launchcode.happyroots.Exception.ResourceNotFoundException;
+import org.launchcode.happyroots.Models.Plant;
 import org.launchcode.happyroots.Models.Profile;
+import org.launchcode.happyroots.Repositories.PlantRepository;
 import org.launchcode.happyroots.Repositories.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,8 @@ public class ProfileController {
     @Autowired
     ProfileRepository profileRepository;
 
+    @Autowired
+    PlantRepository plantRepository;
 
 
 
@@ -27,6 +31,11 @@ public class ProfileController {
     public Collection<Profile> findALlProfiles () {
         return profileRepository.findAll();
     }
+
+//    @GetMapping("/test/{profileId}")
+//    public List<Plant> plantsByProfile(@PathVariable String profileID) {
+//        return plantRepository.findByProfileId(profileID);
+//    }
 
 
     @GetMapping("/userId/{userId}")
