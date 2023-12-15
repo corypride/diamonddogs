@@ -27,14 +27,14 @@ public class PlantController {
     }
 
 
-    @GetMapping("/plantId/{plantId}")
-    public List<Plant> getUserId(@PathVariable String plantId) {
-        return plantRepository.findByPlantId(plantId);
+    @GetMapping("/speciesId/{speciesId}")
+    public List<Plant> getUserId(@PathVariable String speciesId) {
+        return plantRepository.findBySpeciesId(speciesId);
     }
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Plant> getProfileById(@PathVariable int id) {
+    public ResponseEntity<Plant> getPlantById(@PathVariable int id) {
         Plant plant =
                 plantRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
                         "Plant does not exist with id: " + id) );
@@ -58,7 +58,7 @@ public class PlantController {
         Plant updatePlant =
                 plantRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
                         "Plant does not exist with id: " + id) );
-        updatePlant.setPlantId(plantDetails.getPlantId());
+        updatePlant.setSpeciesId(plantDetails.getSpeciesId());
 
 
         plantRepository.save(updatePlant);
@@ -73,7 +73,7 @@ public class PlantController {
         Plant updatePlant =
                 plantRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
                         "Plant does not exist with id: " + id) );
-        updatePlant.setPlantId(plantDetails.getPlantId());
+        updatePlant.setSpeciesId(plantDetails.getSpeciesId());
 
 
         plantRepository.save(updatePlant);

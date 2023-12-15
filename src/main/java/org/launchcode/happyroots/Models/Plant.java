@@ -6,8 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
 @Getter
@@ -16,13 +15,22 @@ import java.util.List;
 public class Plant extends AbstractEntity {
 
 
+
+    private String speciesId;
+
+//    @ManyToOne
+//    @JoinColumn(name = "profileId")
+//    private Profile profile;
+
+//    @ManyToMany(mappedBy = "profileId")
+//    private Collection<Plant> speciesId;
+//    private String plantId;
 //
 //    @ManyToOne
 //    @JoinColumn(name = "profile_id")
 //    private Profile profile_id;
 
 //    @OneToMany
-    private String plantId;
 
 
 
