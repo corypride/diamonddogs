@@ -1,14 +1,15 @@
-import { removeUserFromLocalStorage } from "../Helpers/authHelpers";
+import { getUserFromLocalStorage, removeUserFromLocalStorage, saveUserToLocalStorage } from "../Helpers/authHelpers";
 import { auth } from '../Helpers/firebase';
 
 
-const testUrl = "http://localhost:8080/plants/test"
-const signupUrl = 'http://localhost:8080/users/signup';
-const loginUrl = 'http://localhost:8080/plants/login';
+const baseUrl = 'http://localhost:8080';
+const testUrl = '/plants/test';
+const signupUrl = '/users/signup';
+const updateUrl = '/users/update';
   
 
 export const getTest = (token) => {
-    fetch(testUrl, {
+    fetch(`${baseUrl}${testUrl}`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
@@ -17,7 +18,10 @@ export const getTest = (token) => {
 }
 
 export const signup = (data) => {
-    fetch(signupUrl, {
+    data['username'] = '';
+    data['photoUrl'] = '';
+    
+    fetch(`${baseUrl}${signupUrl}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -26,19 +30,34 @@ export const signup = (data) => {
     }).then(response => console.log(response));
 }
 
-export const login = (data) => {
-    fetch(loginUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    }).then(response => {
-        return response.data
-    });
+export const login = () => {
+    
 }
 
 export const logout = () => {
     auth.signOut();
     removeUserFromLocalStorage();
+}
+
+export const updateUser = async (userData) => {
+    
+    var user = getUserFromLocalStorage();
+
+    const response = await fetch(`${baseUrl}${updateUrl}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${user.stsTokenManager.accessToken}`
+        },
+        body: JSON.stringify(userData),
+    })
+
+    
+    // .then(response => {
+    //     console.log(response.data);
+    //     removeUserFromLocalStorage();
+    //     saveUserToLocalStorage(response.data)
+
+    //     // return response.data
+    // });
 }

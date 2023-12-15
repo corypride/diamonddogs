@@ -14,6 +14,10 @@ const LoginScreen = () => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
+            console.log("_________\n\n\n")
+            console.log(userCredential);
+
+            console.log("_________\n\n\n")
             const user = userCredential.user;
             
             saveUserToLocalStorage(user);

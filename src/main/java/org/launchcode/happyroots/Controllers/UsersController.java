@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @RestController
 @CrossOrigin("http://localhost:3000/")
 @RequestMapping("/users")
@@ -30,8 +32,18 @@ public class UsersController {
     }
 
     @PostMapping("/update")
-    public ResponseEntity<String> update(@RequestBody UserData userData) {
+    public ResponseEntity<UserRecord> update(Principal principal, @RequestBody UserData userData) {
+        try {
 
-        return ResponseEntity.ok("\n\n\n\nupdate fired");
+            UserRecord.UpdateRequest request = new UserRecord.UpdateRequest(principal.getName())
+                    .setDisplayName(userData.getUsername())
+                    .setPhotoUrl(userData.getPhotoUrl());
+
+            UserRecord userRecord = FirebaseAuth.getInstance().updateUser(request);
+
+            return ResponseEntity.ok(userRecord);
+        } catch (FirebaseAuthException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);/// + e.getMessage());
+        }
     }
 }
