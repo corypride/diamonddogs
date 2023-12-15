@@ -1,10 +1,13 @@
 package org.launchcode.happyroots.Models;
 
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -12,6 +15,17 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Plant extends AbstractEntity {
 
+
+//    @ManyToOne
+//    @JoinColumn(name = "profile_id")
+//    private Profile profile;
+
+//    @OneToMany
     private String plantId;
+
+
+
+//    @ManyToMany(mappedBy = "plants")
+//    private List<Plant> plants = new ArrayList<>();
 
 }

@@ -14,6 +14,8 @@ public class Favorite extends AbstractEntity {
 
     private String userId;
 
+    private String profileId;
+
     private String plantId;
 
 }
