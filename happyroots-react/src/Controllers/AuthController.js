@@ -1,21 +1,26 @@
-import { getUserFromLocalStorage, removeUserFromLocalStorage, saveUserToLocalStorage } from "../Helpers/authHelpers";
+import { getUserFromLocalStorage, removeUserFromLocalStorage, saveUserToLocalStorage } from "../Helpers/localStorageHelper";
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../Helpers/firebase';
-
 
 const baseUrl = 'http://localhost:8080';
 const testUrl = '/plants/test';
 const signupUrl = '/users/signup';
 const updateUrl = '/users/update';
   
+export const login = async (email, password) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    saveUserToLocalStorage(user);
+  
+    return user;
 
-export const getTest = (token) => {
-    fetch(`${baseUrl}${testUrl}`, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    }).then(response => console.log(response));
-}
+  } catch (error) {
+
+    console.error(error.code, error.message);
+    throw error;
+  }
+};
 
 export const signup = (data) => {
     data['username'] = '';
@@ -30,12 +35,9 @@ export const signup = (data) => {
     }).then(response => console.log(response));
 }
 
-export const login = () => {
-    
-}
-
 export const logout = () => {
-    auth.signOut();
+    //TODO:?
+
     removeUserFromLocalStorage();
 }
 
@@ -43,7 +45,7 @@ export const updateUser = async (userData) => {
     
     var user = getUserFromLocalStorage();
 
-    const response = await fetch(`${baseUrl}${updateUrl}`, {
+    await fetch(`${baseUrl}${updateUrl}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -51,13 +53,13 @@ export const updateUser = async (userData) => {
         },
         body: JSON.stringify(userData),
     })
+}
 
-    
-    // .then(response => {
-    //     console.log(response.data);
-    //     removeUserFromLocalStorage();
-    //     saveUserToLocalStorage(response.data)
-
-    //     // return response.data
-    // });
+export const getTest = (token) => {
+    fetch(`${baseUrl}${testUrl}`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    }).then(response => console.log(response));
 }

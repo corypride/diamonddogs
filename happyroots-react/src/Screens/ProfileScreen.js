@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUserFromLocalStorage } from '../Helpers/authHelpers';
+import { getUserFromLocalStorage } from '../Helpers/localStorageHelper';
 import { useNavigate } from 'react-router-dom';
 import NavigationBar from './Components/NavigationBar';
 import { updateUser } from '../Controllers/AuthController';

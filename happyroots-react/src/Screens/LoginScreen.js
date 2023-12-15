@@ -1,39 +1,31 @@
 import React, {useState} from 'react';
-import {  signInWithEmailAndPassword   } from 'firebase/auth';
-import { auth } from '../Helpers/firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
-import { saveUserToLocalStorage } from '../Helpers/authHelpers';
 import './styles/login.css';
+import { login } from '../Controllers/AuthController';
  
 const LoginScreen = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
        
-    const onLogin = (e) => {
-        e.preventDefault();
-        signInWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            console.log("_________\n\n\n")
-            console.log(userCredential);
-
-            console.log("_________\n\n\n")
-            const user = userCredential.user;
-            
-            saveUserToLocalStorage(user);
-
-            navigate("/")
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage)
-        });
-       
-    }
+    const onLogin = async (e) => {
+      e.preventDefault();
+    
+      if (email === '' || password === '') {
+        return;
+      }
+    
+      try {
+        await login(email, password);
+        navigate('/');
+      } catch (error) {
+        alert(error);
+      }
+    };
+    
     return (
       <>
-        <div className="App-header"> 
+        <div className="login-form"> 
           <p>Happy Roots</p>                       
           <form>                                             
             <div>
