@@ -16,9 +16,10 @@ import java.util.List;
 public class Plant extends AbstractEntity {
 
 
+//
 //    @ManyToOne
 //    @JoinColumn(name = "profile_id")
-//    private Profile profile;
+//    private Profile profile_id;
 
 //    @OneToMany
     private String plantId;

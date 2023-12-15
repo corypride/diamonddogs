@@ -41,7 +41,7 @@ const FavoritesScreen = ({token, uid}) => {
     }    
     
 
-    const addFave = '{"id" : "6", "name" : "dummy", "userId" : "fh3947fhweiuhf09w8"}';
+    // const addFave = '{"id" : "6", "name" : "dummy", "userId" : "fh3947fhweiuhf09w8"}';
     const addFavorites = async () => {
         const response = await addFavorites(token)
         if (response.ok) {
@@ -68,12 +68,12 @@ const FavoritesScreen = ({token, uid}) => {
     <div>
         <p>list or grid of favorites</p>
         {/* <button onClick={handleClick}>user id in response body</button> */}
-        <button onClick={fetchUserFavorites}>user favorites post</button>
+        <button onClick={fetchUserFavorites}>user favorites get</button>
         <button onClick={fetchAllFavorites}>fetch all favorites from service</button>
         <button onClick={handleData}>show data</button>
         {/* {data?.map((favorite => <p>{favorite.name}</p>))} */}
         {data?.map((favorite => <ul>
-            <li>{favorite.name}</li>
+            {/* <li>{favorite.name}</li> */}
             <li>{favorite.userId}</li>
             <li>{favorite.plantId}</li>
         </ul>))}

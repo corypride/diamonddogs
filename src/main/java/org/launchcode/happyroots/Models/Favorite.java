@@ -1,7 +1,12 @@
 package org.launchcode.happyroots.Models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import lombok.*;
+
+import java.util.Collection;
+import java.util.List;
 
 
 @Entity
@@ -10,13 +15,32 @@ import lombok.*;
 @NoArgsConstructor
 public class Favorite extends AbstractEntity {
 
-    private String name;
+//    private final Profile profile;
+//    private String name;
 
     private String userId;
 
-    private String profileId;
-
     private String plantId;
+
+
+
+    // Initialize the id and value fields.
+    public Favorite(Profile aProfile, List<Plant> somePlants) {
+        super();
+//        this.profile = aProfile;
+        this.plants = somePlants;
+    }
+//    @OneToOne
+//    @ManyToMany(mappedBy = "profile_id")
+//    private String profileId;
+
+//
+//    @ManyToMany(mappedBy = "profile_id")
+//    private Collection <Profile> profiles;
+//
+//    @ManyToMany(mappedBy = "profile_id")
+    @ManyToMany
+    private Collection<Plant> plants;
 
 }
 

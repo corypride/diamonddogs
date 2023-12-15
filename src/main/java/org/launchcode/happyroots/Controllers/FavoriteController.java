@@ -37,11 +37,11 @@ public class FavoriteController {
     }
 
 
-    @GetMapping("/name/{name}")
-    public List<Favorite> getUserName(@PathVariable String name) {
-        return favoriteRepository.findByName(name);
-
-    }
+//    @GetMapping("/name/{name}")
+//    public List<Favorite> getUserName(@PathVariable String name) {
+//        return favoriteRepository.findByName(name);
+//
+//    }
 
     @GetMapping("/plantId/{plantId}")
     public List<Favorite> getPlantId(@PathVariable String plantId) {
@@ -76,7 +76,7 @@ public class FavoriteController {
         Favorite updateFavorite =
                 favoriteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
                         "favorite does not exist with id: " + id) );
-        updateFavorite.setName(favoriteDetails.getName());
+//        updateFavorite.setName(favoriteDetails.getName());
         updateFavorite.setUserId(favoriteDetails.getUserId());
         updateFavorite.setPlantId(favoriteDetails.getPlantId());
 
@@ -92,7 +92,7 @@ public class FavoriteController {
         Favorite updateFavorite =
                 favoriteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
                         "favorite does not exist with id: " + id) );
-        updateFavorite.setName(favoriteDetails.getName());
+//        updateFavorite.setName(favoriteDetails.getName());
         updateFavorite.setUserId(favoriteDetails.getUserId());
         updateFavorite.setPlantId(favoriteDetails.getPlantId());
 
