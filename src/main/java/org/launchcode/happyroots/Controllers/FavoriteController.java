@@ -62,7 +62,7 @@ public class FavoriteController {
 
 //    create favorite
     @PostMapping("/create")
-    public Favorite favorite(@RequestBody Favorite favorite ) {
+    public Favorite createFavorite(@RequestBody Favorite favorite ) {
         return favoriteRepository.save(favorite);
     }
 
@@ -112,21 +112,5 @@ public class FavoriteController {
     }
 
 
-
-
-
-
-
-
-    @PostMapping("/")
-    public String saveToDB () {
-        return "please route me for posting";
-    }
-
-
-    @PostMapping("/huh")
-    public String postTest(Favorite favorite) {
-        return "success";
-    }
 
 }

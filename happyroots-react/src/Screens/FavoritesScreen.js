@@ -71,11 +71,11 @@ const FavoritesScreen = ({token, uid}) => {
         <button onClick={fetchUserFavorites}>user favorites get</button>
         <button onClick={fetchAllFavorites}>fetch all favorites from service</button>
         <button onClick={handleData}>show data</button>
-        {/* {data?.map((favorite => <p>{favorite.name}</p>))} */}
+        {/* {data?.map((favorite => <img src={favorite.plantId}></img>))} */}
         {data?.map((favorite => <ul>
-            {/* <li>{favorite.name}</li> */}
+            <li>{favorite.name}</li>
             <li>{favorite.userId}</li>
-            <li>{favorite.plantId}</li>
+            <img src={favorite.plantId}></img>
         </ul>))}
         {/* <button onClick={fetchAddFavorites}>add</button> */}
         {/* <button onClick={handleData}>data</button> */}

@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface PlantRepository extends JpaRepository<Plant, Integer> {
 
-    public List<Favorite> findByPlantId(String plantId);
+    public List<Plant> findByPlantId(String plantId);
 
 }

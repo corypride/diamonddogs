@@ -46,19 +46,22 @@ public class ProfileController {
         return profileRepository.findByPhoneNumber(phoneNumber);
     }
 
+
+//    get profile
+
     @GetMapping("/{id}")
     public ResponseEntity<Profile> getProfileById(@PathVariable int id) {
-        Profile Profile =
+        Profile profile =
                 profileRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
                         "Profile does not exist with id: " + id) );
-        return ResponseEntity.ok(Profile);
+        return ResponseEntity.ok(profile);
     }
 
 
     //    create Profile
     @PostMapping("/create")
-    public Profile Profile(@RequestBody Profile Profile ) {
-        return profileRepository.save(Profile);
+    public Profile createProfile(@RequestBody Profile profile ) {
+        return profileRepository.save(profile);
     }
 
 
@@ -67,14 +70,14 @@ public class ProfileController {
     //    update Profile
     @PutMapping("/{id}")
     public ResponseEntity<Profile> updateProfile(@PathVariable int id,
-                                                   @RequestBody Profile ProfileDetails) {
+                                                   @RequestBody Profile profileDetails) {
         Profile updateProfile =
                 profileRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
                         "Profile does not exist with id: " + id) );
-        updateProfile.setUserId(ProfileDetails.getUserId());
-        updateProfile.setEmail(ProfileDetails.getEmail());
-        updateProfile.setPhoneNumber(ProfileDetails.getPhoneNumber());
-        updateProfile.setImageURL(ProfileDetails.getImageURL());
+        updateProfile.setUserId(profileDetails.getUserId());
+        updateProfile.setEmail(profileDetails.getEmail());
+        updateProfile.setPhoneNumber(profileDetails.getPhoneNumber());
+        updateProfile.setImageURL(profileDetails.getImageURL());
 
         profileRepository.save(updateProfile);
         return ResponseEntity.ok(updateProfile);
@@ -84,46 +87,32 @@ public class ProfileController {
     //    update single value
     @PatchMapping("/{id}")
     public ResponseEntity<Profile> patchProfile(@PathVariable int id,
-                                                  @RequestBody Profile ProfileDetails) {
+                                                  @RequestBody Profile profileDetails) {
         Profile updateProfile =
                 profileRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
                         "Profile does not exist with id: " + id) );
-        updateProfile.setUserId(ProfileDetails.getUserId());
-        updateProfile.setEmail(ProfileDetails.getEmail());
-        updateProfile.setPhoneNumber(ProfileDetails.getPhoneNumber());
-        updateProfile.setImageURL(ProfileDetails.getImageURL());
+        updateProfile.setUserId(profileDetails.getUserId());
+        updateProfile.setEmail(profileDetails.getEmail());
+        updateProfile.setPhoneNumber(profileDetails.getPhoneNumber());
+        updateProfile.setImageURL(profileDetails.getImageURL());
 
         profileRepository.save(updateProfile);
         return ResponseEntity.ok(updateProfile);
     }
 
 
+
+//    delete profile
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteProfile(@PathVariable int id) {
-        Profile Profile =
+        Profile profile =
                 profileRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
                         "Profile does not exist with id: " + id) );
 
-        profileRepository.delete(Profile);
+        profileRepository.delete(profile);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 
-
-
-
-
-
-
-    @PostMapping("/")
-    public String saveToDB () {
-        return "please route me for posting";
-    }
-
-
-    @PostMapping("/huh")
-    public String postTest(Profile Profile) {
-        return "success";
-    }
 
 }
