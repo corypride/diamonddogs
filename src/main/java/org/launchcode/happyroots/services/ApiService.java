@@ -1,9 +1,9 @@
 package org.launchcode.happyroots.services;
 
-import org.launchcode.happyroots.models.CareInformation;
-import org.launchcode.happyroots.models.data.ApiResponse;
-import org.launchcode.happyroots.models.data.DataItem;
-import org.launchcode.happyroots.models.data.SectionItem;
+import org.launchcode.happyroots.Models.CareInformation;
+import org.launchcode.happyroots.Models.data.ApiResponse;
+import org.launchcode.happyroots.Models.data.DataItem;
+import org.launchcode.happyroots.Models.data.SectionItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
