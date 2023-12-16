@@ -2,48 +2,108 @@ package org.launchcode.happyroots.Models;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.util.Collection;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-public class Plant extends AbstractEntity {
+public class Plant {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
+    private int speciesId;  //corresponds to 'species_id'
+    private String commonName;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private CareInformation careInformation;
 
-    private String speciesId;
+    public Plant(int id, int speciesId, String commonName, CareInformation careInformation) {
+        this.id = id;
+        this.speciesId = speciesId;
+        this.commonName = commonName;
+        this.careInformation = careInformation;
+    }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "profile_id")
-    private Profile profile;
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public int getSpeciesId() {
+        return speciesId;
+    }
 
+    public void setSpeciesId(int speciesId) {
+        this.speciesId = speciesId;
+    }
 
+    public String getCommonName() {
+        return commonName;
+    }
 
-//    @ManyToOne
-//    @JoinColumn(name = "profileId")
-//    private Profile profile;
+    public void setCommonName(String commonName) {
+        this.commonName = commonName;
+    }
 
-//    @ManyToMany(mappedBy = "profileId")
-//    private Collection<Plant> speciesId;
-//    private String plantId;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "profile_id")
-//    private Profile profile_id;
+    public CareInformation getCareInformation() {
+        return careInformation;
+    }
 
-//    @OneToMany
-
-
-
-//    @ManyToMany(mappedBy = "plants")
-//    private List<Plant> plants = new ArrayList<>();
-
+    public void setCareInformation(CareInformation careInformation) {
+        this.careInformation = careInformation;
+    }
 }
+
+
+
+//package org.launchcode.happyroots.Models;
+//
+//
+//import jakarta.persistence.*;
+//import lombok.Getter;
+//import lombok.NoArgsConstructor;
+//import lombok.Setter;
+//
+//import java.util.Collection;
+//
+//@Entity
+//@Getter
+//@Setter
+//@NoArgsConstructor
+//public class Plant extends AbstractEntity {
+//
+//
+//
+//
+//    private String speciesId;
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "profile_id")
+//    private Profile profile;
+//
+//
+//
+//
+//
+////    @ManyToOne
+////    @JoinColumn(name = "profileId")
+////    private Profile profile;
+//
+////    @ManyToMany(mappedBy = "profileId")
+////    private Collection<Plant> speciesId;
+////    private String plantId;
+////
+////    @ManyToOne
+////    @JoinColumn(name = "profile_id")
+////    private Profile profile_id;
+//
+////    @OneToMany
+//
+//
+//
+////    @ManyToMany(mappedBy = "plants")
+////    private List<Plant> plants = new ArrayList<>();
+//
+//}
