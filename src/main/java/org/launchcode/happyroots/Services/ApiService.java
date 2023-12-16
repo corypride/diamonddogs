@@ -1,9 +1,9 @@
-package org.launchcode.happyroots.services;
+package org.launchcode.happyroots.Services;
 
 import org.launchcode.happyroots.Models.CareInformation;
-import org.launchcode.happyroots.Models.data.ApiResponse;
-import org.launchcode.happyroots.Models.data.DataItem;
-import org.launchcode.happyroots.Models.data.SectionItem;
+import org.launchcode.happyroots.Models.Data.ApiResponse;
+import org.launchcode.happyroots.Models.Data.DataItem;
+import org.launchcode.happyroots.Models.Data.SectionItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.launchcode.happyroots.Models.apiKey;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class ApiService {
     private static final int ITEMS_PER_PAGE = 30; // Items per page as defined by the API
 
     //   Perenual api key
-//    @Value("${perenual.api.key}")
+    @Value("${perenual.api.key}")
     private String apiKey;
 
 
