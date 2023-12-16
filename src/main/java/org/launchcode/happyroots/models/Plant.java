@@ -1,4 +1,4 @@
-package org.launchcode.happyroots.models;
+package org.launchcode.happyroots.Models;
 
 
 import jakarta.persistence.*;

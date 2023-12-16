@@ -17,8 +17,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Objects;
 
-//@SpringBootApplication
-@SpringBootApplication (exclude = { SecurityAutoConfiguration.class })
+@SpringBootApplication
+//@SpringBootApplication (exclude = { SecurityAutoConfiguration.class })
 public class HappyrootsApplication {
 //public class HappyrootsApplication implements CommandLineRunner {
 

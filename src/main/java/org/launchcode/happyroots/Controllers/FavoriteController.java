@@ -3,7 +3,7 @@ package org.launchcode.happyroots.Controllers;
 
 import org.launchcode.happyroots.Exception.ResourceNotFoundException;
 import org.launchcode.happyroots.Models.Favorite;
-import org.launchcode.happyroots.Models.Plant;
+//import org.launchcode.happyroots.Models.Plant;
 import org.launchcode.happyroots.Repositories.FavoriteRepository;
 import org.launchcode.happyroots.Repositories.PlantRepository;
 import org.launchcode.happyroots.Repositories.ProfileRepository;
