@@ -6,11 +6,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class CareInformation {
+public class CareInformation extends AbstractEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+
 
     private String wateringDesc;
     private String sunlightDesc;
@@ -18,20 +16,14 @@ public class CareInformation {
 
     public CareInformation (){}
 
-    public CareInformation(int id, String wateringDesc, String sunlightDesc, String pruningDesc) {
-        this.id = id;
+    public CareInformation(String wateringDesc, String sunlightDesc, String pruningDesc) {
+
         this.wateringDesc = wateringDesc;
         this.sunlightDesc = sunlightDesc;
         this.pruningDesc = pruningDesc;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getWateringDesc() {
         return wateringDesc;
