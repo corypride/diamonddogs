@@ -10,13 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Objects;
 
-@SpringBootApplication
+//@SpringBootApplication
+@SpringBootApplication (exclude = { SecurityAutoConfiguration.class })
 public class HappyrootsApplication {
 //public class HappyrootsApplication implements CommandLineRunner {
 
@@ -37,31 +39,4 @@ public class HappyrootsApplication {
 		SpringApplication.run(HappyrootsApplication.class, args);
 	}
 
-//	entering into database
-
-//	@Autowired
-//	ProfileRepository profileRepository;
-//
-//
-//
-//
-//	@Override
-//	public void run(String... args) throws Exception {
-////
-//		Profile profile = new Profile();
-//		profile.setEmail("gwam@let.com");
-//		profile.setUserId("WOUW9fb3fOhKalcS3U0ysVvxyKA3");
-//		profileRepository.save(profile);
-//
-//		Profile profile1 = new Profile();
-//		profile1.setEmail("test@test.com");
-//		profile1.setUserId("1v0dnYdpxYeSnlZPR9FHvqebvJD3");
-//		profileRepository.save(profile1);
-//
-//		Profile profile2 = new Profile();
-//		profile2.setEmail("ryan.p.riggs@gmail.com");
-//		profile2.setUserId("t4rP7hHEPWXePftpcoF0IcAy3ni2");
-//		profileRepository.save(profile2);
-//
-//	}
 }
