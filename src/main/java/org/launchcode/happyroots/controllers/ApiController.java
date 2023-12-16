@@ -75,7 +75,7 @@ public class ApiController {
         return apiService.mergeSpeciesAndCareGuideData(commonName);
     }
 
-    // Returns FAQ (if available) based on tag (common name, indoor, outdoor, homedecor)
+    // Returns FAQ (if available) based on tag (common name, indoor, outdoor, homedecor, etc)
     @GetMapping("plant/faq/{tags}")
     public List<FaqItem> getPlantFaq(@PathVariable String tags) {
         return apiService.getFaqByTag(tags);

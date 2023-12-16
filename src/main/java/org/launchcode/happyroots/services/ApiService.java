@@ -9,8 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +16,6 @@ import java.util.Objects;
 
 @Service
 public class ApiService {
-
-    private static final Logger logger = LoggerFactory.getLogger(ApiService.class);
 
     // Fields
     private static final int MAX_PAGES = 5; // Maximum number of pages to fetch
