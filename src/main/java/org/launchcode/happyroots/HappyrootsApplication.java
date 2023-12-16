@@ -34,7 +34,7 @@ public class HappyrootsApplication {
 				.setCredentials(GoogleCredentials.fromStream(serviceAccount))
 				.build();
 
-		FirebaseApp.initializeApp(options);
+//		FirebaseApp.initializeApp(options);
 
 		SpringApplication.run(HappyrootsApplication.class, args);
 	}

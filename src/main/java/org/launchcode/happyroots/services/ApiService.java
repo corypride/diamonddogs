@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+import org.launchcode.happyroots.Models.apiKey;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +28,9 @@ public class ApiService {
     private static final int ITEMS_PER_PAGE = 30; // Items per page as defined by the API
 
     //   Perenual api key
-    @Value("${perenual.api.key}")
+//    @Value("${perenual.api.key}")
     private String apiKey;
+
 
     private final RestTemplate restTemplate;
 

@@ -1,4 +1,4 @@
-package org.launchcode.happyroots.models.data;
+package org.launchcode.happyroots.Models.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -29,7 +29,8 @@ public class PlantController {
 
     @GetMapping("/speciesId/{speciesId}")
     public List<Plant> getUserId(@PathVariable String speciesId) {
-        return plantRepository.findBySpeciesId(speciesId);
+//        return plantRepository.findBySpeciesId(speciesId);
+        return null;
     }
 
 

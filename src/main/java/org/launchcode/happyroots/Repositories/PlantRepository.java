@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface PlantRepository extends JpaRepository<Plant, Integer> {
 
-    public List<Plant> findBySpeciesId(String speciesId);
+//    public List<Plant> findBySpeciesId(String speciesId);
 
 
 }

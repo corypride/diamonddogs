@@ -1,7 +1,7 @@
-package org.launchcode.happyroots.controllers;
+package org.launchcode.happyroots.Controllers;
 
-import org.launchcode.happyroots.models.CareInformation;
-import org.launchcode.happyroots.models.data.DataItem;
+import org.launchcode.happyroots.Models.CareInformation;
+import org.launchcode.happyroots.Models.data.DataItem;
 import org.launchcode.happyroots.services.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
