@@ -16,16 +16,24 @@ public class Plant {
 
     private int speciesId;
     private String commonName;
+    private String thumbnail;
+    private String originalUrl;
+    private String cycle;
 
 //  Constructor
-    public Plant(int id, int speciesId, String commonName, CareInformation careInformation) {
+    public Plant() {
+    }
+    public Plant(int id, CareInformation careInformation, int speciesId, String commonName, String thumbnail, String originalUrl, String cycle) {
         this.id = id;
+        this.careInformation = careInformation;
         this.speciesId = speciesId;
         this.commonName = commonName;
-        this.careInformation = careInformation;
+        this.thumbnail = thumbnail;
+        this.originalUrl = originalUrl;
+        this.cycle = cycle;
     }
 
-//  Getters/Setters
+    //  Getters/Setters
     public int getId() {
         return id;
     }
@@ -56,5 +64,29 @@ public class Plant {
 
     public void setCareInformation(CareInformation careInformation) {
         this.careInformation = careInformation;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public String getOriginalUrl() {
+        return originalUrl;
+    }
+
+    public void setOriginalUrl(String originalUrl) {
+        this.originalUrl = originalUrl;
+    }
+
+    public String getCycle() {
+        return cycle;
+    }
+
+    public void setCycle(String cycle) {
+        this.cycle = cycle;
     }
 }

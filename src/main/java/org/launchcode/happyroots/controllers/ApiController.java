@@ -1,7 +1,9 @@
 package org.launchcode.happyroots.controllers;
 
 import org.launchcode.happyroots.models.CareInformation;
+import org.launchcode.happyroots.models.Plant;
 import org.launchcode.happyroots.models.data.DataItem;
+import org.launchcode.happyroots.models.data.FaqItem;
 import org.launchcode.happyroots.services.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -67,6 +69,17 @@ public class ApiController {
         return apiService.getAllSpecies();
     }
 
+    // Combines plant list and care list data into one api call. Search by common name
+    @GetMapping("plant/common/{commonName}")
+    public Plant getAllPlantInfoByCommonName(@PathVariable String commonName) {
+        return apiService.mergeSpeciesAndCareGuideData(commonName);
+    }
+
+    // Returns FAQ (if available) based on tag (common name, indoor, outdoor, homedecor)
+    @GetMapping("plant/faq/{tags}")
+    public List<FaqItem> getPlantFaq(@PathVariable String tags) {
+        return apiService.getFaqByTag(tags);
+    }
 
 }
 
