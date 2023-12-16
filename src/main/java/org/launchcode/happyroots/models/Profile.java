@@ -28,11 +28,13 @@ public class Profile extends AbstractEntity {
     private String phoneNumber;
     private String imageURL;
 
+//    private String faves[];
 
 
 
-        @OneToMany(fetch = FetchType.LAZY, mappedBy = "profile")
-        private List<Plant> plants;
+
+//        @OneToMany(fetch = FetchType.LAZY, mappedBy = "profile")
+//        private List<Plant> plants;
 
 
 
