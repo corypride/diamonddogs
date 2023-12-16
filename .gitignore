@@ -1,7 +1,7 @@
 serviceKey.json
 firebaseConfig.js
 node_modules
-myServiceKey.json
+serviceKeyAlt.json
 
 *.iml
 .gradle
