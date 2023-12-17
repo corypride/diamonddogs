@@ -46,9 +46,9 @@ public class FavoriteController {
         return favoriteRepository.findByUserId(userId);
     }
 
-    @GetMapping("test/again")
+    @GetMapping("species")
     public String testTest(String test) {
-        return "test";
+        return "test again";
     }
 
 
