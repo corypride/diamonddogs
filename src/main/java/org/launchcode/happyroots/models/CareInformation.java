@@ -4,7 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 public class CareInformation extends AbstractEntity{
 
@@ -24,28 +28,4 @@ public class CareInformation extends AbstractEntity{
     }
 
 
-
-    public String getWateringDesc() {
-        return wateringDesc;
-    }
-
-    public void setWateringDesc(String wateringDesc) {
-        this.wateringDesc = wateringDesc;
-    }
-
-    public String getSunlightDesc() {
-        return sunlightDesc;
-    }
-
-    public void setSunlightDesc(String sunlightDesc) {
-        this.sunlightDesc = sunlightDesc;
-    }
-
-    public String getPruningDesc() {
-        return pruningDesc;
-    }
-
-    public void setPruningDesc(String pruningDesc) {
-        this.pruningDesc = pruningDesc;
-    }
 }
