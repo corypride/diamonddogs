@@ -8,6 +8,7 @@ import './styles/profile.css';
 const ProfileScreen = () => {
     const [user, setUser] = useState({});
     const [username, setUsername] = useState('');
+    const [image, setImage] = useState(null);
     const [photoUrl, setPhotoUrl] = useState('');
     const [isEditMode, setIsEditMode] = useState(false);
     const navigate = useNavigate();
@@ -35,13 +36,22 @@ const ProfileScreen = () => {
     };
 
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        if (name === 'username') {
-            setUsername(value);
-        } else if (name === 'photoUrl') {
-            setPhotoUrl(value);
-        }
-    };
+      const { name, value } = e.target;
+      
+      if (name === 'username' && value.length > 0) {
+          setUsername(value);
+      } else if (name === 'photoUrl' && value.length > 0) {
+          const urlPattern = /^(ftp|http|https):\/\/[^ "]+$/;
+  
+          if (urlPattern.test(value)) {
+              setPhotoUrl(value);
+          } else {
+              alert('Invalid URL');
+              return;
+          }
+      }
+  };
+  
 
     const saveChanges = async () => {
         try {
@@ -81,8 +91,31 @@ const ProfileScreen = () => {
                     Username: <input type="text" name="username" value={username} onChange={handleInputChange} className="edit-mode-input" />
                   </label>
                   <label className="edit-mode-label">
-                    Photo URL: <input type="text" name="photoUrl" value={photoUrl} onChange={handleInputChange} className="edit-mode-input" />
+                    Photo: 
                   </label>
+
+                  <br />
+                  {image && (
+                    <div>
+                      <img alt="not found" src={URL.createObjectURL(image)} />
+                      <br />
+                      <button onClick={() => setImage(null)}>Remove</button>
+                    </div>
+                  )}
+                  <div style={{ display: "flex" }}>
+                    <input
+                      type="file" // TODO: add style
+                      name="myImage"
+                      onChange={ (event) => {
+                        console.log(event.target.files[0]);
+                        setImage(event.target.files[0]);
+                      }}
+                    />
+                  </div>
+                  <br />
+
+                  <br />
+
                   <button onClick={saveChanges} className="edit-buttons-button">Save</button>
                   <button onClick={exitEditMode} className="edit-buttons-button cancel">Cancel</button>
                 </>
