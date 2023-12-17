@@ -30,6 +30,8 @@ public class FavoriteController {
     PlantRepository plantRepository;
     @Autowired
     ProfileRepository profileRepository;
+    @Autowired
+    ApiController apiController;
 
 
     @GetMapping
@@ -43,6 +45,12 @@ public class FavoriteController {
     public List<Favorite> getUserId(@PathVariable String userId) {
         return favoriteRepository.findByUserId(userId);
     }
+
+    @GetMapping("test/again")
+    public String testTest(String test) {
+        return "test";
+    }
+
 
 
 //    @GetMapping("/name/{name}")
