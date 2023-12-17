@@ -1,9 +1,8 @@
 package org.launchcode.happyroots.Services;
 
+import org.launchcode.happyroots.Models.Data.*;
+import org.launchcode.happyroots.Models.Plant;
 import org.launchcode.happyroots.Models.CareInformation;
-import org.launchcode.happyroots.Models.Data.ApiResponse;
-import org.launchcode.happyroots.Models.Data.DataItem;
-import org.launchcode.happyroots.Models.Data.SectionItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +39,7 @@ public class ApiService {
         this.restTemplate = restTemplate;
     }
 
-//    Api calls
+    //    Api call methods
     public CareInformation getCareInformationById(int speciesId) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-care-guide-list")
                 .queryParam("key", apiKey)
@@ -50,7 +49,7 @@ public class ApiService {
         ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
         return extractCareInformation(Objects.requireNonNull(response.getBody()));
     }
-
+    //    Returns care information by common name
     public CareInformation getCareInformationByCommonName(String commonName) {
         log.info("Common Name: " + commonName);
 
@@ -104,7 +103,17 @@ public class ApiService {
         return Objects.requireNonNull(response.getBody().getData());
     }
 
-//    Gets multiple(5) pages of species list data at once
+    public List<FaqItem> getFaqByTag(String tags) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/article-faq-list")
+                .queryParam("key", apiKey)
+                .queryParam("q", tags);
+        String url = builder.toUriString();
+
+        ResponseEntity<FaqApiResponse> response = restTemplate.getForEntity(url, FaqApiResponse.class);
+        return Objects.requireNonNull(response.getBody().getData());
+    }
+
+//    Gets multiple (5) pages of species list data at once
     public List<DataItem> getAllSpecies() {
         List<DataItem> allSpecies = new ArrayList<>();
         int page = 1; // Start from page 1
@@ -112,8 +121,7 @@ public class ApiService {
         while (page <= MAX_PAGES) {
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-list")
                     .queryParam("key", apiKey)
-                    .queryParam("page", page)
-                    .queryParam("per_page", ITEMS_PER_PAGE);
+                    .queryParam("page", page);
             String url = builder.toUriString();
 
             ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
@@ -131,29 +139,63 @@ public class ApiService {
         return allSpecies;
     }
 
-//    Care Info pulled from JSON
+    public Plant extractPlantInformation(ApiResponse apiResponse) {
+        if (apiResponse.getData() == null || apiResponse.getData().isEmpty()) {
+            return null;
+        }
+
+        DataItem firstItem = apiResponse.getData().get(0); // Get the first DataItem
+        Plant plant = new Plant();
+        plant.setSpeciesId(firstItem.getSpeciesId());
+        plant.setCommonName(firstItem.getCommonName());
+        plant.setCycle(firstItem.getCycle());
+        plant.setThumbnail(firstItem.getDefaultImage().getThumbnail());
+        plant.setOriginalUrl(firstItem.getDefaultImage().getOriginalUrl());
+        plant.setCareInformation(new CareInformation());
+        return plant;
+    }
+
+    //    Care info pulled from JSON
+    private void updateCareInformation(CareInformation careInfo, List<SectionItem> sections) {
+        for (SectionItem section : sections) {
+            switch (section.getCareType()) {
+                case "watering":
+                    careInfo.setWateringDesc(section.getCareDescription());
+                    break;
+                case "sunlight":
+                    careInfo.setSunlightDesc(section.getCareDescription());
+                    break;
+                case "pruning":
+                    careInfo.setPruningDesc(section.getCareDescription());
+                    break;
+        }
+    }
+}
+
+    //  Helper method for Update Care Information method
     public CareInformation extractCareInformation(ApiResponse apiResponse) {
         CareInformation careInfo = new CareInformation();
         for (DataItem item : apiResponse.getData()) {
-            for (SectionItem section : item.getSection()) {
-                switch (section.getCareType()) {
-                    case "watering":
-                        careInfo.setWateringDesc(section.getCareDescription());
-                        break;
-                    case "sunlight":
-                        careInfo.setSunlightDesc(section.getCareDescription());
-                        break;
-                    case "pruning":
-                        careInfo.setPruningDesc(section.getCareDescription());
-                        break;
-                }
-            }
+            updateCareInformation(careInfo, item.getSection());
         }
         return careInfo;
     }
 
+    // Combines plant list and care list data into one step. Search by common name
+    public Plant mergeSpeciesAndCareGuideData(String commonName) {
+        // Fetch species list data by common name
+        UriComponentsBuilder speciesBuilder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-list")
+                .queryParam("key", apiKey)
+                .queryParam("q", commonName);
+        ResponseEntity<ApiResponse> speciesResponse = restTemplate.getForEntity(speciesBuilder.toUriString(), ApiResponse.class);
+        Plant plant = extractPlantInformation(Objects.requireNonNull(speciesResponse.getBody()));
 
+        // Fetch care guide data by common name
+        CareInformation careInfo = getCareInformationByCommonName(commonName);
+        if (careInfo != null) {
+            plant.setCareInformation(careInfo);
+        }
 
-
-
+        return plant;
+    }
 }
