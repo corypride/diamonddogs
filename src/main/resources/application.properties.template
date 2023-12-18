@@ -2,7 +2,7 @@
 ${perenual.api.key}=
 
 # Database connection settings
-spring.datasource.url=jdbc:mysql://localhost:3306/happyroots
+spring.datasource.url=jdbc:mysql://localhost:3306/
 spring.datasource.username=
 spring.datasource.password=
 
