@@ -8,8 +8,8 @@ import './styles/profile.css';
 const ProfileScreen = () => {
     const [user, setUser] = useState({});
     const [username, setUsername] = useState('');
+    const [photoUrl, setPhotoUrl] = useState();
     const [image, setImage] = useState(null);
-    const [photoUrl, setPhotoUrl] = useState('');
     const [isEditMode, setIsEditMode] = useState(false);
     const navigate = useNavigate();
 
@@ -19,8 +19,8 @@ const ProfileScreen = () => {
         if (userData) {
             console.log('User:', userData);
             setUser(userData.providerData[0]);
-            setUsername(userData.providerData[0].displayName || '');
-            setPhotoUrl(userData.providerData[0].photoURL || '');
+            setUsername(userData.displayName || '');
+            setPhotoUrl(userData.photoURL || '');
         } else {
             console.log('User not logged in');
             navigate('/login');
@@ -40,25 +40,13 @@ const ProfileScreen = () => {
       
       if (name === 'username' && value.length > 0) {
           setUsername(value);
-      } else if (name === 'photoUrl' && value.length > 0) {
-          const urlPattern = /^(ftp|http|https):\/\/[^ "]+$/;
-  
-          if (urlPattern.test(value)) {
-              setPhotoUrl(value);
-          } else {
-              alert('Invalid URL');
-              return;
-          }
       }
   };
   
 
     const saveChanges = async () => {
         try {
-            const updatedUser = await updateUser({
-                'username': username,
-                'photoUrl': photoUrl
-            });
+            await updateUser(username, image);
 
             user.displayName = username
             user.photoURL = photoUrl
@@ -79,9 +67,11 @@ const ProfileScreen = () => {
       
               <img 
                 className="user-info-img" 
-                src={user.photoURL 
+                src={
+                  user.photoURL 
                   ? user.photoURL 
-                  : 'https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg'} 
+                  : 'https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg'
+                } 
                 alt="User Avatar" 
               />
               

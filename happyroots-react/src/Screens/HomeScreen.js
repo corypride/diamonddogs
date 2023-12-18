@@ -10,6 +10,8 @@ const HomeScreen = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState('');
   const [error, setError] = useState('');
+  
+  
   const handleClick = () => {
     try {
       getTest(token);  
@@ -35,7 +37,7 @@ const HomeScreen = () => {
       console.log('User not logged in');
       navigate('/login');
     }
-  }, []);
+  }, [navigate]);
 
   return (
   <>

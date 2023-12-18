@@ -1,4 +1,4 @@
-import { getUserFromLocalStorage, removeUserFromLocalStorage, saveUserToLocalStorage } from "../Helpers/localStorageHelper";
+import { removeUserFromLocalStorage, saveUserToLocalStorage } from "../Helpers/localStorageHelper";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../Helpers/firebase';
 
@@ -41,9 +41,11 @@ export const logout = () => {
     removeUserFromLocalStorage();
 }
 
-export const updateUser = async (userData) => {
+export const updateUser = async (user, image) => {
     
-    var user = getUserFromLocalStorage();
+    const formData = new FormData();
+    formData.append('user', user);
+    formData.append('image', image);
 
     await fetch(`${baseUrl}${updateUrl}`, {
         method: 'POST',
@@ -51,7 +53,7 @@ export const updateUser = async (userData) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${user.stsTokenManager.accessToken}`
         },
-        body: JSON.stringify(userData),
+        body: formData,
     })
 }
 

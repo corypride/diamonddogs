@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getTest, signup } from "../Controllers/AuthController";
+import { signup } from "../Controllers/AuthController";
 import { Link, useNavigate } from "react-router-dom";
 import './styles/signup.css';
 
