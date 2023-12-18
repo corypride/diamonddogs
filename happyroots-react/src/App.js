@@ -6,6 +6,8 @@ import HomeScreen from "./Screens/HomeScreen";
 import ProfileScreen from "./Screens/ProfileScreen";
 import NotFound from './Screens/NotFound';
 import "./App.css";
+import React from 'react';
+
 
 
 function App() {

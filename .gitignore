@@ -1,3 +1,5 @@
 serviceKey.json
 firebaseConfig.js
 node_modules
+.idea
+.gradle

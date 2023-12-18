@@ -3,6 +3,7 @@ import { getTest, signup } from "../Controllers/AuthController";
 import { Link } from "react-router-dom";
 import './styles/signup.css';
 
+
 const RegisterScreen = () => {
   const [email,  setEmail] = useState('');
   const [password, setPassword] = useState('');  
