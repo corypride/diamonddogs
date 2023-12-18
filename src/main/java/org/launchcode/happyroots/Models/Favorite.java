@@ -1,9 +1,13 @@
 package org.launchcode.happyroots.Models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -21,12 +25,16 @@ public class Favorite extends AbstractEntity {
 
     private String thumbnail;
 
-//    @ManyToMany
+    //    @ManyToMany
     private String plantId;
 
+    private int speciesId;
+
+//    @Getter
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    private List<Plant> plants = new ArrayList<>();
+
 }
-
-
 //    old getters and setters without lombok
 //    public Favorite() {
 //    }

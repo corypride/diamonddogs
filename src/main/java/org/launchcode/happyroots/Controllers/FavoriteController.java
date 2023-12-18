@@ -3,7 +3,6 @@ package org.launchcode.happyroots.Controllers;
 
 import org.launchcode.happyroots.Exception.ResourceNotFoundException;
 import org.launchcode.happyroots.Models.Favorite;
-//import org.launchcode.happyroots.Models.Plant;
 import org.launchcode.happyroots.Repositories.FavoriteRepository;
 import org.launchcode.happyroots.Repositories.PlantRepository;
 import org.launchcode.happyroots.Repositories.ProfileRepository;
@@ -12,8 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 
 @RestController
@@ -40,16 +38,93 @@ public class FavoriteController {
     }
 
 
+//    @GetMapping("/findPlant/{userId}")
+//    public List<Plant> findPlants(@PathVariable String userId) {
+//
+//        List<Favorite> list = favoriteRepository.findBySpeciesId();
+//
+////        List<Favorite> list = favoriteRepository.findByUserId(userId).get;
+////        List<Plant> plants = plantRepository.findBySpeciesId(4);
+//        List<Plant> plants = plantRepository.findSpecies();
+////                plantRepository.findById();
+////        plants.add(new Plant());
+//
+//        return plants;
+//
+//    }
+
+
 
     @GetMapping("/userId/{userId}")
     public List<Favorite> getUserId(@PathVariable String userId) {
-        return favoriteRepository.findByUserId(userId);
+//        return favoriteRepository.findByUserId(userId);
+        return favoriteRepository.findUserId(userId);
+
     }
 
-    @GetMapping("species")
-    public String testTest(String test) {
-        return "test again";
+
+    @GetMapping("/speciesIdList/{userId}")
+    public List<Integer> getSpeciesList(@PathVariable String userId) {
+//        Favorite fave = getFavoriteById().getBody();
+//        return favoriteRepository.findByUserId(userId);
+        return favoriteRepository.findSpeciesIdList(userId);
     }
+
+//    @GetMapping("/showSpecies/userId")
+//    public List<Plant> showSpeciesList(@PathVariable String userId) {
+//        Lis
+//        for ()
+
+
+//        return plantRepository.listPlants(favoriteRepository.findByUserId(userId));
+//    }
+
+
+
+//    @GetMapping("/find/{userId}")
+//    public List<Plant> find(@PathVariable String userId) {
+//        List<Favorite> fave = favoriteRepository.findByUserId(userId);
+////        int id = Favorite favoriteRepository.findBySpeciesId();
+//        List<Plant> plants = new ArrayList<>();
+//        plants.add(favoriteRepository.findSpeciesId(id);
+//
+//        return plants;
+//    }
+//        Favorite result = (Favorite) favoriteRepository.findByUserId(userId);
+////
+////            Favorite favorite = result.get()
+////            return favorite.getPlants();
+//    }
+//
+//    private DataItem favorite;
+//    int plant = favorite.getSpeciesId();
+////        List<Favorite> plant = favoriteRepository.queryId(userId);
+//        //        updateFavorite.setName(favoriteDetails.getName());
+////            updateFavorite.setPlantId(favoriteDetails.getPlantId());
+//            return plantRepository.findBySpeciesId(plant);
+////            return plantRepository.findSpecies(userId);
+//
+////        }
+
+
+
+
+//    @GetMapping("/userId/{userId}")
+//    public List<Plant> getUserId(@PathVariable String userId) {
+//        return plantRepository.findById(favoriteRepository.findBySpeciesId());
+//    }
+
+//    @GetMapping("/userId/{userId}")
+//    public List<Plant> getUserId(@PathVariable String userId) {
+//        return plantRepository.findById(favoriteRepository.findBySpeciesId());
+//    }
+
+
+
+//    @GetMapping("test/{userId}")
+//    public List<DataItem> testTest(@PathVariable String userId) {
+//        return plantRepository.getSpecies;
+//    }
 
 
 

@@ -76,6 +76,7 @@ const FavoritesScreen = ({token, uid}) => {
             <li>{favorite.id}</li>
             <li>{favorite.plantId}</li>
             <li>{favorite.userId}</li>
+            <li>{favorite.speciesId}</li>
             <img src={favorite?.thumbnail}></img>
         </ul>))}
         {/* <button onClick={fetchAddFavorites}>add</button> */}
