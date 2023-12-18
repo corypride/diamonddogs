@@ -59,7 +59,7 @@ public class ApiService {
         String url = builder.toUriString();
 
         ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
-        return Objects.requireNonNull(response.getBody()).getData();
+        return Objects.requireNonNull(Objects.requireNonNull(response.getBody()).getData());
     }
 
     public List<DataItem> getSpeciesListSortBySunlight(String sunlight) {
@@ -69,7 +69,7 @@ public class ApiService {
         String url = builder.toUriString();
 
         ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
-        return Objects.requireNonNull(response.getBody().getData());
+        return Objects.requireNonNull(Objects.requireNonNull(response.getBody()).getData());
     }
 
     public List<DataItem> getSpeciesListSortByWater(String watering) {
@@ -79,7 +79,7 @@ public class ApiService {
         String url = builder.toUriString();
 
         ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
-        return Objects.requireNonNull(response.getBody().getData());
+        return Objects.requireNonNull(Objects.requireNonNull(response.getBody()).getData());
     }
 
     public List<DataItem> getSpeciesListSortByCycle(String cycle) {
@@ -89,7 +89,7 @@ public class ApiService {
         String url = builder.toUriString();
 
         ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
-        return Objects.requireNonNull(response.getBody().getData());
+        return Objects.requireNonNull(Objects.requireNonNull(response.getBody()).getData());
     }
 
     public List<FaqItem> getFaqByTag(String tags) {
@@ -99,7 +99,7 @@ public class ApiService {
         String url = builder.toUriString();
 
         ResponseEntity<FaqApiResponse> response = restTemplate.getForEntity(url, FaqApiResponse.class);
-        return Objects.requireNonNull(response.getBody().getData());
+        return Objects.requireNonNull(Objects.requireNonNull(response.getBody()).getData());
     }
 
 //    Gets multiple (5) pages of species list data at once

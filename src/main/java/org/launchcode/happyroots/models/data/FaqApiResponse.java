@@ -3,7 +3,7 @@ package org.launchcode.happyroots.models.data;
 import java.util.List;
 
 public class FaqApiResponse {
-    // This field must match the JSON response structure
+    // Maps entire JSON response of FAQ JSON. Top-level class to encapsulate complete response structure
     private List<FaqItem> data;
 
     // Getters and Setters
