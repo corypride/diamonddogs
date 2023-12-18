@@ -1,5 +1,5 @@
-.idea
-.gradle
+.idea/
+.gradle/
 build
 node_modules
 serviceKey.json
