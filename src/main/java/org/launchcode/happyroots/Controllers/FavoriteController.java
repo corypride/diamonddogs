@@ -151,10 +151,19 @@ public class FavoriteController {
     }
 
 
+//    TODO getting post from react but need to figure out parameters
+
 //    create favorite
     @PostMapping("/create")
     public Favorite createFavorite(@RequestBody Favorite favorite ) {
         return favoriteRepository.save(favorite);
+    }
+
+    @PostMapping("/create/{userId}")
+    public String createFavoriteUser(@PathVariable String userId,
+                                       @RequestBody Favorite favorite ) {
+//        return favoriteRepository.save(favorite);
+        return userId;
     }
 
 

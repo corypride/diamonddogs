@@ -5,7 +5,7 @@ import { auth } from '../Helpers/firebase';
 import { getTest, logout } from '../Controllers/AuthController';
 import NavigationBar from './Components/NavigationBar';
 import '../App.css';
-import { getUserFavorites, getAllFavorites, getAll ,addFavorites } from '../Controllers/FavoritesController';
+import { getUserFavorites, getAllFavorites, saveUserFavorites, addFavorites } from '../Controllers/FavoritesController';
 import DisplayFavorite from './Components/DisplayFavoritesComponent';
 
 const FavoritesScreen = ({token, uid}) => {
@@ -34,6 +34,14 @@ const FavoritesScreen = ({token, uid}) => {
 
     const fetchAllFavorites = async () => {
         const responseData = await getAllFavorites(token)
+        if (responseData) {
+            setData(responseData)
+        }
+
+    }    
+
+    const saveFavorites = async () => {
+        const responseData = await saveUserFavorites(token, uid)
         if (responseData) {
             setData(responseData)
         }
@@ -70,6 +78,7 @@ const FavoritesScreen = ({token, uid}) => {
         {/* <button onClick={handleClick}>user id in response body</button> */}
         <button onClick={fetchUserFavorites}>user favorites get</button>
         <button onClick={fetchAllFavorites}>fetch all favorites from service</button>
+        <button onClick={saveFavorites}>save test</button>
         <button onClick={handleData}>show data</button>
         {/* {data?.map((favorite => <img src={favorite.plantId}></img>))} */}
         {data?.map((favorite => <ul>

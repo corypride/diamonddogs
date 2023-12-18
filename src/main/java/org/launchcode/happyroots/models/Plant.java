@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter
 @Getter
 @Entity
@@ -22,17 +24,20 @@ public class Plant extends AbstractEntity{
     private String originalUrl;
     private String cycle;
 
+//    @ManyToMany(mappedBy = "plants")
+//    private List<Favorite> favorites;
+
 //  Constructor
     public Plant() {
     }
-    public Plant(CareInformation careInformation, int speciesId, String commonName, String thumbnail, String originalUrl, String cycle) {
-        this.careInformation = careInformation;
-        this.speciesId = speciesId;
-        this.commonName = commonName;
-        this.thumbnail = thumbnail;
-        this.originalUrl = originalUrl;
-        this.cycle = cycle;
-    }
+//    public Plant(CareInformation careInformation, int speciesId, String commonName, String thumbnail, String originalUrl, String cycle) {
+//        this.careInformation = careInformation;
+//        this.speciesId = speciesId;
+//        this.commonName = commonName;
+//        this.thumbnail = thumbnail;
+//        this.originalUrl = originalUrl;
+//        this.cycle = cycle;
+//    }
 
 
 }

@@ -9,18 +9,28 @@ const handleResponse = async (response) => {
     } else return false;
 }
 
-// export const getUserFavorites =  async (token, userId) => {
-//     const response = await fetch(baseUrl + "/userId/" + userId, {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Authorization': `Bearer ${token}`
-//         },
-//     })
-//     // return handleResponse(response)
-//     return console.log("test")
+// TODO figure out how to save userId and speciesId from state?
 
-// }
+export const saveUserFavorites =  async (token, userId) => {
+
+
+        const response = await fetch(baseUrl + "/create", {
+            method: 'POST',
+            headers: {
+                'Accept' : 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                // userId: userId.body, 
+                userId: userId,
+                speciesId: 34
+            })
+        })
+        // return handleResponse(response)
+        return console.log(userId)
+
+}
 
 export const getUserFavorites =  async (token, userId) => {
 try {
