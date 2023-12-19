@@ -1,68 +1,42 @@
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Routes, Route, BrowserRouter, useHistory } from 'react-router-dom';
+import { getUserFromLocalStorage } from './Helpers/authHelpers';
+
 import RegisterScreen from "./Screens/RegisterScreen";
 import LoginScreen from "./Screens/LoginScreen";
 import HomeScreen from "./Screens/HomeScreen";
 import ProfileScreen from "./Screens/ProfileScreen";
+import FavoritesScreen from "./Screens/FavoritesScreen";
+import SearchScreen from "./Screens/SearchScreen";
 import NotFound from './Screens/NotFound';
-import "./App.css";
 
 
 function App() {
+  const [user, setUser] = useState(null);
+  const token = user?.stsTokenManager?.accessToken
+
+  useEffect(() => {
+    const alreadyLoggedInUser = getUserFromLocalStorage();
+    if (alreadyLoggedInUser) {
+      setUser(alreadyLoggedInUser)
+    } else {
+      console.log('User not logged in');
+    }
+  }, []);
 
   return (
     <BrowserRouter>      
         <Routes>
-          <Route exact path="/login" element={<LoginScreen />} />
+          <Route exact path="/" element={<HomeScreen token={token}/>} />
+          <Route exact path="/login" element={<LoginScreen token={token}/>} />
+          <Route exact path="/favorites" element={<FavoritesScreen uid={user?.uid} token={token}/>} />
           <Route exact path="/signup" element={<RegisterScreen />} />
-          <Route exact path="/" element={<HomeScreen />} />
-          <Route exact path="/profile" element={<ProfileScreen />} />
+          <Route exact path="/profile" element={<ProfileScreen uid={user?.uid} token={token}/>} />
+          <Route exact path="/search" element={<SearchScreen />} />
           <Route path='*' element={<NotFound />}/>
         </Routes>
     </BrowserRouter>
-
-    /*<div className="App">
-      <h1>Welcome to React Router!</h1>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path='*' element={<NotFound />}/>
-      </Routes>
-    </div>*/
-
   );
 }
-/*
-function Home() {
-  return (
-    <>
-      <main>
-        <h2>Welcome to the homepage!</h2>
-        <p>You can do this, I believe in you.</p>
-      </main>
-      <nav>
-        <Link to="/about">About</Link>
-      </nav>
-    </>
-  );
-}
-
-function About() {
-  return (
-    <>
-      <main>
-        <h2>Who are we?</h2>
-        <p>
-          That feels like an existential question, don't you
-          think?
-        </p>
-      </main>
-      <nav>
-        <Link to="/">Home</Link>
-      </nav>
-    </>
-  );
-}
-*/
 
 export default App;

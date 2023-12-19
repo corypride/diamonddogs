@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../styles/navbar.css';
 
 import { login, logout } from '../../Controllers/AuthController';
-import { auth } from '../../Helpers/firebase';
 import { useEffect, useState } from 'react';
 import { getUserFromLocalStorage } from '../../Helpers/authHelpers';
 
@@ -15,22 +14,7 @@ const NavigationBar = () => {
 
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  
 
-const handleLogout = () => {
-  auth.signOut();
-  logout();
-  navigate("/login");
-}
-
-// const checkState = (alreadyLoggedInUser) => {
-//   if (alreadyLoggedInUser == !null) {
-//     return console.log("logged in")
- 
-//     } else {
-//       return console.log("logged out")
-//     }
-//   };
 
   useEffect(() => {
     const user = getUserFromLocalStorage();
@@ -54,7 +38,7 @@ const handleLogout = () => {
         <li><Link to="/profile">Profile</Link></li>
         <li><Link to="/favorites">Favorites</Link></li>
         {/* <li><Link to="/login">Login</Link> </li> */}
-        <li><Link to="/login" onClick={(handleLogout)}>Logout</Link></li>
+        <li><Link to="/login" onClick={(logout)}>Logout</Link></li>
       </ul>
     </nav>
   );
