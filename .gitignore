@@ -1,3 +1,16 @@
 serviceKey.json
 firebaseConfig.js
 node_modules
+serviceKeyAlt.json
+
+*.iml
+.gradle
+.idea
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+bin/
