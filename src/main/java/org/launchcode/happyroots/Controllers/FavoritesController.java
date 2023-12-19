@@ -19,18 +19,20 @@ public class FavoritesController {
 
 
     @GetMapping
-    public Collection<Favorites> findALlFavorites () {
+    public Collection<Favorites> findAllFavorites () {
         return favoritesRepository.findAll();
     }
 
 
+//    list of plants saved by user
     @GetMapping("/userId/{userId}")
     public List<Favorites> getUserId(@PathVariable String userId) {
         return favoritesRepository.findByUserId(userId);
 //        return favoriteRepository.queryUserId(userId);
     }
 
-    @GetMapping("/commonName/{userId}")
+
+    @GetMapping("/commonNameList/{userId}")
     public List<String> getCommonName(@PathVariable String userId) {
         return favoritesRepository.queryCommonName(userId);
     }
