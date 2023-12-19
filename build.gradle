@@ -29,7 +29,7 @@ dependencies {
 //	testImplementation 'org.springframework.security:spring-security-test:6.0.2'
 
 	implementation 'com.google.firebase:firebase-admin:9.2.0'
-	implementation 'org.testng:testng:7.7.0'
+//	implementation 'org.testng:testng:7.7.0'
 
 
 	// https://projectlombok.org
