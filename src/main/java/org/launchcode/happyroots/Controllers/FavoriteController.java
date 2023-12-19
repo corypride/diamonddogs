@@ -22,6 +22,8 @@ public class FavoriteController {
 
 
 
+
+
     @Autowired
     FavoriteRepository favoriteRepository;
     @Autowired
@@ -32,10 +34,24 @@ public class FavoriteController {
     ApiController apiController;
 
 
+
+    public String baseURL = "https://perenual.com/api/species/details/{speciesId}?key={apikey}";
+
+
+
+
+
+
+
+
+
     @GetMapping
     public Collection<Favorite> findALlFavorites () {
         return favoriteRepository.findAll();
     }
+
+
+
 
 
 //    @GetMapping("/findPlant/{userId}")
@@ -134,10 +150,10 @@ public class FavoriteController {
 //
 //    }
 
-    @GetMapping("/plantId/{plantId}")
-    public List<Favorite> getPlantId(@PathVariable String plantId) {
-        return favoriteRepository.findByPlantId(plantId);
-    }
+//    @GetMapping("/plantId/{plantId}")
+//    public List<Favorite> getPlantId(@PathVariable String plantId) {
+//        return favoriteRepository.findByPlantId(plantId);
+//    }
 
 
 
@@ -154,19 +170,46 @@ public class FavoriteController {
 //    TODO getting post from react but need to figure out parameters
 
 //    create favorite
-    @PostMapping("/create")
-    public Favorite createFavorite(@RequestBody Favorite favorite ) {
-        return favoriteRepository.save(favorite);
+
+
+    @PostMapping("/create/")
+    public void createFavorite(@RequestBody Favorite favorite) {
+//        return
+        favoriteRepository.save(favorite);
+        System.out.println("test");
+//        return favoriteRepository.existsByUserIdAndSpeciesId(u, s);
     }
 
-    @PostMapping("/create/{userId}")
-    public String createFavoriteUser(@PathVariable String userId,
-                                       @RequestBody Favorite favorite ) {
+//    @PostMapping("/create")
+//    public Favorite createFavorite(@RequestBody Favorite favorite ) {
 //        return favoriteRepository.save(favorite);
-        return userId;
-    }
+//    }
+//@PostMapping("/create")
+//public Favorite createFavorite(@RequestBody Favorite favorite,
+//                               @RequestBody String userId,
+//                               @RequestBody int speciesId) {
+//    if (!favoriteRepository.existsByUserAndSpecies(userId, speciesId)) {
+//        return favoriteRepository.save(favorite);
+//    }
+//    return
+//}
 
 
+//    @PostMapping("/create/{userId}")
+//    public String createFavoriteUser(@PathVariable String userId,
+//                                       @RequestBody Favorite favorite ) {
+////        return favoriteRepository.save(favorite);
+//        return userId;
+//    }
+//
+
+//    @PostMapping("/create")
+//    public ResponseEntity<Favorite> createFavorite(@RequestBody Favorite favorite) {
+//        Favorite favorite =
+//                favoriteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
+//                        "favorite does not exist with id: " + id) );
+//        return ResponseEntity.ok(favorite);
+//    }
 
 
     //    update favorite

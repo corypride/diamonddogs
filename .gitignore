@@ -5,6 +5,7 @@ serviceKeyAlt.json
 
 *.iml
 .gradle
+.idea
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
@@ -12,3 +13,4 @@ serviceKeyAlt.json
 /build
 /captures
 .externalNativeBuild
+bin/

@@ -16,6 +16,8 @@ public interface FavoriteRepository extends JpaRepository <Favorite, Integer> {
 
 //    public List<Favorite> findByName(String name);
 
+    public boolean existsByUserIdAndSpeciesId(String userId, int speciesId);
+
     public List<Favorite> findByUserId(String userId);
 
     public List<Favorite> findByPlantId(String plantId);
@@ -31,6 +33,13 @@ public interface FavoriteRepository extends JpaRepository <Favorite, Integer> {
 
     @Query("SELECT speciesId from Favorite u WHERE userId = ?1")
     public List<Integer> findSpeciesIdList(String userId);
+
+//    @Query("SELECT * from Favorite WHERE userId = ?1 and " +
+//            "speciesId = ?2)\n" +
+//            "BEGIN\n" +
+//            "    INSERT INTO ...\n" +
+//            "END")
+//    public List<Favorite> findBoth;
 
 
 
