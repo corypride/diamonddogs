@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14180e3f-84b1-40dc-af1b-ebc66ef6a4e0" name="Changes" comment="Added Google Analytics connection">
-      <change afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SearchBar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SearchBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/NotFound.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/NotFound.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/SearchBar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/SearchResult.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/SearchResultsList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SearchBar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SearchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SearchResult.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SearchResult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SearchResultsList.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SearchResultsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SearchResultsList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702579860935</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added Google Analytics connection">
+      <option name="closed" value="true" />
+      <created>1703108279046</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1703108279047</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

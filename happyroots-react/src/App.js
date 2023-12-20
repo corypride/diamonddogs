@@ -24,6 +24,7 @@ const Profile = () => (
 function App() {
   const [results, setResults] = useState([]);
 
+  // Consider moving search bar container out of login screen and only appear on NavBar.
   return (
     <div className="App">
       <div className='search-bar-container'>

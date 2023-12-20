@@ -1,7 +1,8 @@
 import React from 'react';
-import "./SearchResultsList.css";
+import "../styles/SearchResultsList.css";
 import SearchResult from './SearchResult';
 
+// Modify the id below to be the correct parameter for Perenual API. Below is just a placeholder.
 const SearchResultsList = ({ results }) => {
   return (
     <div className='results-list'>

@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {FaSearch} from "react-icons/fa";
-import "./SearchBar.css";
+import "../styles/SearchBar.css";
 
 const SearchBar = ({ setResults }) => {
   const [input, setInput] = useState("")
 
   const fetchData = (value) => {
-    // The line below is a placeholder URL for the API we want to fetch data from
+    // The line below is a placeholder URL for the API we want to fetch data from. Link to Perenual API.
     fetch("https://jsonplaceholder.typicode.com/users")
     .then((response) => response.json())
     .then((json) => {
