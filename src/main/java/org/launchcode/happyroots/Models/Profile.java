@@ -19,7 +19,7 @@ public class Profile extends AbstractEntity {
     private String userId;
     private String email;
     private String phoneNumber;
-    private String imageURL;
+    private String imageUrl;
 
 
 }
