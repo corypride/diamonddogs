@@ -7,6 +7,9 @@ import ProfileScreen from "./Screens/ProfileScreen";
 import NotFound from './Screens/NotFound';
 import "./App.css";
 import ReactGA from 'react-ga4';
+import SearchBar from './Screens/Components/SearchBar';
+import SearchResultsList from './Screens/Components/SearchResultsList';
+import { useState } from "react";
 
 const TRACKING_ID = "G-BSEN65VMZT"; // YOUR_OWN_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
@@ -19,17 +22,25 @@ const Profile = () => (
 );
 
 function App() {
+  const [results, setResults] = useState([]);
 
   return (
-    <BrowserRouter>      
-        <Routes>
-          <Route exact path="/login" element={<LoginScreen />} />
-          <Route exact path="/signup" element={<RegisterScreen />} />
-          <Route exact path="/" element={<HomeScreen />} />
-          <Route exact path="/profile" element={<ProfileScreen />} />
-          <Route path='*' element={<NotFound />}/>
-        </Routes>
-    </BrowserRouter>
+    <div className="App">
+      <div className='search-bar-container'>
+        <SearchBar  setResults={setResults} />
+        <div>Search Results</div>
+        <SearchResultsList results={results} />
+      <BrowserRouter>      
+          <Routes>
+            <Route exact path="/login" element={<LoginScreen />} />
+            <Route exact path="/signup" element={<RegisterScreen />} />
+            <Route exact path="/" element={<HomeScreen />} />
+            <Route exact path="/profile" element={<ProfileScreen />} />
+            <Route path='*' element={<NotFound />}/>
+          </Routes>
+      </BrowserRouter>
+      </div>
+    </div>
 
     /*<div className="App">
       <h1>Welcome to React Router!</h1>

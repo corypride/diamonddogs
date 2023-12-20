@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14180e3f-84b1-40dc-af1b-ebc66ef6a4e0" name="Changes" comment="Added Google Analytics connection">
+      <change afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SearchBar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SearchBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/happyroots-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/NotFound.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/NotFound.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,17 +86,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "android.gradle.sync.needed": "true",
-    "git-widget-placeholder": "google-analytics",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.General"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;android.gradle.sync.needed&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;search&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.General&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/happyroots-react/src/Config" />
@@ -191,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701971706111</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added Google Analytics connection">
+      <option name="closed" value="true" />
+      <created>1702579860935</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1702579860935</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
