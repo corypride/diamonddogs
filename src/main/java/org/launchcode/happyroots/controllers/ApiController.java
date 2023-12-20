@@ -88,7 +88,7 @@ public class ApiController {
         return apiService.getFaqByTag(tags);
     }
 
-
+    //  Returns list of common names found in the care guide (USE SPARINGLY **50 API calls**)
     @GetMapping("/allnames")
     public List<String> getAllCommonNames() {
         return apiService.getAllCommonNames();

@@ -21,12 +21,11 @@ public class ApiService {
 
     // Fields
     private static final int MAX_PAGES = 5; // Maximum number of pages to fetch
+    private final RestTemplate restTemplate;
 
     //Perenual api key
     @Value("${perenual.api.key}")
     private String apiKey;
-
-    private final RestTemplate restTemplate;
 
     @Autowired
     public ApiService(RestTemplate restTemplate) {
@@ -34,6 +33,8 @@ public class ApiService {
     }
 
     //    Api call methods
+
+    // Returns care info by species id
     public CareInformation getCareInformationById(int speciesId) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-care-guide-list")
                 .queryParam("key", apiKey)
@@ -55,7 +56,7 @@ public class ApiService {
         System.out.println(response.getBody());
         return extractCareInformation(Objects.requireNonNull(response.getBody()));
     }
-
+    // Returns list of species list data
     public List<DataItem> getSpeciesList() {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-list")
                 .queryParam("key", apiKey);
@@ -65,7 +66,7 @@ public class ApiService {
         ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
         return Objects.requireNonNull(Objects.requireNonNull(response.getBody()).getData());
     }
-
+    // Sorts species list by common name
     public List<DataItem> getSpeciesListSortByCommonName(String commonName) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-list")
                 .queryParam("key", apiKey)
@@ -75,7 +76,7 @@ public class ApiService {
         ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
         return Objects.requireNonNull(Objects.requireNonNull(response.getBody().getData()));
     }
-
+    // sorts species list by sunlight value
     public List<DataItem> getSpeciesListSortBySunlight(String sunlight) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-list")
                 .queryParam("key", apiKey)
@@ -85,7 +86,7 @@ public class ApiService {
         ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
         return Objects.requireNonNull(Objects.requireNonNull(response.getBody()).getData());
     }
-
+    // sorts species list by watering needs value
     public List<DataItem> getSpeciesListSortByWater(String watering) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-list")
                 .queryParam("key", apiKey)
@@ -95,7 +96,7 @@ public class ApiService {
         ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
         return Objects.requireNonNull(Objects.requireNonNull(response.getBody()).getData());
     }
-
+    // sorts species list by growth cycle value
     public List<DataItem> getSpeciesListSortByCycle(String cycle) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-list")
                 .queryParam("key", apiKey)
@@ -105,7 +106,7 @@ public class ApiService {
         ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
         return Objects.requireNonNull(Objects.requireNonNull(response.getBody()).getData());
     }
-
+    //    returns list of FAQs by tags
     public List<FaqItem> getFaqByTag(String tags) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/article-faq-list")
                 .queryParam("key", apiKey)
@@ -116,7 +117,7 @@ public class ApiService {
         return Objects.requireNonNull(Objects.requireNonNull(response.getBody()).getData());
     }
 
-//    Gets multiple (5) pages of species list data at once
+    //    Gets multiple (5) pages of species list data at once
     public List<DataItem> getAllSpecies() {
         List<DataItem> allSpecies = new ArrayList<>();
         int page = 1; // Start from page 1
@@ -140,7 +141,7 @@ public class ApiService {
         return allSpecies;
     }
 
-    //    Care info pulled from JSON
+    //    Helper method for Extract Care Information method
     private void updateCareInformation(CareInformation careInfo, List<SectionItem> sections) {
         for (SectionItem section : sections) {
             switch (section.getCareType()) {
@@ -157,7 +158,7 @@ public class ApiService {
     }
 }
 
-    //  Helper method for Update Care Information method
+    //  Returns care information from care guide JSON
     public CareInformation extractCareInformation(CareInfoApiResponse apiResponse) {
         if (apiResponse.getData() == null || apiResponse.getData().isEmpty()) {
             return null;
@@ -173,7 +174,7 @@ public class ApiService {
         return careInfo;
     }
 
-    // Combines plant list and care list data into one step. Search by common name
+    // Combines plant list and care guide data into one step. Search by common name
     public Plant mergeSpeciesAndCareGuideData(String commonName) {
 
         // Fetch species list data by common name
@@ -190,8 +191,7 @@ public class ApiService {
         // Attempt to find a matching species with the same speciesId from the care information
         DataItem matchedSpecies = speciesList.stream()
                 .filter(item -> item.getSpeciesId() == careInfo.getSpeciesId())
-                .findFirst()
-                .orElse(null);
+                .findFirst().orElse(null);
 
         // If there's no matched species, return null
         if (matchedSpecies == null) {
@@ -201,7 +201,7 @@ public class ApiService {
         return createPlant(matchedSpecies, careInfo);
     }
 
-    //Helper method for mergeSpeciesAndCareGuideData
+    //  Helper method for mergeSpeciesAndCareGuideData
     private Plant createPlant(DataItem matchedSpecies, CareInformation careInfo) {
         Plant plant = new Plant();
         plant.setSpeciesId(matchedSpecies.getSpeciesId());
@@ -215,7 +215,7 @@ public class ApiService {
         return plant;
     }
 
-//    Method used to get all the common names in the care guide
+    //  Method used to get all the common names in the care guide
     public List<String> getAllCommonNames() {
         List<String> commonNames = new ArrayList<>();
         for (int page = 51; page <= 100; page++) {
