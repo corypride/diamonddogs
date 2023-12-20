@@ -1,9 +1,10 @@
 package org.launchcode.happyroots.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
+import org.launchcode.happyroots.models.data.SectionItem;
+
+import java.util.List;
 
 @Entity
 public class CareInformation {
@@ -13,6 +14,9 @@ public class CareInformation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @JsonProperty("species_id")
+    private int speciesId;
+
     private String wateringDesc;
     private String sunlightDesc;
     private String pruningDesc;
@@ -20,20 +24,29 @@ public class CareInformation {
 //  Constructors
     public CareInformation (){}
 
-    public CareInformation(int id, String wateringDesc, String sunlightDesc, String pruningDesc) {
+    public CareInformation(int id, int speciesId, String wateringDesc, String sunlightDesc, String pruningDesc) {
         this.id = id;
+        this.speciesId = speciesId;
         this.wateringDesc = wateringDesc;
         this.sunlightDesc = sunlightDesc;
         this.pruningDesc = pruningDesc;
     }
 
-//  Getter/Setters
+    //  Getter/Setters
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getSpeciesId() {
+        return speciesId;
+    }
+
+    public void setSpeciesId(int speciesId) {
+        this.speciesId = speciesId;
     }
 
     public String getWateringDesc() {
@@ -59,4 +72,5 @@ public class CareInformation {
     public void setPruningDesc(String pruningDesc) {
         this.pruningDesc = pruningDesc;
     }
+
 }

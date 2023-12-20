@@ -11,9 +11,6 @@ public class DataItem {
 
     //    Fields
     @JsonProperty("id")
-    private int perenualId;
-
-    @JsonProperty("species_id")
     private int speciesId;
 
     @JsonProperty("common_name")
@@ -25,20 +22,13 @@ public class DataItem {
     @JsonProperty("default_image")
     private ImageInfo defaultImage;
 
-    private List<SectionItem> section;
     private String cycle;
     private String watering;
     private List<String> sunlight;
 
 
     //    Getters/Setters
-    public int getPerenualId() {
-        return perenualId;
-    }
 
-    public void setPerenualId(int perenualId) {
-        this.perenualId = perenualId;
-    }
 
     public int getSpeciesId() {
         return speciesId;
@@ -62,14 +52,6 @@ public class DataItem {
 
     public void setScientificName(List<String> scientificName) {
         this.scientificName = scientificName;
-    }
-
-    public List<SectionItem> getSection() {
-        return section;
-    }
-
-    public void setSection(List<SectionItem> section) {
-        this.section = section;
     }
 
     public String getCycle() {

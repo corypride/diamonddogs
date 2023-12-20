@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -38,7 +40,7 @@ public class ApiService {
                 .queryParam("species_id", speciesId);
         String url = builder.toUriString();
 
-        ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
+        ResponseEntity<CareInfoApiResponse> response = restTemplate.getForEntity(url, CareInfoApiResponse.class);
         return extractCareInformation(Objects.requireNonNull(response.getBody()));
     }
     //    Returns care information by common name
@@ -49,17 +51,29 @@ public class ApiService {
                 .queryParam("q", commonName);
         String url = builder.toUriString();
 
-        ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
+        ResponseEntity<CareInfoApiResponse> response = restTemplate.getForEntity(url, CareInfoApiResponse.class);
+        System.out.println(response.getBody());
         return extractCareInformation(Objects.requireNonNull(response.getBody()));
     }
 
     public List<DataItem> getSpeciesList() {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-list")
                 .queryParam("key", apiKey);
+
         String url = builder.toUriString();
 
         ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
         return Objects.requireNonNull(Objects.requireNonNull(response.getBody()).getData());
+    }
+
+    public List<DataItem> getSpeciesListSortByCommonName(String commonName) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-list")
+                .queryParam("key", apiKey)
+                .queryParam("q", commonName);
+        String url = builder.toUriString();
+
+        ResponseEntity<ApiResponse> response = restTemplate.getForEntity(url, ApiResponse.class);
+        return Objects.requireNonNull(Objects.requireNonNull(response.getBody().getData()));
     }
 
     public List<DataItem> getSpeciesListSortBySunlight(String sunlight) {
@@ -126,22 +140,6 @@ public class ApiService {
         return allSpecies;
     }
 
-    public Plant extractPlantInformation(ApiResponse apiResponse) {
-        if (apiResponse.getData() == null || apiResponse.getData().isEmpty()) {
-            return null;
-        }
-
-        DataItem firstItem = apiResponse.getData().get(0); // Get the first DataItem
-        Plant plant = new Plant();
-        plant.setSpeciesId(firstItem.getSpeciesId());
-        plant.setCommonName(firstItem.getCommonName());
-        plant.setCycle(firstItem.getCycle());
-        plant.setThumbnail(firstItem.getDefaultImage().getThumbnail());
-        plant.setOriginalUrl(firstItem.getDefaultImage().getOriginalUrl());
-        plant.setCareInformation(new CareInformation());
-        return plant;
-    }
-
     //    Care info pulled from JSON
     private void updateCareInformation(CareInformation careInfo, List<SectionItem> sections) {
         for (SectionItem section : sections) {
@@ -160,29 +158,85 @@ public class ApiService {
 }
 
     //  Helper method for Update Care Information method
-    public CareInformation extractCareInformation(ApiResponse apiResponse) {
-        CareInformation careInfo = new CareInformation();
-        for (DataItem item : apiResponse.getData()) {
-            updateCareInformation(careInfo, item.getSection());
+    public CareInformation extractCareInformation(CareInfoApiResponse apiResponse) {
+        if (apiResponse.getData() == null || apiResponse.getData().isEmpty()) {
+            return null;
         }
+
+        CareDataItem responseItem = apiResponse.getData().get(0);
+        CareInformation careInfo = new CareInformation();
+
+        careInfo.setId(responseItem.getId());
+        careInfo.setSpeciesId(responseItem.getSpeciesId());
+        updateCareInformation(careInfo, responseItem.getSection());
+
         return careInfo;
     }
 
     // Combines plant list and care list data into one step. Search by common name
     public Plant mergeSpeciesAndCareGuideData(String commonName) {
-        // Fetch species list data by common name
-        UriComponentsBuilder speciesBuilder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-list")
-                .queryParam("key", apiKey)
-                .queryParam("q", commonName);
-        ResponseEntity<ApiResponse> speciesResponse = restTemplate.getForEntity(speciesBuilder.toUriString(), ApiResponse.class);
-        Plant plant = extractPlantInformation(Objects.requireNonNull(speciesResponse.getBody()));
 
+        // Fetch species list data by common name
+        List<DataItem> speciesList = getSpeciesListSortByCommonName(commonName);
+        if (speciesList.isEmpty()) {
+            return null;
+        }
         // Fetch care guide data by common name
         CareInformation careInfo = getCareInformationByCommonName(commonName);
-        if (careInfo != null) {
-            plant.setCareInformation(careInfo);
+        if (careInfo == null || speciesList.isEmpty()) {
+            return null;
         }
 
+        // Attempt to find a matching species with the same speciesId from the care information
+        DataItem matchedSpecies = speciesList.stream()
+                .filter(item -> item.getSpeciesId() == careInfo.getSpeciesId())
+                .findFirst()
+                .orElse(null);
+
+        // If there's no matched species, return null
+        if (matchedSpecies == null) {
+            return null;
+        }
+
+        return createPlant(matchedSpecies, careInfo);
+    }
+
+    //Helper method for mergeSpeciesAndCareGuideData
+    private Plant createPlant(DataItem matchedSpecies, CareInformation careInfo) {
+        Plant plant = new Plant();
+        plant.setSpeciesId(matchedSpecies.getSpeciesId());
+        plant.setCommonName(matchedSpecies.getCommonName());
+        plant.setCycle(matchedSpecies.getCycle());
+        if (matchedSpecies.getDefaultImage() != null) {
+            plant.setThumbnail(matchedSpecies.getDefaultImage().getThumbnail());
+            plant.setOriginalUrl(matchedSpecies.getDefaultImage().getOriginalUrl());
+        }
+        plant.setCareInformation(careInfo);
         return plant;
     }
+
+//    Method used to get all the common names in the care guide
+    public List<String> getAllCommonNames() {
+        List<String> commonNames = new ArrayList<>();
+        for (int page = 51; page <= 100; page++) {
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-care-guide-list")
+                    .queryParam("key", apiKey)
+                    .queryParam("page", page);
+            String url = builder.toUriString();
+
+            ResponseEntity<CareInfoApiResponse> response = restTemplate.getForEntity(url, CareInfoApiResponse.class);
+            CareInfoApiResponse apiResponse = response.getBody();
+
+            if (apiResponse != null && apiResponse.getData() != null) {
+                for (CareDataItem item : apiResponse.getData()) {
+                    commonNames.add(item.getCommonName());
+                }
+            } else {
+                // Break the loop if the response is null or contains no data
+                break;
+            }
+        }
+        return commonNames;
+    }
+
 }

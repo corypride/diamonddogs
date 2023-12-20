@@ -40,9 +40,16 @@ public class ApiController {
     }
 
     // Returns unsorted list of first 30 species with details
-    @GetMapping("/specieslist")
+    @GetMapping("/specieslist/")
     public List<DataItem> getSpeciesList() {
         return apiService.getSpeciesList();
+    }
+
+
+    // Returns species list information by common name (multiple plants with same common name)
+    @GetMapping("/specieslist/{commonName}")
+    public List<DataItem> getSpeciesListByCommonName(@PathVariable String commonName) {
+        return apiService.getSpeciesListSortByCommonName(commonName);
     }
 
     // Options - full_shade, part_shade, sun-part_shade, full_sun
@@ -81,6 +88,11 @@ public class ApiController {
         return apiService.getFaqByTag(tags);
     }
 
+
+    @GetMapping("/allnames")
+    public List<String> getAllCommonNames() {
+        return apiService.getAllCommonNames();
+    }
 }
 
 

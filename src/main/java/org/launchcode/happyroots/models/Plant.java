@@ -1,6 +1,7 @@
 package org.launchcode.happyroots.models;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,23 +15,23 @@ public class Plant {
     @OneToOne(cascade = CascadeType.ALL)
     private CareInformation careInformation;
 
-    private int speciesId;
     private String commonName;
     private String thumbnail;
     private String originalUrl;
     private String cycle;
+    private int speciesId;
 
 //  Constructor
-    public Plant() {
-    }
-    public Plant(int id, CareInformation careInformation, int speciesId, String commonName, String thumbnail, String originalUrl, String cycle) {
+    public Plant() {}
+
+    public Plant(int id, CareInformation careInformation, String commonName, String thumbnail, String originalUrl, String cycle, int speciesId) {
         this.id = id;
         this.careInformation = careInformation;
-        this.speciesId = speciesId;
         this.commonName = commonName;
         this.thumbnail = thumbnail;
         this.originalUrl = originalUrl;
         this.cycle = cycle;
+        this.speciesId = speciesId;
     }
 
     //  Getters/Setters
@@ -40,14 +41,6 @@ public class Plant {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getSpeciesId() {
-        return speciesId;
-    }
-
-    public void setSpeciesId(int speciesId) {
-        this.speciesId = speciesId;
     }
 
     public String getCommonName() {
@@ -88,5 +81,13 @@ public class Plant {
 
     public void setCycle(String cycle) {
         this.cycle = cycle;
+    }
+
+    public int getSpeciesId() {
+        return speciesId;
+    }
+
+    public void setSpeciesId(int speciesId) {
+        this.speciesId = speciesId;
     }
 }
