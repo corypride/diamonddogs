@@ -2,10 +2,9 @@ package org.launchcode.happyroots.Models;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class Profile extends AbstractEntity {
+
 
     private String name;
     private String userId;

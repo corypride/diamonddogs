@@ -1,8 +1,12 @@
 package org.launchcode.happyroots.Controllers;
 
+import org.launchcode.happyroots.Exception.ResourceNotFoundException;
 import org.launchcode.happyroots.Models.Favorites;
+import org.launchcode.happyroots.Models.Profile;
 import org.launchcode.happyroots.Repositories.FavoritesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -51,5 +55,16 @@ public class FavoritesController {
     public Favorites createFavorite(@RequestBody Favorites favorite) {
         return favoritesRepository.save(favorite);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteFavorite(@PathVariable int id) {
+        Favorites favorite=
+                favoritesRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
+                        "Favorite does not exist with id: " + id) );
+
+        favoritesRepository.delete(favorite);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 
 }
