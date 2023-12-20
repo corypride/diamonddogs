@@ -2,6 +2,8 @@ serviceKey.json
 firebaseConfig.js
 node_modules
 serviceKeyAlt.json
+apikKey.js
+.env
 
 *.iml
 .gradle

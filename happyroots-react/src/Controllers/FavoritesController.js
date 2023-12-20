@@ -33,7 +33,6 @@ export const saveUserFavorites =  async (token, userId) => {
 }
 
 
-
 export const getUserFavorites =  async (token, userId) => {
 try {
     const response = await fetch(baseUrl + "/userId/" + userId, {

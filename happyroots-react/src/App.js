@@ -8,6 +8,7 @@ import HomeScreen from "./Screens/HomeScreen";
 import ProfileScreen from "./Screens/ProfileScreen";
 import FavoritesScreen from "./Screens/FavoritesScreen";
 import SearchScreen from "./Screens/SearchScreen";
+import GardenScreen from "./Screens/GardenScreen";
 import NotFound from './Screens/NotFound';
 
 
@@ -33,6 +34,7 @@ function App() {
           <Route exact path="/signup" element={<RegisterScreen />} />
           <Route exact path="/profile" element={<ProfileScreen uid={user?.uid} token={token}/>} />
           <Route exact path="/search" element={<SearchScreen />} />
+          <Route exact path="/garden" element={<GardenScreen uid={user?.uid} token={token}/>} />
           <Route path='*' element={<NotFound />}/>
         </Routes>
     </BrowserRouter>
