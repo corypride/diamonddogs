@@ -4,6 +4,7 @@ node_modules
 serviceKeyAlt.json
 apikKey.js
 .env
+perenualApiKey.js
 
 *.iml
 .gradle
