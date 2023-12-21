@@ -1,24 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavigationBar from './Components/NavigationBar';
 import '../App.css';
-import { getSpeciesById, getAllSpecies, apiKey } from '../Controllers/PerenualApiController';
+import { getSpeciesById, getAllSpecies} from '../Controllers/PerenualApiController';
+import { apiKey} from '../Config/perenualApiKey'
+import { mockData } from '../Controllers/mockData'
+
+
 
 
 
 const GardenScreen = ({token, uid}) => {
     const [data, setData] = useState([]);
-    console.log('react data', data)
+    console.log('species data', data)
+    // console.log(apiKey)
+
+    
 
 
     // const handleClick = () => {
-    //     getUserFavorites(token, uid);
+    //     getUserspecies(token, uid);
     //     console.log(uid)
     //     console.log(token)
     //   }
 
 
     const fetchSpecies = async () => {
-        const responseData = await getAllSpecies(apiKey)
+        const responseData = await getAllSpecies(token, apiKey);
+        console.log(responseData)
         if (responseData) {
             setData(responseData)
         }
@@ -36,13 +44,21 @@ const GardenScreen = ({token, uid}) => {
     <div>
 
         <button onClick={fetchSpecies}>species list</button>
-        {/* <button onClick={}>testing post favorite</button> */}
+        {/* <button onClick={}>testing post species</button> */}
+        <p >{data.common_name}</p>
+        {data?.map((species => <ul>
+            <li>{species.id}</li>
+            <li>{species.common_name}</li>
+            {/* <li>{species.userId}</li>
+            <li>{species.speciesId}</li>
+            <img src={species?.thumbnail}></img> */}
+        </ul>))}
 
         {/* <div>
             <p>Data</p>
-            <p>{dummyData.common_name}</p>
-            <p>{dummyData.id}</p>
-            <p>{dummyData.other_name}</p>
+            <p>{mockData.common_name}</p>
+            <p>{mockData.id}</p>
+            <p>{mockData.other_name}</p>
                 {dummyData.origin.map((list => <ol>
                 <li>{list}</li>
                 </ol>))}

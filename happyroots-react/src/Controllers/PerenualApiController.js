@@ -1,11 +1,12 @@
+import { apiKey } from "../Config/perenualApiKey";
 
 
 const baseUrl = 'https://perenual.com/api'
+// console.log("controller api " + apiKey)
 
 
-export const apiKey = process.env.REACT_APP_API_KEY
+// export const apiKey = process.env.REACT_APP_API_KEY
 
-export const id = "";
 
 
 // export const getSpeciesById = (id, apiKey) => {
@@ -18,11 +19,22 @@ export const id = "";
 // }
 
 
-export const getAllSpecies = (token, apiKey) => {
-    fetch(baseUrl + `/species-list?key=${apiKey}`, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+export const getAllSpecies = async (token, apiKey) => {
+    try {
+        const response = await fetch(baseUrl + `/species-list?key=${apiKey}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+    
+        if (!response.ok) {
+            throw Error;
         }
-    }).then(response => console.log(response));
-}
+
+    const data = await response.json()
+    console.log(data)
+    return data.data;
+} catch {
+    return null
+}}
