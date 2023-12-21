@@ -34,6 +34,9 @@ public class ProfileController {
 //        return profileRepository.save(profile);
 //    }
 
+//    TODO this needs to check for unique pairs so it doesn't save multiples
+//    not sure if checking by email or userId would be better
+
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
 //    @PostMapping("/create")
     public ResponseEntity<String> register(@RequestBody Profile profile) {
@@ -94,6 +97,11 @@ public class ProfileController {
         profileRepository.delete(profile);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
+
+//    TODO need to fix this logic, right now it's basically a put request because it's
+//     nulling the values that aren't being sent in the body
 
 
     //    update single value

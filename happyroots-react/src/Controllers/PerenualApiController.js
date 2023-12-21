@@ -9,6 +9,9 @@ const baseUrl = 'https://perenual.com/api'
 
 
 
+//TODO need to figure out how to get the species id the favorites table and feed it here
+
+
 // export const getSpeciesById = (id, apiKey) => {
 //     fetch(baseUrl + `/species/details/${id}?key=${apiKey}`, {
 //         headers: {

@@ -21,6 +21,10 @@ public class CareInformationController {
     CareInformationRepository careInformationRepository;
 
 
+
+//    TODO do we want update functions for this? or is create, read, delete enough?
+
+
     @GetMapping
     public Collection<CareInformation> findAllCareInformations() {
         return careInformationRepository.findAll();

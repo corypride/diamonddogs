@@ -9,7 +9,8 @@ const handleResponse = async (response) => {
     } else return false;
 }
 
-// TODO figure out how to save userId and speciesId from state?
+// TODO figure out how to save userId and speciesId from as unique pair
+//TODO figure out how to save the speciesId from browse or search
 
 export const saveUserFavorites =  async (token, userId) => {
 

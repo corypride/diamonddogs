@@ -23,6 +23,9 @@ public class PlantController {
     PlantRepository plantRepository;
 
 
+
+//    TODO do we want update functions for this? or is create, read, delete enough?
+
     @GetMapping
     public Collection<Plant> findAllPlants() {
         return plantRepository.findAll();

@@ -51,6 +51,8 @@ public class FavoritesController {
 
 
 
+//    TODO this needs to check for unique pairs so it doesn't save multiples
+
     @PostMapping("/create")
     public Favorites createFavorite(@RequestBody Favorites favorite) {
         return favoritesRepository.save(favorite);
