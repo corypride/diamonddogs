@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { getUserFromLocalStorage } from '../Helpers/authHelpers';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../Helpers/firebase';
 import { getTest, logout } from '../Controllers/AuthController';
 import NavigationBar from './Components/NavigationBar';
 import '../App.css';
 
-const HomeScreen = () => {
+const HomeScreen = ({token}) => {
   const navigate = useNavigate();
-  const [token, setToken] = useState('');
   
   const handleClick = () => {
     getTest(token);
@@ -20,18 +18,6 @@ const HomeScreen = () => {
     navigate('/login')
   }
   
-  useEffect(() => {
-    const user = getUserFromLocalStorage();
-
-    if (user) {
-      console.log('User:', user);
-      setToken(user.stsTokenManager.accessToken);
-    } else {
-      console.log('User not logged in');
-      navigate('/login');
-    }
-  }, []);
-
   return (
   <>
     <NavigationBar />
@@ -43,7 +29,7 @@ const HomeScreen = () => {
         <br></br>
         <ul id="buttons">
           <li class="newbutton"><button onClick={handleClick}>Test</button></li>
-          <li class="newbutton"><button onClick={handleLogout}>Logout</button></li>
+          <li class="newbutton"><button onClick={logout}>Logout</button></li>
         </ul>
         
         
