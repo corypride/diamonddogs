@@ -20,10 +20,10 @@ const NavigationBar = () => {
     const user = getUserFromLocalStorage();
 
     if (user) {
-        console.log('User:', user);
+        // console.log('User:', user);
         setUser(user.providerData[0]);
     } else {
-        console.log('User not logged in');
+        // console.log('User not logged in');
         navigate('/login');
     }
 }, []);

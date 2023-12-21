@@ -104,6 +104,13 @@ public class ProfileController {
 //     nulling the values that aren't being sent in the body
 
 
+//    @PatchMapping("/{id}")
+//    public ResponseEntity<Boolean> patch(@PathVariable int id, boolean status) {
+//        return new ResponseEntity<>(updateProfile());
+//    }
+
+
+
     //    update single value
 //    @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
 //    @PatchMapping("/{id}")

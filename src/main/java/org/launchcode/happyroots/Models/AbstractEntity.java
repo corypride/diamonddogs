@@ -19,4 +19,7 @@ public abstract class AbstractEntity {
     private int id;
 
 
+    public boolean isEmpty() {
+    return true;
+    }
 }

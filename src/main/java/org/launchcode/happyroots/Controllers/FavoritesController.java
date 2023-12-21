@@ -2,7 +2,6 @@ package org.launchcode.happyroots.Controllers;
 
 import org.launchcode.happyroots.Exception.ResourceNotFoundException;
 import org.launchcode.happyroots.Models.Favorites;
-import org.launchcode.happyroots.Models.Profile;
 import org.launchcode.happyroots.Repositories.FavoritesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -53,8 +52,18 @@ public class FavoritesController {
 
 //    TODO this needs to check for unique pairs so it doesn't save multiples
 
+
+//    can i turn this into @Query or just enter it into sql manually
+//    ALTER TABLE  `favorites` ADD UNIQUE (`user_id` ,`species_id`);
+
     @PostMapping("/create")
     public Favorites createFavorite(@RequestBody Favorites favorite) {
+//        Favorites result = favoritesRepository.queryPair(userId, speciesId);
+//        Favorites result = favoritesRepository.findFavorite(favorite);
+//        if (result.isEmpty()) {
+//            favoritesRepository.save(result);
+//        }
+//        return favoritesRepository.queryPair(userId, speciesId);
         return favoritesRepository.save(favorite);
     }
 
