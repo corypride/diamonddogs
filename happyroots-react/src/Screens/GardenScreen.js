@@ -12,16 +12,6 @@ import { mockData } from '../Controllers/mockData'
 const GardenScreen = ({token, uid}) => {
     const [data, setData] = useState([]);
     console.log('species data', data)
-    // console.log(apiKey)
-
-    
-
-
-    // const handleClick = () => {
-    //     getUserspecies(token, uid);
-    //     console.log(uid)
-    //     console.log(token)
-    //   }
 
 
     const fetchSpecies = async () => {
@@ -35,8 +25,6 @@ const GardenScreen = ({token, uid}) => {
 
 
 
-    
-
 
   return (
   <>
@@ -49,9 +37,13 @@ const GardenScreen = ({token, uid}) => {
         {data?.map((species => <ul>
             <li>{species.id}</li>
             <li>{species.common_name}</li>
-            {/* <li>{species.userId}</li>
-            <li>{species.speciesId}</li>
-            <img src={species?.thumbnail}></img> */}
+            <li>{species.cycle}</li>
+            <li>{species.sunlight}</li>
+            {/* <li>{species.origin.map}</li> */}
+            <li>watering : {species.watering}</li>
+            {/* <li>{species.default_image?.thumbnail}</li> */}
+
+            <img src={species.default_image?.thumbnail}></img>
         </ul>))}
 
         {/* <div>
