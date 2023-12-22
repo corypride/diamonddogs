@@ -58,6 +58,28 @@ try {
 }}
 
 
+export const getUserSpeciesIdList =  async (token, userId) => {
+    try {
+        const response = await fetch(baseUrl + "/speciesIdList/" + userId, {
+        // const response = await fetch(baseUrl + "/plantId/8", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        })
+    
+        if (!response.ok) {
+            throw Error;
+        }
+    
+        const data = await response.json()
+        // console.log(data)
+        return data;
+    } catch {
+        return null
+    }}
+
 
 export const getAllFavorites =  async (token) => {
 try {
