@@ -37,7 +37,7 @@ export const getAllSpecies = async (token, apiKey) => {
 
     const data = await response.json()
     console.log(data)
-    return data.data;
+    return data;
 } catch {
     return null
 }}
