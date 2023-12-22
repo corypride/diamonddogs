@@ -24,8 +24,8 @@ export const saveUserFavorites =  async (token, userId, data) => {
             },
             body: JSON.stringify({
                 userId: userId,
-                // commonName : "test",
-                speciesId: 13
+                commonName : "test",
+                speciesId: 45
             })
         })
         // return handleResponse(response)

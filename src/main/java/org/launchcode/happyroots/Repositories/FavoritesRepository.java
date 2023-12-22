@@ -1,6 +1,7 @@
 package org.launchcode.happyroots.Repositories;
 
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.launchcode.happyroots.Models.Favorites;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -23,6 +24,10 @@ public interface FavoritesRepository extends JpaRepository<Favorites, Integer> {
 //    public Favorites findFavorite(Favorites favorite);
 
 
+
+
+    @Query("SELECT u FROM Favorites u WHERE userId = ?1 AND speciesId = ?2")
+    public Favorites findPair(String userId, Integer speciesId);
 
     @Query("SELECT u from Favorites u WHERE userId = ?1")
     public List<Favorites> queryUserId(String userId);
