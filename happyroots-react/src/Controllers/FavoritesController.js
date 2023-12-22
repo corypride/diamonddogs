@@ -24,12 +24,13 @@ export const saveUserFavorites =  async (token, userId, data) => {
             },
             body: JSON.stringify({
                 userId: userId,
-                commonName : "test",
-                speciesId: 45
+                // commonName : "test",
+                // speciesId: speciesId
             })
         })
         // return handleResponse(response)
-        return console.log(userId)
+        return console.log(userId + " added favorite")
+        // return "added favorite"
 
 }
 
@@ -50,7 +51,7 @@ try {
     }
 
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
     return data;
 } catch {
     return null

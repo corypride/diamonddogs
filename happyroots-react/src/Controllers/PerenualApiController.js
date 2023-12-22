@@ -12,14 +12,14 @@ const baseUrl = 'https://perenual.com/api'
 //TODO need to figure out how to get the species id the favorites table and feed it here
 
 
-// export const getSpeciesById = (id, apiKey) => {
-//     fetch(baseUrl + `/species/details/${id}?key=${apiKey}`, {
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Authorization': `Bearer ${token}`
-//         }
-//     }).then(response => console.log(response));
-// }
+export const getSpeciesById = (token, id, apiKey) => {
+    fetch(baseUrl + `/species/details/${id}?key=${apiKey}`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    }).then(response => console.log(response));
+}
 
 
 export const getAllSpecies = async (token, apiKey) => {
