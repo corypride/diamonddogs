@@ -97,13 +97,13 @@ const FavoritesScreen = ({token, uid}) => {
 
     // }    
 
-    // const saveFavorites = async () => {
-    //     const responseData = await saveUserFavorites(token, uid)
-    //     if (responseData) {
-    //         setData(responseData)
-    //     }
+    const saveFavorites = async () => {
+        const responseData = await saveUserFavorites(token, uid)
+        if (responseData) {
+            setData(responseData)
+        }
 
-    // }    
+    }    
     
 
     // const faveList = data.map(id => data.id)

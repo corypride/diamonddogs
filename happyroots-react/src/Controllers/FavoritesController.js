@@ -4,7 +4,6 @@ const baseUrl = "http://localhost:8080/favorites"
 const handleResponse = async (response) => {
     if(response.ok) {
         const data = await response.json()
-        // console.log('data', data)
         return data
     } else return false;
 }
@@ -24,14 +23,11 @@ export const saveUserFavorites =  async (token, userId, data) => {
             },
             body: JSON.stringify({
                 userId: userId,
-                // commonName : data.common_name,
-                speciesId: 57
+                commonName : "test",
+                speciesId : 309
             })
         })
-        // return handleResponse(response)
-        return console.log(userId + " added favorite")
-        // return "added favorite"
-
+        return console.log(data)
 }
 
 

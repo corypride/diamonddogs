@@ -11,10 +11,11 @@ import { getUserFromLocalStorage } from '../../Helpers/authHelpers';
 
 
 const NavigationBar = () => {
-  
 
+  
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+
 
 
   useEffect(() => {
