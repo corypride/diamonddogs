@@ -12,8 +12,7 @@ import { saveUserFavorites } from "../Controllers/FavoritesController";
 import { checkboxClasses } from "@mui/material";
 
 const BrowseScreen = ({ token, uid }) => {
-  const [page, setPage] = useState(98);
-  const [species, setSpecies] = useState();
+  const [page, setPage] = useState(0);
   const [data, setData] = useState([]);
   const dataList = data.data;
 
@@ -30,20 +29,13 @@ const BrowseScreen = ({ token, uid }) => {
     }
   };
 
-  const fetchSave = async () => {
+  const fetchSave = async (data) => {
     const responseData = await saveUserFavorites(token, uid, data);
     if (responseData) {
       setData(responseData);
-      // console.log(responseData.data)
     }
   };
 
-  const showSpeciesId = async () => {
-    const responseData = await getAllSpecies(token, apiKey);
-    if (responseData) {
-      setSpecies(responseData.data);
-    }
-  };
 
   const handleNextPage = () => {
     const newPage = page + 1;
@@ -61,31 +53,34 @@ const BrowseScreen = ({ token, uid }) => {
     setPage(newPage);
   };
 
+
+
+
+
   return (
     <>
       <NavigationBar />
       <div>
-        {/* <button onClick={handleFetch}>species test</button> */}
-        <br></br>
+
+        <h2>Plant Species</h2>
+
+        {/* LIST */}
+        {dataList?.map((species) => (
+                        <div>
+                      <p>{species.common_name}</p>
+                      <p>{species.cycle}</p>
+                      <p>{species.sunlight}</p>
+                      <p>watering : {species.watering}</p>
+                      <img src={species.default_image?.thumbnail}></img>
+                      <br></br>
+                    <button onClick={() => fetchSave(species)}>save</button>
+                    </div>
+        ))}
 
         {/* BUTTONS */}
         <button onClick={() => handlePreviousPage()}>Previous Page</button>
         <button onClick={() => handleNextPage()}>Next Page</button>
 
-        {/* LIST */}
-        {dataList?.map((species, index) => (
-          <ul>
-            <button onClick={fetchSave}>save</button>
-            <button onClick={showSpeciesId}>id</button>
-            <li>{index}</li>
-            <li>{species.id}</li>
-            <li>{species.common_name}</li>
-            <li>{species.cycle}</li>
-            <li>{species.sunlight}</li>
-            <li>watering : {species.watering}</li>
-            <img src={species.default_image?.thumbnail}></img>
-          </ul>
-        ))}
       </div>
     </>
   );

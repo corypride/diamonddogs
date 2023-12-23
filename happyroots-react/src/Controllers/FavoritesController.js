@@ -12,7 +12,7 @@ const handleResponse = async (response) => {
 //TODO figure out how to save the speciesId from browse or search
 
 export const saveUserFavorites =  async (token, userId, data) => {
-
+    
 
         const response = await fetch(baseUrl + "/create", {
             method: 'POST',
@@ -23,8 +23,8 @@ export const saveUserFavorites =  async (token, userId, data) => {
             },
             body: JSON.stringify({
                 userId: userId,
-                commonName : "test",
-                speciesId : 309
+                commonName : data.common_name,
+                speciesId : data.id
             })
         })
         return console.log(data)
