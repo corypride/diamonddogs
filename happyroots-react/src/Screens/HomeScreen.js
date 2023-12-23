@@ -10,6 +10,7 @@ const HomeScreen = ({token}) => {
   
   const handleClick = () => {
     getTest(token);
+    console.log(token)
   }
 
   const handleLogout = () => {
