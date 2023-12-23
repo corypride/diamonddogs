@@ -38,7 +38,8 @@ const NavigationBar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/search">Search</Link></li>
         <li><Link to="/browse">Browse</Link></li>
-        <li><Link to="/favorites">Garden(favorites)</Link></li>
+        <li><Link to="/favorites">Favorites</Link></li>
+        <li><Link to="/garden">Garden</Link></li>
         <li><Link to="/profile">Profile</Link></li>
         {/* <li><Link to="/login">Login</Link> </li> */}
         <li><Link to="/login" onClick={(logout)}>Logout</Link></li>
