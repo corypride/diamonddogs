@@ -12,11 +12,12 @@ import { saveUserFavorites } from "../Controllers/FavoritesController";
 import { checkboxClasses } from "@mui/material";
 
 const BrowseScreen = ({ token, uid }) => {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const dataList = data.data;
 
   console.log("in state page", page);
+  
 
   useEffect(() => {
     document.body.onLoad = fetchSpecies();
@@ -63,6 +64,10 @@ const BrowseScreen = ({ token, uid }) => {
       <div>
 
         <h2>Plant Species</h2>
+
+        {/* BUTTONS */}
+        <button onClick={() => handlePreviousPage()}>Previous Page</button>
+        <button onClick={() => handleNextPage()}>Next Page</button>
 
         {/* LIST */}
         {dataList?.map((species) => (
