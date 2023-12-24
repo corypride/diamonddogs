@@ -12,7 +12,7 @@ const handleResponse = async (response) => {
 //TODO figure out how to save the speciesId from browse or search
 
 export const saveUserFavorites =  async (token, userId, data) => {
-    
+
 
         const response = await fetch(baseUrl + "/create", {
             method: 'POST',
