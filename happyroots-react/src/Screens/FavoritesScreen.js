@@ -67,7 +67,7 @@ const FavoritesScreen = ({ token, uid }) => {
       <NavigationBar />
       <div>
         <p>buttons for testing</p>
-        <button onClick={handleClick}>user id in console</button>
+        <button onClick={handleClick}>info in console</button>
         <button onClick={fetchUserSpeciesIdList}>
           species id list from favorites table
         </button>
