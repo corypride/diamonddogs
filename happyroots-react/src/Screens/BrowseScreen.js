@@ -17,7 +17,6 @@ const BrowseScreen = ({ token, uid }) => {
   const dataList = data.data;
 
   console.log("in state page", page);
-  
 
   useEffect(() => {
     document.body.onLoad = fetchSpecies();
@@ -37,32 +36,26 @@ const BrowseScreen = ({ token, uid }) => {
     }
   };
 
-
   const handleNextPage = () => {
     const newPage = page + 1;
-    if(page > 99) {
-        return 
+    if (page > 99) {
+      return;
     }
     setPage(newPage);
   };
 
   const handlePreviousPage = () => {
     const newPage = page - 1;
-    if(page < 1) {
-        return 
+    if (page < 1) {
+      return;
     }
     setPage(newPage);
   };
-
-
-
-
 
   return (
     <>
       <NavigationBar />
       <div>
-
         <h2>Plant Species</h2>
 
         {/* BUTTONS */}
@@ -70,22 +63,22 @@ const BrowseScreen = ({ token, uid }) => {
         <button onClick={() => handleNextPage()}>Next Page</button>
 
         {/* LIST */}
-        {dataList?.map((species) => (
-                        <div>
-                      <p>{species.common_name}</p>
-                      <p>{species.cycle}</p>
-                      <p>{species.sunlight}</p>
-                      <p>watering : {species.watering}</p>
-                      <img src={species.default_image?.thumbnail}></img>
-                      <br></br>
-                    <button onClick={() => fetchSave(species)}>save</button>
-                    </div>
+        {dataList?.map((species, index) => (
+          <div>
+            <p>index = {index}</p>
+            <p>{species.common_name}</p>
+            <p>{species.cycle}</p>
+            <p>{species.sunlight}</p>
+            <p>watering : {species.watering}</p>
+            <img src={species.default_image?.thumbnail}></img>
+            <br></br>
+            <button onClick={() => fetchSave(species)}>save</button>
+          </div>
         ))}
 
         {/* BUTTONS */}
         <button onClick={() => handlePreviousPage()}>Previous Page</button>
         <button onClick={() => handleNextPage()}>Next Page</button>
-
       </div>
     </>
   );
