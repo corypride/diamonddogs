@@ -64,8 +64,8 @@ const BrowseScreen = ({ token, uid }) => {
 
         {/* LIST */}
         {dataList?.map((species, index) => (
-          <div>
-            <p>index = {index}</p>
+          <div key={species.id}>
+            {/* <p>index = {index}</p> */}
             <p>{species.common_name}</p>
             <p>{species.cycle}</p>
             <p>{species.sunlight}</p>
