@@ -1,6 +1,4 @@
-package org.launchcode.happyroots.models.data;
-
-import org.launchcode.happyroots.models.CareInformation;
+package org.launchcode.happyroots.Models.Data;
 
 import java.util.List;
 

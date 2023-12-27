@@ -1,4 +1,4 @@
-package org.launchcode.happyroots.configuration;
+package org.launchcode.happyroots.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

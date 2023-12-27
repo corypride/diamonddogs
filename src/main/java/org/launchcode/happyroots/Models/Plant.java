@@ -1,7 +1,6 @@
-package org.launchcode.happyroots.models;
+package org.launchcode.happyroots.Models;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity

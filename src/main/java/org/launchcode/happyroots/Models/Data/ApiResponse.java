@@ -1,4 +1,4 @@
-package org.launchcode.happyroots.models.data;
+package org.launchcode.happyroots.Models.Data;
 
 import java.util.List;
 

@@ -1,10 +1,7 @@
-package org.launchcode.happyroots.models;
+package org.launchcode.happyroots.Models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import org.launchcode.happyroots.models.data.SectionItem;
-
-import java.util.List;
 
 @Entity
 public class CareInformation {

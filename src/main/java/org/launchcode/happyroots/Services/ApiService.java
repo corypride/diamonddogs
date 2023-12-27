@@ -1,8 +1,8 @@
-package org.launchcode.happyroots.services;
+package org.launchcode.happyroots.Services;
 
-import org.launchcode.happyroots.models.CareInformation;
-import org.launchcode.happyroots.models.Plant;
-import org.launchcode.happyroots.models.data.*;
+import org.launchcode.happyroots.Models.CareInformation;
+import org.launchcode.happyroots.Models.Plant;
+import org.launchcode.happyroots.Models.Data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
