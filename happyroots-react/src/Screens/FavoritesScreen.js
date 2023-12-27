@@ -84,7 +84,7 @@ const FavoritesScreen = ({ token, uid }) => {
             <img src={species.default_image?.thumbnail}></img>
         </ul>))} */}
         {data?.map((favorite) => (
-          <ul>
+          <ul key={favorite.id}>
             <li>{favorite.speciesId}</li>
             <li>{favorite.commonName}</li>
             <img src={favorite?.thumbnail}></img>
