@@ -29,8 +29,8 @@ const HomeScreen = ({token}) => {
         <br></br>
         <br></br>
         <ul id="buttons">
-          <li class="newbutton"><button onClick={handleClick}>Test</button></li>
-          <li class="newbutton"><button onClick={logout}>Logout</button></li>
+          <li className="newbutton"><button onClick={handleClick}>Test</button></li>
+          <li className="newbutton"><button onClick={logout}>Logout</button></li>
         </ul>
         
         
