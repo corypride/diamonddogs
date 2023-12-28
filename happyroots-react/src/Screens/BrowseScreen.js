@@ -9,7 +9,7 @@ import {
 import { apiKey } from "../Config/perenualApiKey";
 import { mockData, speciesList } from "../Controllers/mockData";
 import { saveUserFavorites } from "../Controllers/FavoritesController";
-
+import { Alert, Box } from "@mui/material";
 
 const BrowseScreen = ({ token, uid }) => {
   const [page, setPage] = useState(1);
@@ -36,6 +36,18 @@ const BrowseScreen = ({ token, uid }) => {
     }
   };
 
+  const handleSave = async (token, uid, data) => {
+    try {
+      await fetchSave(token, uid, data);
+      alert(`Saved to the garden`);
+    } catch (error) {
+      console.error("Error saving data:", error);
+      alert(
+        `Error saving to the garden, you might have already saved this species`
+      );
+    }
+  };
+
   const handleNextPage = () => {
     const newPage = page + 1;
     if (page > 99) {
@@ -51,7 +63,6 @@ const BrowseScreen = ({ token, uid }) => {
     }
     setPage(newPage);
   };
-  
 
   return (
     <>
@@ -66,19 +77,20 @@ const BrowseScreen = ({ token, uid }) => {
         <br></br>
 
         {/* LIST */}
-        {dataList?.map((species, index) => (
+        {dataList?.map((species) => (
           <div key={species.id}>
-            {/* <p>index = {index}</p> */}
             <img src={species.default_image?.thumbnail}></img>
             <p>Common Name : {species.common_name}</p>
             <p>Cycle : {species.cycle}</p>
             <p>Sunlight : {species.sunlight}</p>
             <p>Watering : {species.watering}</p>
             <div>
-              <button onClick={() => fetchSave(species)}>Save {species.common_name} to garden</button>
+              <button onClick={() => handleSave(species)}>
+                Save {species.common_name} to garden
+              </button>
             </div>
-              <br></br>
-              <br></br>
+            <br></br>
+            <br></br>
           </div>
         ))}
 
