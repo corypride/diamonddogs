@@ -9,7 +9,7 @@ import {
 import { apiKey } from "../Config/perenualApiKey";
 import { mockData, speciesList } from "../Controllers/mockData";
 import { saveUserFavorites } from "../Controllers/FavoritesController";
-import { checkboxClasses } from "@mui/material";
+
 
 const BrowseScreen = ({ token, uid }) => {
   const [page, setPage] = useState(1);
@@ -51,6 +51,7 @@ const BrowseScreen = ({ token, uid }) => {
     }
     setPage(newPage);
   };
+  
 
   return (
     <>
@@ -61,18 +62,23 @@ const BrowseScreen = ({ token, uid }) => {
         {/* BUTTONS */}
         <button onClick={() => handlePreviousPage()}>Previous Page</button>
         <button onClick={() => handleNextPage()}>Next Page</button>
+        <br></br>
+        <br></br>
 
         {/* LIST */}
         {dataList?.map((species, index) => (
           <div key={species.id}>
             {/* <p>index = {index}</p> */}
-            <p>{species.common_name}</p>
-            <p>{species.cycle}</p>
-            <p>{species.sunlight}</p>
-            <p>watering : {species.watering}</p>
             <img src={species.default_image?.thumbnail}></img>
-            <br></br>
-            <button onClick={() => fetchSave(species)}>save to garden</button>
+            <p>Common Name : {species.common_name}</p>
+            <p>Cycle : {species.cycle}</p>
+            <p>Sunlight : {species.sunlight}</p>
+            <p>Watering : {species.watering}</p>
+            <div>
+              <button onClick={() => fetchSave(species)}>Save {species.common_name} to garden</button>
+            </div>
+              <br></br>
+              <br></br>
           </div>
         ))}
 
