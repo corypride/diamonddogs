@@ -9,6 +9,7 @@ import ProfileScreen from "./Screens/ProfileScreen";
 import FavoritesScreen from "./Screens/FavoritesScreen";
 import SearchScreen from "./Screens/SearchScreen";
 import NotFound from './Screens/NotFound';
+import "./App.css";
 import ReactGA from 'react-ga4';
 
 const TRACKING_ID = "G-BSEN65VMZT"; // YOUR_OWN_TRACKING_ID
