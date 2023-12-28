@@ -1,30 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { getUserFromLocalStorage } from '../Helpers/localStorageHelper';
+import { getUserFromLocalStorage, saveUserToLocalStorage } from '../Helpers/localStorageHelper';
 import { useNavigate } from 'react-router-dom';
 import NavigationBar from './Components/NavigationBar';
-import { updateUser } from '../Controllers/AuthController';
+import { updateDisplayImage, updateUsername } from '../Controllers/AuthController';
 import './styles/profile.css';
 
 const ProfileScreen = () => {
     const [user, setUser] = useState({});
     const [username, setUsername] = useState('');
-    const [photoUrl, setPhotoUrl] = useState();
     const [image, setImage] = useState(null);
     const [isEditMode, setIsEditMode] = useState(false);
     const navigate = useNavigate();
-
+    
     useEffect(() => {
-        const userData = getUserFromLocalStorage();
+      var userData = getUserFromLocalStorage();
 
-        if (userData) {
-            console.log('User:', userData);
-            setUser(userData.providerData[0]);
-            setUsername(userData.displayName || '');
-            setPhotoUrl(userData.photoURL || '');
-        } else {
-            console.log('User not logged in');
-            navigate('/login');
-        }
+      if (userData) {
+        setUser(userData.providerData[0]);
+        setUsername(userData.displayName || '');
+      } else {
+        console.log('User not logged in');
+        navigate('/login');
+      }
     }, [navigate]);
 
     const enterEditMode = () => {
@@ -43,21 +40,41 @@ const ProfileScreen = () => {
       }
   };
   
+  const updateImage = async () => {
+    try {
+        var userData = getUserFromLocalStorage();
+        const updatedUser = await updateDisplayImage(userData.stsTokenManager.accessToken, image);
+        
+        userData.providerData[0].photoURL = updatedUser.photoUrl;
 
-    const saveChanges = async () => {
-        try {
-            await updateUser(username, image);
+        setUser(userData.providerData[0])
+        
+        saveUserToLocalStorage(userData);
 
-            user.displayName = username
-            user.photoURL = photoUrl
+        exitEditMode();
+    } catch (error) {
+        console.error('Error updating user:', error);
+    }
+  };
 
-            exitEditMode();
-        } catch (error) {
-            console.error('Error updating user:', error);
-        }
-    };
+  const updateUsername = async () => {
+    try {
+      var userData = getUserFromLocalStorage();
+      const updatedUser = await updateUsername(userData.stsTokenManager.accessToken, username);
+      userData.providerData[0].displayName = updatedUser.displayName;
 
-    return (
+      setUser(userData.providerData[0])
+      
+      saveUserToLocalStorage(userData);
+
+      exitEditMode();
+    } catch (error) {
+      console.log('\n___________')
+      console.log(error)
+    }
+  }
+
+  return (
         <>
           <NavigationBar />
           <div className="container">
@@ -80,6 +97,10 @@ const ProfileScreen = () => {
                   <label className="edit-mode-label">
                     Username: <input type="text" name="username" value={username} onChange={handleInputChange} className="edit-mode-input" />
                   </label>
+                  <button onClick={updateUsername} className="edit-buttons-button">Change username</button>
+                  <br />
+
+
                   <label className="edit-mode-label">
                     Photo: 
                   </label>
@@ -97,16 +118,16 @@ const ProfileScreen = () => {
                       type="file" // TODO: add style
                       name="myImage"
                       onChange={ (event) => {
-                        console.log(event.target.files[0]);
                         setImage(event.target.files[0]);
                       }}
                     />
                   </div>
+                  
+                  <button onClick={updateImage} className="edit-buttons-button">Change user image</button>
                   <br />
 
-                  <br />
+<br />
 
-                  <button onClick={saveChanges} className="edit-buttons-button">Save</button>
                   <button onClick={exitEditMode} className="edit-buttons-button cancel">Cancel</button>
                 </>
               ) : (

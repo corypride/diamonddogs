@@ -31,7 +31,6 @@ const HomeScreen = () => {
     const user = getUserFromLocalStorage();
 
     if (user) {
-      console.log('User:', user);
       setToken(user.stsTokenManager.accessToken);
     } else {
       console.log('User not logged in');

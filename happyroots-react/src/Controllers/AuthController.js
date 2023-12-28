@@ -5,7 +5,7 @@ import { auth } from '../Helpers/firebase';
 const baseUrl = 'http://localhost:8080';
 const testUrl = '/plants/test';
 const signupUrl = '/users/signup';
-const updateUrl = '/users/update';
+const updateImageUrl = '/users/changeUserImage';
   
 export const login = async (email, password) => {
   try {
@@ -41,20 +41,54 @@ export const logout = () => {
     removeUserFromLocalStorage();
 }
 
-export const updateUser = async (user, image) => {
-    
+export const updateDisplayImage = async (token, image) => {
     const formData = new FormData();
-    formData.append('user', user);
     formData.append('image', image);
 
-    await fetch(`${baseUrl}${updateUrl}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${user.stsTokenManager.accessToken}`
-        },
-        body: formData,
-    })
+    try {
+        const response = await fetch(`${baseUrl}${updateImageUrl}`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            body: formData,
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to update avatar');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error updating avatar:', error.message);
+        throw error;
+    }
+}
+
+export const updateUsername = async (token, username) => {
+    const formData = new FormData();
+    formData.append('username', username);
+    
+    try {
+        const response = await fetch(`${baseUrl}${updateImageUrl}`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            body: formData,
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to update user');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error updating user:', error.message);
+        throw error;
+    }
 }
 
 export const getTest = (token) => {

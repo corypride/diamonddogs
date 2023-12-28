@@ -22,6 +22,7 @@ public class HappyrootsApplication {
 
 		FirebaseOptions options = FirebaseOptions.builder()
 				.setCredentials(GoogleCredentials.fromStream(serviceAccount))
+				.setStorageBucket("happyroots-84e90.appspot.com")
 				.build();
 
 		FirebaseApp.initializeApp(options);

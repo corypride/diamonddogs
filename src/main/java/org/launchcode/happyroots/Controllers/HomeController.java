@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/plants")
 public class HomeController {
 
-
-
     @GetMapping("/")
     public String getAll() {
         return "Hello world from public";
