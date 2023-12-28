@@ -1,26 +1,20 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import NavigationBar from "./Components/NavigationBar";
 import "../App.css";
-import { getUserSpeciesIdList } from "../Controllers/FavoritesController";
+import { getUserFavorites } from "../Controllers/FavoritesController";
 import SpeciesDisplay from "./Components/SpeciesDisplay";
 
 const GardenScreen = ({ token, uid }) => {
-  const [speciesIdArray, setSpeciesIdArray] = useState([]);
+  const [faves, setFaves] = useState([]);
 
   useEffect(() => {
-  fetchUserSpeciesIdList();
+    fetchUserFavorites();
   }, [uid]);
 
-  const handleClick = () => {
-    // console.log(uid);
-    // console.log(token);
-    console.log("species array " + speciesIdArray);
-  };
-  
-  const fetchUserSpeciesIdList = async () => {
-    const responseData = await getUserSpeciesIdList(token, uid);
+  const fetchUserFavorites = async () => {
+    const responseData = await getUserFavorites(token, uid);
     if (responseData) {
-      return setSpeciesIdArray(responseData);
+      return setFaves(responseData)
     }
   };
 
@@ -28,11 +22,7 @@ const GardenScreen = ({ token, uid }) => {
     <>
       <NavigationBar />
       <div>
-
-        <button onClick={() => handleClick()}>info in console</button>
-        <button onClick={() => fetchUserSpeciesIdList()}>fetch user species id array</button>
-        {speciesIdArray.map((id) => <SpeciesDisplay id={id}/>)}
-        
+        {faves.map((fave) => <SpeciesDisplay fave={fave} token={token} refresh={() => fetchUserFavorites()}/>)}
       </div>
     </>
   );

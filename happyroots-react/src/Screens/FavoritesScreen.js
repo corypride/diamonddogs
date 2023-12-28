@@ -68,14 +68,14 @@ const FavoritesScreen = ({ token, uid }) => {
       <div>
         <p>buttons for testing</p>
         <button onClick={handleClick}>info in console</button>
-        <button onClick={fetchUserSpeciesIdList}>
+        {/* <button onClick={fetchUserSpeciesIdList}>
           species id list from favorites table
-        </button>
+        </button> */}
         <button onClick={fetchUserFavorites}>
           display favorites table from sql
         </button>
-        <button onClick={fetchSpecies}>species</button>
-        <button onClick={listFaves}>listFaves</button>
+        {/* <button onClick={fetchSpecies}>species</button>
+        <button onClick={listFaves}>listFaves</button> */}
         {/* <p>{show}</p> */}
         {/* {list?.map((species=> <ul>
             <li>{species.id}</li>
@@ -85,9 +85,10 @@ const FavoritesScreen = ({ token, uid }) => {
         </ul>))} */}
         {data?.map((favorite) => (
           <ul key={favorite.id}>
-            <li>{favorite.speciesId}</li>
+          <li>{favorite.id}</li>
             <li>{favorite.commonName}</li>
             <img src={favorite?.thumbnail}></img>
+            <li>{favorite.speciesId}</li>
           </ul>
         ))}
       </div>

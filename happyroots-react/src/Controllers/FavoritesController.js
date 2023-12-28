@@ -24,6 +24,17 @@ export const saveUserFavorites = async (token, userId, data) => {
   return console.log(data);
 };
 
+export const deleteUserFavorite = async (token, id) => {
+  const response = await fetch(baseUrl + `/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response;
+};
+
 export const getUserFavorites = async (token, userId) => {
   try {
     const response = await fetch(baseUrl + "/userId/" + userId, {

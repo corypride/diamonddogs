@@ -72,7 +72,7 @@ const BrowseScreen = ({ token, uid }) => {
             <p>watering : {species.watering}</p>
             <img src={species.default_image?.thumbnail}></img>
             <br></br>
-            <button onClick={() => fetchSave(species)}>save</button>
+            <button onClick={() => fetchSave(species)}>save to garden</button>
           </div>
         ))}
 
