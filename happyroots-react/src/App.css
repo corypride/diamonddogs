@@ -61,6 +61,10 @@ button:hover {
   }
 }
 
-Link {
+a {
+  color:#45a049;
+}
+
+link {
   color:#45a049;
 }
