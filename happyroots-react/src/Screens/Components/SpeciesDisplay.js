@@ -2,34 +2,33 @@ import React, { useEffect, useState } from "react";
 import { getSpeciesById } from "../../Controllers/PerenualApiController";
 import { apiKey } from "../../Config/perenualApiKey";
 import { deleteUserFavorite } from "../../Controllers/FavoritesController";
-import { ToastContainer, toast } from "react-toastify";
 import { Alert } from "@mui/material";
-import "react-toastify/dist/ReactToastify.css";
 
-const SpeciesDisplay = ({ token, fave, refresh }) => {
+
+const SpeciesDisplay = ({ fave, refresh }) => {
   const [species, setSpecies] = useState([]);
 
   useEffect(() => {
-    fetchSpecies(token, fave.speciesId, apiKey);
+    fetchSpecies(fave.speciesId, apiKey);
   }, [fave]);
 
-  const fetchSpecies = async (token, speciesId, apiKey) => {
-    const responseData = await getSpeciesById(token, speciesId, apiKey);
+  const fetchSpecies = async (speciesId, apiKey) => {
+    const responseData = await getSpeciesById(speciesId, apiKey);
     if (responseData) {
       setSpecies(responseData);
     }
   };
 
-  const fetchDelete = async (token, id) => {
-    const responseData = await deleteUserFavorite(token, id);
+  const fetchDelete = async (id) => {
+    const responseData = await deleteUserFavorite(id);
     if (responseData) {
       refresh();
     }
   };
 
-  const handleDelete = async (token, id) => {
+  const handleDelete = async (id) => {
     try {
-      await fetchDelete(token, id);
+      await fetchDelete(id);
       alert(`${common_name} has been deleted from the garden`);
     } catch (error) {
       console.error("Error deleting data:", error);
@@ -55,7 +54,7 @@ const SpeciesDisplay = ({ token, fave, refresh }) => {
       <p>Sunlight : {sunlight}</p>
       <p>Watering: {watering}</p>
       <div>
-        <button onClick={() => handleDelete(token, fave.id)}>
+        <button onClick={() => handleDelete(fave.id)}>
           Delete {common_name} from garden
         </button>
       </div>

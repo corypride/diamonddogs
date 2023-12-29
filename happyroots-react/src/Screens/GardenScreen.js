@@ -4,15 +4,15 @@ import "../App.css";
 import { getUserFavorites } from "../Controllers/FavoritesController";
 import SpeciesDisplay from "./Components/SpeciesDisplay";
 
-const GardenScreen = ({ token, uid }) => {
+const GardenScreen = () => {
   const [faves, setFaves] = useState([]);
 
   useEffect(() => {
-    fetchUserFavorites();
-  }, [uid]);
+  fetchUserFavorites();
+  }, []);
 
   const fetchUserFavorites = async () => {
-    const responseData = await getUserFavorites(token, uid);
+    const responseData = await getUserFavorites();
     if (responseData) {
       return setFaves(responseData)
     }
@@ -22,7 +22,7 @@ const GardenScreen = ({ token, uid }) => {
     <>
       <NavigationBar />
       <div>
-        {faves.map((fave) => <SpeciesDisplay fave={fave} token={token} refresh={() => fetchUserFavorites()}/>)}
+        {faves.map((fave) => <SpeciesDisplay fave={fave} refresh={() => fetchUserFavorites()}/>)}
       </div>
     </>
   );
