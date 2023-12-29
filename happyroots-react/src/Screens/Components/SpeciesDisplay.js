@@ -22,7 +22,8 @@ const SpeciesDisplay = ({ fave, refresh }) => {
   const fetchDelete = async (id) => {
     const responseData = await deleteUserFavorite(id);
     if (responseData) {
-      refresh();
+      // refresh();
+      window.location.reload();
     }
   };
 
