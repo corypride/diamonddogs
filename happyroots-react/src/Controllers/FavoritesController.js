@@ -53,7 +53,7 @@ export const deleteUserFavorite = async (id) => {
 };
 
 export const getUserFavorites = async () => {
-  const {uid, token} = getTokenAndUid();
+  const {uid, token} = getTokenAndUid() || {};
 
   try {
     const response = await fetch(baseUrl + "/userId/" + uid, {

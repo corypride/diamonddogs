@@ -14,7 +14,7 @@ import { getTokenAndUid } from "../Controllers/FavoritesController";
 const FavoritesScreen = () => {
   const [fave, setFave] = useState([]);
   const [data, setData] = useState([]);
-  const {uid, token } = getTokenAndUid();
+  const {uid, token } = getTokenAndUid() || {};
   console.log("react data", data);
 
   useEffect(() => {

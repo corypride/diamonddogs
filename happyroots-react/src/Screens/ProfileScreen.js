@@ -13,7 +13,7 @@ const ProfileScreen = () => {
 
     const [user, setUser] = useState("");
     const navigate = useNavigate();
-  const {uid, token} = getTokenAndUid();
+  const {uid, token} = getTokenAndUid() || {};
 
   
     useEffect(() => {
