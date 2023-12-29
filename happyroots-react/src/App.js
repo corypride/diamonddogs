@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, BrowserRouter, useHistory } from 'react-router-dom';
 import { getUserFromLocalStorage } from './Helpers/authHelpers';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import RegisterScreen from "./Screens/RegisterScreen";
 import LoginScreen from "./Screens/LoginScreen";
@@ -27,19 +29,22 @@ function App() {
   }, []);
 
   return (
+    <div>
+    <ToastContainer />
     <BrowserRouter>      
         <Routes>
           <Route exact path="/" element={<HomeScreen token={token}/>} />
           <Route exact path="/login" element={<LoginScreen token={token}/>} />
-          <Route exact path="/favorites" element={<FavoritesScreen uid={user?.uid} token={token}/>} />
+          <Route exact path="/favorites" element={<FavoritesScreen />} />
           <Route exact path="/signup" element={<RegisterScreen />} />
-          <Route exact path="/profile" element={<ProfileScreen uid={user?.uid} token={token}/>} />
+          <Route exact path="/profile" element={<ProfileScreen />} />
           <Route exact path="/search" element={<SearchScreen />} />
-          <Route exact path="/browse" element={<BrowseScreen uid={user?.uid} token={token}/>} />
-          <Route exact path="/garden" element={<GardenScreen uid={user?.uid} token={token}/>} />
+          <Route exact path="/browse" element={<BrowseScreen />} />
+          <Route exact path="/garden" element={<GardenScreen />} />
           <Route path='*' element={<NotFound />}/>
         </Routes>
     </BrowserRouter>
+    </div>
   );
 }
 

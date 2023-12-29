@@ -9,10 +9,12 @@ import { getSpeciesById } from "../Controllers/PerenualApiController";
 import { apiKey } from "../Config/perenualApiKey";
 import ActionAlerts from "./Components/ActionAlerts";
 import { Alert, Box, Stack } from "@mui/material";
+import { getTokenAndUid } from "../Controllers/FavoritesController";
 
 const FavoritesScreen = () => {
   const [fave, setFave] = useState([]);
   const [data, setData] = useState([]);
+  const {uid, token } = getTokenAndUid();
   console.log("react data", data);
 
   useEffect(() => {
@@ -20,6 +22,8 @@ const FavoritesScreen = () => {
   }, []);
 
   const handleClick = () => {
+    console.log(uid);
+    console.log(token);
     console.log("data = " + data.data);
     console.log("fave = " + fave);
   };
