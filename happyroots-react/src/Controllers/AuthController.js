@@ -1,13 +1,15 @@
 import { removeUserFromLocalStorage } from "../Helpers/authHelpers";
 import { auth } from '../Helpers/firebase';
+import { getTokenAndUid } from "./FavoritesController";
 
 //  changed 'plants' route name
 const testUrl = "http://localhost:8080/auth/test"
 const signupUrl = 'http://localhost:8080/auth/signup';
 const loginUrl = 'http://localhost:8080/auth/login';
+const {token, uid} = getTokenAndUid();
   
 
-export const getTest = (token) => {
+export const getTest = () => {
     fetch(testUrl, {
         headers: {
             'Content-Type': 'application/json',

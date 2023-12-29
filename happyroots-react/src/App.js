@@ -33,7 +33,7 @@ function App() {
     <ToastContainer />
     <BrowserRouter>      
         <Routes>
-          <Route exact path="/" element={<HomeScreen token={token}/>} />
+          <Route exact path="/" element={<HomeScreen />} />
           <Route exact path="/login" element={<LoginScreen token={token}/>} />
           <Route exact path="/favorites" element={<FavoritesScreen />} />
           <Route exact path="/signup" element={<RegisterScreen />} />
