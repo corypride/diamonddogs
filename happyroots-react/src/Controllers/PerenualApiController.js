@@ -2,16 +2,11 @@ import { apiKey } from "../Config/perenualApiKey";
 
 const baseUrl = "https://perenual.com/api";
 
-export const getSpeciesById = async (token, speciesId, apiKey) => {
+export const getSpeciesById = async (speciesId, apiKey) => {
+
   try {
     const response = await fetch(
       baseUrl + `/species/details/${speciesId}?key=${apiKey}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
     );
 
     if (!response.ok) {
@@ -26,16 +21,10 @@ export const getSpeciesById = async (token, speciesId, apiKey) => {
   }
 };
 
-export const getAllSpecies = async (token, apiKey, page) => {
+export const getAllSpecies = async (apiKey, page) => {
   try {
     const response = await fetch(
       baseUrl + `/species-list?key=${apiKey}&page=${page}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
     );
 
     if (!response.ok) {
