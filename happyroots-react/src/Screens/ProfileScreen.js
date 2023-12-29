@@ -3,16 +3,18 @@ import { getUserFromLocalStorage } from '../Helpers/authHelpers';
 import { useNavigate } from 'react-router-dom';
 import NavigationBar from './Components/NavigationBar';
 import { Link } from 'react-router-dom';
-import { getUserFavorites } from '../Controllers/FavoritesController';
+import { getUserFavorites, getTokenAndUid} from '../Controllers/FavoritesController';
 
 
 
 import '../App.css';
 
-const ProfileScreen = ({token, uid}) => {
+const ProfileScreen = () => {
 
     const [user, setUser] = useState("");
     const navigate = useNavigate();
+  const {uid, token} = getTokenAndUid();
+
   
     useEffect(() => {
         const user = getUserFromLocalStorage();
@@ -29,9 +31,7 @@ const ProfileScreen = ({token, uid}) => {
 
 
     const handleUID = () => {
-        getUserFavorites(token, uid);
-        console.log(uid)
-        console.log(token)
+        getUserFavorites();
       }
 
       const [data, setData] = useState(null);
@@ -44,10 +44,10 @@ const ProfileScreen = ({token, uid}) => {
     //     }
     // }
 
+    
 
 
     
-    const userId = uid;
 
   return (
   <>
