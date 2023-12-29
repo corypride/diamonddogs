@@ -10,8 +10,9 @@ import { apiKey } from "../Config/perenualApiKey";
 import { mockData, speciesList } from "../Controllers/mockData";
 import { saveUserFavorites } from "../Controllers/FavoritesController";
 import { Alert, Box } from "@mui/material";
+import ActionAlerts from "./Components/ActionAlerts";
 
-const BrowseScreen = ({ token, uid }) => {
+const BrowseScreen = () => {
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const dataList = data.data;
@@ -23,23 +24,24 @@ const BrowseScreen = ({ token, uid }) => {
   }, [page]); // refire when page value changes
 
   const fetchSpecies = async () => {
-    const responseData = await getAllSpecies(token, apiKey, page);
+    const responseData = await getAllSpecies(apiKey, page);
     if (responseData) {
       setData(responseData);
     }
   };
 
   const fetchSave = async (data) => {
-    const responseData = await saveUserFavorites(token, uid, data);
+    const responseData = await saveUserFavorites(data);
     if (responseData) {
       setData(responseData);
     }
   };
 
-  const handleSave = async (token, uid, data) => {
+  const handleSave = async (data) => {
     try {
-      await fetchSave(token, uid, data);
+      await fetchSave(data);
       alert(`Saved to the garden`);
+
     } catch (error) {
       console.error("Error saving data:", error);
       alert(

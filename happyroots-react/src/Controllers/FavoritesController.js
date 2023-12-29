@@ -1,3 +1,15 @@
+import { getUserFromLocalStorage } from '../Helpers/authHelpers';
+
+const getTokenAndUid = () => {
+  const user = getUserFromLocalStorage();
+  if(!user) {
+    return null;
+  }
+    const {uid, stsTokenManager} = user;
+    const token = stsTokenManager?.accessToken
+return {uid, token}
+}
+
 const baseUrl = "http://localhost:8080/favorites";
 
 const handleResponse = async (response) => {
@@ -7,7 +19,10 @@ const handleResponse = async (response) => {
   } else return false;
 };
 
-export const saveUserFavorites = async (token, userId, data) => {
+
+export const saveUserFavorites = async (data) => {
+  const {uid, token} = getTokenAndUid();
+
   const response = await fetch(baseUrl + "/create", {
     method: "POST",
     headers: {
@@ -16,15 +31,17 @@ export const saveUserFavorites = async (token, userId, data) => {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
-      userId: userId,
+      userId: uid,
       commonName: data.common_name,
       speciesId: data.id,
     }),
   });
-  return console.log(data);
+  return console.log(uid, token,  data);
 };
 
-export const deleteUserFavorite = async (token, id) => {
+export const deleteUserFavorite = async (id) => {
+  const {uid, token} = getTokenAndUid();
+
   const response = await fetch(baseUrl + `/${id}`, {
     method: "DELETE",
     headers: {
@@ -35,9 +52,11 @@ export const deleteUserFavorite = async (token, id) => {
   return response;
 };
 
-export const getUserFavorites = async (token, userId) => {
+export const getUserFavorites = async () => {
+  const {uid, token} = getTokenAndUid();
+
   try {
-    const response = await fetch(baseUrl + "/userId/" + userId, {
+    const response = await fetch(baseUrl + "/userId/" + uid, {
       // const response = await fetch(baseUrl + "/plantId/8", {
       method: "GET",
       headers: {
@@ -58,9 +77,11 @@ export const getUserFavorites = async (token, userId) => {
   }
 };
 
-export const getUserSpeciesIdList = async (token, userId) => {
+export const getUserSpeciesIdList = async () => {
+  const {uid, token} = getTokenAndUid();
+
   try {
-    const response = await fetch(baseUrl + "/speciesIdList/" + userId, {
+    const response = await fetch(baseUrl + "/speciesIdList/" + uid, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -80,7 +101,9 @@ export const getUserSpeciesIdList = async (token, userId) => {
   }
 };
 
-export const getAllFavorites = async (token) => {
+export const getAllFavorites = async () => {
+  const {uid, token} = getTokenAndUid();
+
   try {
     const response = await fetch(baseUrl, {
       method: "GET",

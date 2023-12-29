@@ -3,17 +3,15 @@ import NavigationBar from "./Components/NavigationBar";
 import "../App.css";
 import {
   getUserFavorites,
-  getAllFavorites,
-  saveUserFavorites,
   getUserSpeciesIdList,
 } from "../Controllers/FavoritesController";
-import { speciesList } from "../Controllers/mockData";
 import { getSpeciesById } from "../Controllers/PerenualApiController";
 import { apiKey } from "../Config/perenualApiKey";
+import ActionAlerts from "./Components/ActionAlerts";
+import { Alert, Box, Stack } from "@mui/material";
 
-const FavoritesScreen = ({ token, uid }) => {
+const FavoritesScreen = () => {
   const [fave, setFave] = useState([]);
-  const [species, setSpecies] = useState([]);
   const [data, setData] = useState([]);
   console.log("react data", data);
 
@@ -22,15 +20,12 @@ const FavoritesScreen = ({ token, uid }) => {
   }, []);
 
   const handleClick = () => {
-    // getUserFavorites(token, uid);
-    console.log(uid);
-    console.log(token);
     console.log("data = " + data.data);
     console.log("fave = " + fave);
   };
 
   const fetchUserFavorites = async () => {
-    const responseData = await getUserFavorites(token, uid);
+    const responseData = await getUserFavorites();
     if (responseData) {
       setData(responseData);
       // console.log(responseData)
@@ -38,54 +33,58 @@ const FavoritesScreen = ({ token, uid }) => {
   };
 
   const fetchUserSpeciesIdList = async () => {
-    const responseData = await getUserSpeciesIdList(token, uid);
+    const responseData = await getUserSpeciesIdList();
     if (responseData) {
       setData(responseData);
       console.log(responseData);
     }
   };
 
-  const fetchSpecies = async () => {
-    const responseData = await getSpeciesById(token, data, apiKey);
-    console.log(
-      data?.data?.map(
-        (id) => `https://perenual.com/api/species/details/${id}?key=${apiKey}`
-      )
+
+  const handleAlert = () => {
+    return (
+      <div>
+        <Box sx={{ width: "100%" }}>
+          <Alert>This is a basic Alert.</Alert>
+        </Box>
+      </div>
     );
-    if (responseData) {
-      setSpecies(responseData);
-      console.log(responseData);
-    }
   };
 
-  const listFaves = async () => {
-    fave.forEach((id) => fetchSpecies(id));
-  };
+  function myFunction() {
+    alert("I am an alert box!");
+  }
+
+  function con() {
+    alert("test");
+  }
+
+  function dualFunction() {
+    myFunction();
+    // handleAlert();
+    con();
+    // <ActionAlerts />
+    // ActionAlerts();
+  }
 
   return (
     <>
       <NavigationBar />
       <div>
+        <button onClick={handleAlert}>test</button>
+        <button onClick={dualFunction}>dualFunction</button>
+
         <p>buttons for testing</p>
         <button onClick={handleClick}>info in console</button>
-        {/* <button onClick={fetchUserSpeciesIdList}>
-          species id list from favorites table
-        </button> */}
         <button onClick={fetchUserFavorites}>
           display favorites table from sql
         </button>
-        {/* <button onClick={fetchSpecies}>species</button>
-        <button onClick={listFaves}>listFaves</button> */}
-        {/* <p>{show}</p> */}
-        {/* {list?.map((species=> <ul>
-            <li>{species.id}</li>
-            <li>{species.scientific_name}</li>
-            <li>{species.common_name}</li>
-            <img src={species.default_image?.thumbnail}></img>
-        </ul>))} */}
         {data?.map((favorite) => (
+          
           <ul key={favorite.id}>
-          <li>{favorite.id}</li>
+        <ActionAlerts />
+          <li></li>
+            <li>{favorite.id}</li>
             <li>{favorite.commonName}</li>
             <img src={favorite?.thumbnail}></img>
             <li>{favorite.speciesId}</li>
