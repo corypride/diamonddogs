@@ -16,38 +16,37 @@ const ProfileScreen = () => {
   const {uid, token} = getTokenAndUid() || {};
 
   
-    useEffect(() => {
-        const user = getUserFromLocalStorage();
+//     useEffect(() => {
 
-        if (user) {
-            console.log('User:', user);
-            setUser(user.providerData[0]);
-        } else {
-            console.log('User not logged in');
-            navigate('/login');
-        }
-    }, []);
+//         const loggedInUser = getUserFromLocalStorage();
 
 
+// if (loggedInUser && loggedInUser.providerData && loggedInUser.providerData[0]) {
+//     console.log('User:', loggedInUser);
+//     setUser(loggedInUser.providerData[0]);
+// } else {
+//     console.log('User not logged in');
+//     navigate('/login');
+// }
+//     }, []);
 
-    const handleUID = () => {
-        getUserFavorites();
-      }
+useEffect(() => {
+  const user = getUserFromLocalStorage();
 
-      const [data, setData] = useState(null);
-    
+  if (!user) {
+    console.log('User not logged in');
+    navigate('/login');
+    return;
+  } else if (user.providerData && user.providerData.length > 0) {
+    console.log('User:', user);
+    setUser(user.providerData[0]);
+  } else {
+    console.log('User data not available');
+    // Handle the case where user.providerData is undefined or empty
+  }
+}, []);
 
-    //   const fetchFavorites = async () => {
-    //     const data = await getUserFavorites(token, uid)
-    //     if (data) {
-    //         setData(data)
-    //     }
-    // }
 
-    
-
-
-    
 
   return (
   <>
@@ -57,7 +56,6 @@ const ProfileScreen = () => {
         <p>user id = {uid}</p>
         <p>Phone Number:{user.phoneNumber}</p>
         <p>Photo URL:{user.photoURL}</p>
-        {/* <p><button onClick={handleUID}>get favorites by user id</button></p> */}
     </div>
   </>
   );

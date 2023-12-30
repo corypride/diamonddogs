@@ -7,7 +7,7 @@ import '../App.css';
 import { getTokenAndUid } from '../Controllers/FavoritesController';
 
 const HomeScreen = () => {
-  const {token, uid} = getTokenAndUid();
+  const {token, uid} = getTokenAndUid() || {};
   const navigate = useNavigate();
   
   const handleClick = () => {
