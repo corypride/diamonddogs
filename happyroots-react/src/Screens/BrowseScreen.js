@@ -49,12 +49,16 @@ const BrowseScreen = () => {
       if (response) {
         // After saving, refetch the species data to update the list
         await fetchSpecies();
-        toast.success('Saved to the garden');
+        toast.success(`${data.common_name} has been saved to your garden`, {
+          className: 'toastify-success',
+        });
       }
 
     } catch (error) {
       console.error("Error saving data:", error);
-      toast.error('Error saving to the garden. Please try again.');
+      toast.error(`Error saving ${data.common_name}to the garden. Please try again.`, {
+        className: 'toastify-error',
+      });
     }
   };
 

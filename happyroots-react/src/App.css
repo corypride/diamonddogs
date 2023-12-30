@@ -68,3 +68,15 @@ a {
 link {
   color:#45a049;
 }
+
+
+.toastify-success {
+  background-color: #4f5e50;
+  color: #fff;
+}
+
+
+.toastify-error {
+  background-color: #f44336;
+  color: #fff;
+}
