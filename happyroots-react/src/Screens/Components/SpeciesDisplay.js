@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getSpeciesById } from "../../Controllers/PerenualApiController";
 import { apiKey } from "../../Config/perenualApiKey";
 import { deleteUserFavorite } from "../../Controllers/FavoritesController";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const SpeciesDisplay = ({ fave, refresh }) => {

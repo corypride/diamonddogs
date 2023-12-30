@@ -21,22 +21,35 @@ const handleResponse = async (response) => {
 
 
 export const saveUserFavorites = async (data) => {
-  const {uid, token} = getTokenAndUid();
+  const { uid, token } = getTokenAndUid();
 
-  const response = await fetch(baseUrl + "/create", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      userId: uid,
-      commonName: data.common_name,
-      speciesId: data.id,
-    }),
-  });
-  return console.log(uid, token,  data);
+  try {
+    const response = await fetch(baseUrl + "/create", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        userId: uid,
+        commonName: data.common_name,
+        speciesId: data.id,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to save user favorite. Status: ${response.status}`);
+    }
+
+    const responseData = await response.json();
+    console.log(uid, token, data);
+    return responseData; // Return the response data
+
+  } catch (error) {
+    console.error("Error saving user favorites:", error);
+    throw error; // Rethrow the error for handling in the calling code
+  }
 };
 
 export const deleteUserFavorite = async (id) => {

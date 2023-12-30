@@ -11,6 +11,7 @@ import { mockData, speciesList } from "../Controllers/mockData";
 import { saveUserFavorites } from "../Controllers/FavoritesController";
 import { Alert, Box } from "@mui/material";
 import ActionAlerts from "./Components/ActionAlerts";
+import { toast } from "react-toastify";
 
 const BrowseScreen = () => {
   const [page, setPage] = useState(1);
@@ -31,22 +32,29 @@ const BrowseScreen = () => {
   };
 
   const fetchSave = async (data) => {
-    const responseData = await saveUserFavorites(data);
-    if (responseData) {
-      setData(responseData);
+    try {
+      const responseData = await saveUserFavorites(data);
+      // No need to update state here
+      return responseData; // Return the response data
+    } catch (error) {
+      console.error("Error saving user favorites:", error);
+      throw error;
     }
   };
 
   const handleSave = async (data) => {
     try {
-      await fetchSave(data);
-      alert(`Saved to the garden`);
+      const response = await fetchSave(data);
+
+      if (response) {
+        // After saving, refetch the species data to update the list
+        await fetchSpecies();
+        toast.success('Saved to the garden');
+      }
 
     } catch (error) {
       console.error("Error saving data:", error);
-      alert(
-        `Error saving to the garden, you might have already saved this species`
-      );
+      toast.error('Error saving to the garden. Please try again.');
     }
   };
 

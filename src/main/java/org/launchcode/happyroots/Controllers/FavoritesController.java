@@ -58,11 +58,33 @@ public class FavoritesController {
 //    can i turn this into @Query or just enter it into sql manually
 //    ALTER TABLE  `favorites` ADD UNIQUE (`user_id` ,`species_id`);
 
-    @PostMapping("/create")
-    public Favorites createFavorite(@RequestBody Favorites favorite) {
-//        return favoritesRepository.findPair(userId, speciesId);
-    return favoritesRepository.save(favorite);
+//    @PostMapping("/create")
+//    public Favorites createFavorite(@RequestBody Favorites favorite) {
+////        return favoritesRepository.findPair(userId, speciesId);
+//    return favoritesRepository.save(favorite);
+//
+//    }
 
+    @PostMapping("/create")
+    public ResponseEntity<Favorites> createFavorite(@RequestBody Favorites favorite) {
+        try {
+            Favorites createdFavorite = favoritesRepository.save(favorite);
+            return new ResponseEntity<>(createdFavorite, HttpStatus.CREATED);
+        } catch (Exception e) {
+            // Log the exception for debugging purposes
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteFavorite(@PathVariable int id) {
+        Favorites favorite=
+                favoritesRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
+                        "Favorite does not exist with id: " + id) );
+
+        favoritesRepository.delete(favorite);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 
@@ -108,15 +130,7 @@ public class FavoritesController {
 //        return favorite.toString();
 //    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteFavorite(@PathVariable int id) {
-        Favorites favorite=
-                favoritesRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
-                        "Favorite does not exist with id: " + id) );
 
-        favoritesRepository.delete(favorite);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
 
 
 }
