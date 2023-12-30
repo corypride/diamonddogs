@@ -15,8 +15,9 @@ const useAuthentication = () => {
       navigate('/login');
       return;
     } else if (user.providerData && user.providerData.length > 0) {
-      console.log(user);
-      setUser(user.providerData[0]);
+      // console.log(user);
+      // setUser(user.providerData[0]);
+      setUser(user);
     } else {
       console.log('User data not available');
       // Handle the case where user.providerData is undefined or empty

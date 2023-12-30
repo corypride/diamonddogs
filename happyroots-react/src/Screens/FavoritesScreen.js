@@ -10,12 +10,16 @@ import { apiKey } from "../Config/perenualApiKey";
 import ActionAlerts from "./Components/ActionAlerts";
 import { Alert, Box, Stack } from "@mui/material";
 import { getTokenAndUid } from "../Controllers/FavoritesController";
+import useAuthentication from "../Hooks/useAuthentication";
 
 const FavoritesScreen = () => {
   const [fave, setFave] = useState([]);
   const [data, setData] = useState([]);
   const {uid, token } = getTokenAndUid() || {};
+  const user = useAuthentication();
   console.log("react data", data);
+  console.log(user)
+
 
   useEffect(() => {
     document.body.onLoad = fetchUserFavorites();
