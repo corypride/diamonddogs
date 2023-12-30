@@ -17,6 +17,7 @@ const NavigationBar = () => {
     if (!user) {
       console.log("User not logged in");
       navigate("/login");
+      return;
     } else if (user.providerData && user.providerData.length > 0) {
       console.log("User:", user);
       setUser(user.providerData[0]);
