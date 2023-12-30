@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, BrowserRouter, useHistory } from 'react-router-dom';
 import { getUserFromLocalStorage } from './Helpers/authHelpers';
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import RegisterScreen from "./Screens/RegisterScreen";
@@ -30,7 +30,6 @@ function App() {
 
   return (
     <div>
-    <ToastContainer />
     <BrowserRouter>      
         <Routes>
           <Route exact path="/" element={<HomeScreen token={token}/>} />
@@ -44,6 +43,7 @@ function App() {
           <Route path='*' element={<NotFound />}/>
         </Routes>
     </BrowserRouter>
+    <ToastContainer position="bottom-left" />
     </div>
   );
 }
