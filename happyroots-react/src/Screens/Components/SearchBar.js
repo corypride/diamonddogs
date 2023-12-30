@@ -36,11 +36,25 @@ const SearchBar = ({ setResults }) => {
     setResults([])
   };
 
+  function Debounce(func, timeout = 300){
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    };
+  }
+  function saveInput(){
+    console.log('Saving data');
+  }
+  
+  const processChange = Debounce(() => saveInput());
+
   return (
     <div className='input-wrapper'>
       <input 
         placeholder="Search plant names..." 
         value={input} 
+        onKeyUp={processChange}
         onChange={(e) => handleChange(e.target.value)} 
       />
       <div className="searchIcon">
