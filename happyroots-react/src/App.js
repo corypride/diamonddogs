@@ -43,7 +43,8 @@ function App() {
           <Route path='*' element={<NotFound />}/>
         </Routes>
     </BrowserRouter>
-    <ToastContainer position="bottom-left" />
+    <ToastContainer position="bottom-left"/>
+
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import NavigationBar from "./Components/NavigationBar";
-import "../App.css";
 import { getUserFavorites } from "../Controllers/FavoritesController";
 import SpeciesDisplay from "./Components/SpeciesDisplay";
+import "../App.css";
 
 const GardenScreen = () => {
   const [faves, setFaves] = useState([]);

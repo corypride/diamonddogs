@@ -31,16 +31,12 @@ const SpeciesDisplay = ({ fave, refresh }) => {
         // Refresh the data without reloading the entire page
         refresh();
         // Notify user with a success toast
-        toast.success(`${species.common_name} has been deleted from the garden`, {
-          className: 'toastify-success',
-        });
+        toast.success(`${species.common_name} has been deleted from the garden`);
       }
     } catch (error) {
       console.error("Error deleting data:", error);
       // Notify user with an error toast
-      toast.error(`Error deleting ${species?.common_name || 'species'} from the garden`, {
-        className: 'toastify-error',
-      });
+      toast.error(`Error deleting ${species?.common_name || 'species'} from the garden`);
     }
   };
 

@@ -7,16 +7,17 @@ import useAuthentication from '../Hooks/useAuthentication';
 const ProfileScreen = () => {
 const user = useAuthentication();
 const {email, uid} = user;
-// const {token, uid } = getTokenAndUid();
+const {token} = getTokenAndUid();
 console.log(user)
 
 
   return (
   <>
     <NavigationBar />
-    <div>
+    <div >
         <p>Email: {email}</p>
         <p>user id = {uid}</p>
+        <p style={{wordBreak: "break-all"}}>token = {token}</p>
         <p>Phone Number:{user.phoneNumber}</p>
         <p>Photo URL:{user.photoURL}</p>
     </div>

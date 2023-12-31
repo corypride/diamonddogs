@@ -8,22 +8,36 @@ import {
 import { getSpeciesById } from "../Controllers/PerenualApiController";
 import { apiKey } from "../Config/perenualApiKey";
 import ActionAlerts from "./Components/ActionAlerts";
-import { Alert, Box, Stack } from "@mui/material";
 import { getTokenAndUid } from "../Controllers/FavoritesController";
 import useAuthentication from "../Hooks/useAuthentication";
+import { toast } from "react-toastify";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+import Stack from "@mui/material/Stack";
 
 const FavoritesScreen = () => {
   const [fave, setFave] = useState([]);
   const [data, setData] = useState([]);
-  const {uid, token } = getTokenAndUid() || {};
+  const { uid, token } = getTokenAndUid() || {};
   const user = useAuthentication();
   console.log("react data", data);
-  console.log(user)
+  console.log(user);
+  const [alert, setAlert] = useState();
 
+  const SuccessAlert = () => (
+    // <Stack spacing={2} sx={{ width: '100%' }}>
+    //   <Alert severity="success">
+    //   has been deleted from the garden
+    //   </Alert>
+    // </Stack>
+    <Alert>test</Alert>
+  );
 
-  useEffect(() => {
-    document.body.onLoad = fetchUserFavorites();
-  }, []);
+  const ErrorAlert = () => (
+    <Stack spacing={2} sx={{ width: "100%" }}>
+      <Alert severity="error">Error deleting from the garden</Alert>
+    </Stack>
+  );
 
   const handleClick = () => {
     console.log(uid);
@@ -48,50 +62,47 @@ const FavoritesScreen = () => {
     }
   };
 
-
-  const handleAlert = () => {
-    return (
-      <div>
-        <Box sx={{ width: "100%" }}>
-          <Alert>This is a basic Alert.</Alert>
-        </Box>
-      </div>
-    );
+  const toastSuccess = () => {
+    toast.success(`success`, {
+      className: "toastify-success",
+    });
   };
 
-  function myFunction() {
-    alert("I am an alert box!");
-  }
+  const toastError = () => {
+    toast.error(`error`, {
+      className: "toastify-error",
+    });
+  };
 
-  function con() {
-    alert("test");
-  }
+  const handleSuccess = () => {
+    setAlert(SuccessAlert);
+  };
 
-  function dualFunction() {
-    myFunction();
-    // handleAlert();
-    con();
-    // <ActionAlerts />
-    // ActionAlerts();
-  }
+  const handleError = () => {
+    setAlert(ErrorAlert);
+  };
 
   return (
     <>
       <NavigationBar />
       <div>
-        <button onClick={handleAlert}>test</button>
-        <button onClick={dualFunction}>dualFunction</button>
-
         <p>buttons for testing</p>
         <button onClick={handleClick}>info in console</button>
         <button onClick={fetchUserFavorites}>
           display favorites table from sql
         </button>
+
+        <br></br>
+        <br></br>
+        <br></br>
+        <button onClick={toastSuccess}>toast success</button>
+        <button onClick={toastError}>toast error</button>
+        <button onClick={handleSuccess}>success</button>
+        <button onClick={handleError}>error</button>
+
         {data?.map((favorite) => (
-          
           <ul key={favorite.id}>
-        <ActionAlerts />
-          <li></li>
+            <li></li>
             <li>{favorite.id}</li>
             <li>{favorite.commonName}</li>
             <img src={favorite?.thumbnail}></img>
