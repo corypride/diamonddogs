@@ -7,7 +7,6 @@ import {
 } from "../Controllers/FavoritesController";
 import { getSpeciesById } from "../Controllers/PerenualApiController";
 import { apiKey } from "../Config/perenualApiKey";
-import ActionAlerts from "./Components/ActionAlerts";
 import { getTokenAndUid } from "../Controllers/FavoritesController";
 import useAuthentication from "../Hooks/useAuthentication";
 import { toast } from "react-toastify";

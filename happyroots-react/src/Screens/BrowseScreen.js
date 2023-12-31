@@ -10,7 +10,6 @@ import { apiKey } from "../Config/perenualApiKey";
 import { mockData, speciesList } from "../Controllers/mockData";
 import { saveUserFavorites } from "../Controllers/FavoritesController";
 import { Alert, Box } from "@mui/material";
-import ActionAlerts from "./Components/ActionAlerts";
 import { toast } from "react-toastify";
 
 const BrowseScreen = () => {
