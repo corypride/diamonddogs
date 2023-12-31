@@ -4,12 +4,16 @@ import { auth } from '../Helpers/firebase';
 import { getTest, logout } from '../Controllers/AuthController';
 import NavigationBar from './Components/NavigationBar';
 import '../App.css';
+import { getTokenAndUid } from '../Controllers/FavoritesController';
 
-const HomeScreen = ({token}) => {
+const HomeScreen = () => {
+  const {token, uid} = getTokenAndUid() || {};
   const navigate = useNavigate();
   
   const handleClick = () => {
     getTest(token);
+    console.log("token : " + token)
+    console.log("uid : "+ uid)
   }
 
   const handleLogout = () => {
@@ -28,8 +32,8 @@ const HomeScreen = ({token}) => {
         <br></br>
         <br></br>
         <ul id="buttons">
-          <li class="newbutton"><button onClick={handleClick}>Test</button></li>
-          <li class="newbutton"><button onClick={logout}>Logout</button></li>
+          <li className="newbutton"><button onClick={handleClick}>Test</button></li>
+          <li className="newbutton"><button onClick={logout}>Logout</button></li>
         </ul>
         
         

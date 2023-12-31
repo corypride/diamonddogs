@@ -21,9 +21,9 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/plants/").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/plants/signup").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/plants/login").permitAll()
+                        .requestMatchers("/auth/").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/signup").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults()));

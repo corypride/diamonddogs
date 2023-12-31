@@ -13,6 +13,7 @@ const SearchScreen = () => {
   <>
     <NavigationBar />
     <div>
+      <input type="search" ></input>
         <p><button onClick={handleSearch}>Search</button></p>
     </div>
   </>
