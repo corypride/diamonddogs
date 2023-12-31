@@ -1,4 +1,3 @@
-// useAuthentication.js
 import { useEffect, useState } from 'react';
 import { getUserFromLocalStorage } from '../Helpers/authHelpers';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +19,6 @@ const useAuthentication = () => {
       setUser(user);
     } else {
       console.log('User data not available');
-      // Handle the case where user.providerData is undefined or empty
     }
   }, [navigate]);
 

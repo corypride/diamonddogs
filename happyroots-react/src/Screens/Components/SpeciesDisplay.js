@@ -20,7 +20,6 @@ const SpeciesDisplay = ({ fave, refresh }) => {
       }
     } catch (error) {
       console.error("Error fetching species:", error);
-      // Handle error if needed
     }
   };
 
@@ -28,20 +27,18 @@ const SpeciesDisplay = ({ fave, refresh }) => {
     try {
       const responseData = await deleteUserFavorite(id);
       if (responseData) {
-        // Refresh the data without reloading the entire page
         refresh();
-        // Notify user with a success toast
+        // maybe change this to a material ui alert
         toast.success(`${species.common_name} has been deleted from the garden`);
       }
     } catch (error) {
       console.error("Error deleting data:", error);
-      // Notify user with an error toast
+        // maybe change this to a material ui alert
       toast.error(`Error deleting ${species?.common_name || 'species'} from the garden`);
     }
   };
 
   if (!species) {
-    // Optionally, you can render a loading state here
     return <p>Loading...</p>;
   }
 
