@@ -4,6 +4,7 @@ import { auth } from '../Helpers/firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
 import { saveUserToLocalStorage } from '../Helpers/authHelpers';
 import './styles/login.css';
+import { login } from '../Controllers/AuthController';
  
 const LoginScreen = () => {
     const navigate = useNavigate();
@@ -17,6 +18,8 @@ const LoginScreen = () => {
             const user = userCredential.user;
             
             saveUserToLocalStorage(user);
+
+              console.log('User after login:', user);
 
             navigate("/")
           })
@@ -58,6 +61,7 @@ const LoginScreen = () => {
                                                 
             <div>
               <button onClick={onLogin}>Login</button>
+              {/* <button onClick={login}>Login</button> */}
             </div>                               
           </form>
           <p className="text-sm text-white text-center">

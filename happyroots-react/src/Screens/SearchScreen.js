@@ -23,6 +23,8 @@ const SearchScreen = () => {
           <SearchBar setResults={setResults} />
           <SearchResultsList results={results}/>
         </div>
+      <input type="search" ></input>
+        <p><button onClick={handleSearch}>Search</button></p>
     </div>
   </>
   );

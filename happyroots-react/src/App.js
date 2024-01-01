@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
-import { Routes, Route, BrowserRouter, useHistory } from 'react-router-dom';
-import { getUserFromLocalStorage } from './Helpers/authHelpers';
-
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import RegisterScreen from "./Screens/RegisterScreen";
 import LoginScreen from "./Screens/LoginScreen";
 import HomeScreen from "./Screens/HomeScreen";
 import ProfileScreen from "./Screens/ProfileScreen";
 import FavoritesScreen from "./Screens/FavoritesScreen";
 import SearchScreen from "./Screens/SearchScreen";
+import BrowseScreen from "./Screens/BrowseScreen";
+import GardenScreen from "./Screens/GardenScreen";
 import NotFound from './Screens/NotFound';
 import "./App.css";
 import ReactGA from 'react-ga4';
@@ -29,17 +29,28 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>      
+    <div>
+    <BrowserRouter>
         <Routes>
+          <Route exact path="/" element={<HomeScreen token={token}/>} />
+          <Route exact path="/login" element={<LoginScreen token={token}/>} />
+          <Route exact path="/favorites" element={<FavoritesScreen />} />
           <Route exact path="/" element={<HomeScreen token={token}/>} />
           <Route exact path="/login" element={<LoginScreen token={token}/>} />
           <Route exact path="/favorites" element={<FavoritesScreen uid={user?.uid} token={token}/>} />
           <Route exact path="/signup" element={<RegisterScreen />} />
+          <Route exact path="/profile" element={<ProfileScreen />} />
+          <Route exact path="/search" element={<SearchScreen />} />
+          <Route exact path="/browse" element={<BrowseScreen />} />
+          <Route exact path="/garden" element={<GardenScreen />} />
           <Route exact path="/profile" element={<ProfileScreen uid={user?.uid} token={token}/>} />
           <Route exact path="/search" element={<SearchScreen />} />
           <Route path='*' element={<NotFound />}/>
         </Routes>
     </BrowserRouter>
+    <ToastContainer position="bottom-left"/>
+
+    </div>
   );
 }
 
