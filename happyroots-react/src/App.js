@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import RegisterScreen from "./Screens/RegisterScreen";
 import LoginScreen from "./Screens/LoginScreen";
