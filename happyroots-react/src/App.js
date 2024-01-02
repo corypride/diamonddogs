@@ -1,4 +1,5 @@
- import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import RegisterScreen from "./Screens/RegisterScreen";
 import LoginScreen from "./Screens/LoginScreen";
@@ -10,6 +11,8 @@ import BrowseScreen from "./Screens/BrowseScreen";
 import GardenScreen from "./Screens/GardenScreen";
 import NotFound from './Screens/NotFound';
 import "./App.css";
+import { ToastContainer } from 'react-toastify';
+import { getUserFromLocalStorage } from "./Helpers/authHelpers";
 import ReactGA from 'react-ga4';
 
 const TRACKING_ID = "G-BSEN65VMZT"; // YOUR_OWN_TRACKING_ID

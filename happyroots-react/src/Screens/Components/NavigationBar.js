@@ -30,7 +30,7 @@ const NavigationBar = () => {
 
 
 
-  const user = useAuthentication();
+  //const user = useAuthentication();
   // const navigate = useNavigate();
   // const [user, setUser] = useState(null);
 
@@ -52,12 +52,6 @@ const NavigationBar = () => {
   return (
     <nav>
       <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/search">Search</Link></li>
-        <li><Link to="/profile">Profile</Link></li>
-        <li><Link to="/favorites">Favorites</Link></li>
-        {/* <li><Link to="/login">Login</Link> </li> */}
-        <li><Link to="/login" onClick={(logout)}>Logout</Link></li>
         <li>
           <Link to="/">Home</Link>
         </li>
