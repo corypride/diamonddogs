@@ -2,28 +2,34 @@ import React, {useState} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom'
 import './styles/login.css';
 import { login } from '../Controllers/AuthController';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { saveUserToLocalStorage } from '../Helpers/localStorageHelper';
+import { auth } from '../Helpers/firebase';
  
 const LoginScreen = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
        
-    const onLogin = async (e) => {
-      e.preventDefault();
-    
-      if (email === '' || password === '') {
-        alert('Something empty');
-        return;
-      }
-    
-      try {
-        await login(email, password);
-        navigate('/');
-      } catch (error) {
-        alert(error);
-      }
-    };
-    
+    const onLogin = (e) => {
+        e.preventDefault();
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            
+            saveUserToLocalStorage(user);
+
+              console.log('User after login:', user);
+
+            navigate("/")
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage)
+        });
+       
+    }
     return (
       <>
         <div className="login-form"> 
@@ -55,6 +61,7 @@ const LoginScreen = () => {
                                                 
             <div>
               <button onClick={onLogin}>Login</button>
+              {/* <button onClick={login}>Login</button> */}
             </div>                               
           </form>
           <p className="text-sm text-white text-center">

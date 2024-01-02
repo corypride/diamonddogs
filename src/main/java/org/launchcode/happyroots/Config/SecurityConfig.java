@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.jwt.*;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 
+
 @Configuration
 public class SecurityConfig {
 
@@ -18,7 +19,6 @@ public class SecurityConfig {
     @Bean
     public DefaultSecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-//                .cors(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers(HttpMethod.POST, "/users/signup").permitAll()

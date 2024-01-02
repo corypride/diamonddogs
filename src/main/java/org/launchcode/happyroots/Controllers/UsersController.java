@@ -84,7 +84,7 @@ public class UsersController {
 
             return ResponseEntity.ok(userRecord);
         } catch (FirebaseAuthException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null); // Handle error response
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
 }

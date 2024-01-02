@@ -1,32 +1,36 @@
-import { removeUserFromLocalStorage, saveUserToLocalStorage } from "../Helpers/localStorageHelper";
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { removeUserFromLocalStorage } from "../Helpers/localStorageHelper";
 import { auth } from '../Helpers/firebase';
 
-const baseUrl = 'http://localhost:8080';
-const testUrl = '/plants/test';
-const signupUrl = '/users/signup';
-const updateImageUrl = '/users/changeUserImage';
+const testUrl = "http://localhost:8080/plants/test"
+const signupUrl = 'http://localhost:8080/users/signup';
+const loginUrl = 'http://localhost:8080/plants/login';
+const updateImageUrl = 'http://localhost:8080/users/changeUserImage';
+const updateUsernameUrl = 'http://localhost:8080/users/changeUsername';
   
-export const login = async (email, password) => {
-  try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
-    saveUserToLocalStorage(user);
-  
-    return user;
 
-  } catch (error) {
+export const getTest = (token) => {
+    fetch(testUrl, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    }).then(response => console.log(response));
+}
 
-    console.error(error.code, error.message);
-    throw error;
-  }
-};
+export const login = (data) => {
+    fetch(loginUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    }).then(response => {
+        return response.data
+    });
+}
 
-export const signup = async (data) => {
-    data['username'] = '';
-    data['photoUrl'] = '';
-    
-    await fetch(`${baseUrl}${signupUrl}`, {
+export const signup = (data) => {
+    fetch(signupUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -39,6 +43,8 @@ export const logout = () => {
     //TODO:?
 
     removeUserFromLocalStorage();
+    window.location.reload();
+
 }
 
 export const updateDisplayImage = async (token, image) => {
@@ -46,7 +52,7 @@ export const updateDisplayImage = async (token, image) => {
     formData.append('image', image);
 
     try {
-        const response = await fetch(`${baseUrl}${updateImageUrl}`, {
+        const response = await fetch(updateImageUrl, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -71,7 +77,7 @@ export const updateUsername = async (token, username) => {
     formData.append('username', username);
     
     try {
-        const response = await fetch(`${baseUrl}${updateImageUrl}`, {
+        const response = await fetch(updateUsernameUrl, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -89,13 +95,4 @@ export const updateUsername = async (token, username) => {
         console.error('Error updating user:', error.message);
         throw error;
     }
-}
-
-export const getTest = (token) => {
-    fetch(`${baseUrl}${testUrl}`, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    }).then(response => console.log(response));
 }

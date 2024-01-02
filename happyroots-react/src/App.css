@@ -23,7 +23,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #205e22;
 }
 
 .App-logo {
@@ -59,4 +59,34 @@ button:hover {
   to {
     transform: rotate(360deg);
   }
+}
+
+a {
+  color:#45a049;
+}
+
+link {
+  color:#45a049;
+}
+
+
+/* .toastify-success {
+  background-color: #4f003e;
+  color: #fff;
+} */
+
+
+/* .toastify-error {
+  background-color: #f44336;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+} */
+
+.Toastify__toast-body {
+  background-color: red;
+  width: 100%;
 }

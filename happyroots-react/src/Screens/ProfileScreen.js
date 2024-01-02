@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import NavigationBar from './Components/NavigationBar';
 import { updateDisplayImage, updateUsername } from '../Controllers/AuthController';
 import './styles/profile.css';
+import { getTokenAndUid} from '../Controllers/FavoritesController';
+import '../App.css';
+import useAuthentication from '../Hooks/useAuthentication';
+
 
 const ProfileScreen = () => {
     const [user, setUser] = useState({});
@@ -100,7 +104,6 @@ const ProfileScreen = () => {
                   <button onClick={updateUsername} className="edit-buttons-button">Change username</button>
                   <br />
 
-
                   <label className="edit-mode-label">
                     Photo: 
                   </label>
@@ -126,7 +129,7 @@ const ProfileScreen = () => {
                   <button onClick={updateImage} className="edit-buttons-button">Change user image</button>
                   <br />
 
-<br />
+                  <br />
 
                   <button onClick={exitEditMode} className="edit-buttons-button cancel">Cancel</button>
                 </>
