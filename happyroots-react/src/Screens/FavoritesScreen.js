@@ -10,9 +10,7 @@ import { apiKey } from "../Config/perenualApiKey";
 import { getTokenAndUid } from "../Controllers/FavoritesController";
 import useAuthentication from "../Hooks/useAuthentication";
 import { toast } from "react-toastify";
-import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
-import Stack from "@mui/material/Stack";
+
 
 const FavoritesScreen = () => {
   const [fave, setFave] = useState([]);
@@ -21,22 +19,7 @@ const FavoritesScreen = () => {
   const user = useAuthentication();
   console.log("react data", data);
   console.log(user);
-  const [alert, setAlert] = useState();
 
-  const SuccessAlert = () => (
-    // <Stack spacing={2} sx={{ width: '100%' }}>
-    //   <Alert severity="success">
-    //   has been deleted from the garden
-    //   </Alert>
-    // </Stack>
-    <Alert>test</Alert>
-  );
-
-  const ErrorAlert = () => (
-    <Stack spacing={2} sx={{ width: "100%" }}>
-      <Alert severity="error">Error deleting from the garden</Alert>
-    </Stack>
-  );
 
   const handleClick = () => {
     console.log(uid);
@@ -61,25 +44,25 @@ const FavoritesScreen = () => {
     }
   };
 
+
+  //  const toastSuccess = () => {
+  //   toast.success(`success`,   {
+  //     style: {
+  //     backgroundColor: "red",
+  //     color: "yellow", 
+  //     height: "30px"
+  //   }});
+  // };
+
+  
   const toastSuccess = () => {
-    toast.success(`success`, {
-      className: "toastify-success",
-    });
+    toast.success(`success`);
   };
 
   const toastError = () => {
-    toast.error(`error`, {
-      className: "toastify-error",
-    });
+    toast.error(`error`);
   };
 
-  const handleSuccess = () => {
-    setAlert(SuccessAlert);
-  };
-
-  const handleError = () => {
-    setAlert(ErrorAlert);
-  };
 
   return (
     <>
@@ -96,8 +79,7 @@ const FavoritesScreen = () => {
         <br></br>
         <button onClick={toastSuccess}>toast success</button>
         <button onClick={toastError}>toast error</button>
-        <button onClick={handleSuccess}>success</button>
-        <button onClick={handleError}>error</button>
+
 
         {data?.map((favorite) => (
           <ul key={favorite.id}>

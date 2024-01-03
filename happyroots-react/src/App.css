@@ -70,23 +70,7 @@ link {
 }
 
 
-/* .toastify-success {
-  background-color: #4f003e;
-  color: #fff;
-} */
-
-
-/* .toastify-error {
-  background-color: #f44336;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-} */
-
-.Toastify__toast-body {
-  background-color: rgb(255, 255, 255);
-  width: 100%;
+.Toastify__toast {
+  display: grid;
+  height: 25vh;
 }
