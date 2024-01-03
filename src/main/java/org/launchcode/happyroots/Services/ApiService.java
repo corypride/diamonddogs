@@ -55,9 +55,10 @@ public class ApiService {
         return extractCareInformation(Objects.requireNonNull(response.getBody()));
     }
     // Returns list of species list data
-    public List<DataItem> getSpeciesList() {
+    public List<DataItem> getSpeciesList(int page) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://perenual.com/api/species-list")
-                .queryParam("key", apiKey);
+                .queryParam("key", apiKey)
+                .queryParam("page", page);
 
         String url = builder.toUriString();
 

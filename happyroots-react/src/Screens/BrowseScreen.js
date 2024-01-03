@@ -11,6 +11,11 @@ import { mockData, speciesList } from "../Controllers/mockData";
 import { saveUserFavorites } from "../Controllers/FavoritesController";
 import { Alert, Box } from "@mui/material";
 import { toast } from "react-toastify";
+import { auth } from '../Helpers/firebase.js';
+
+const getToken = async () => {
+  return auth.currentUser?.getIdToken(true);
+};
 
 const BrowseScreen = () => {
   const [page, setPage] = useState(1);
@@ -24,7 +29,7 @@ const BrowseScreen = () => {
   }, [page]); // refire when page value changes
 
   const fetchSpecies = async () => {
-    const responseData = await getAllSpecies(apiKey, page);
+    const responseData = await getAllSpecies(page);
     if (responseData) {
       setData(responseData);
     }
@@ -90,7 +95,7 @@ const BrowseScreen = () => {
         <br></br>
 
         {/* LIST */}
-        {dataList?.map((species) => (
+        {data?.map((species) => (
           <div key={species.id}>
             <img src={species.default_image?.thumbnail}></img>
             <p>Common Name : {species.common_name}</p>
