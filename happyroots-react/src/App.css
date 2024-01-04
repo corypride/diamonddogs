@@ -72,5 +72,54 @@ link {
 
 .Toastify__toast {
   display: grid;
-  height: 25vh;
+  color: rgb(255, 255, 255);
+  height: fit-content;
+  background-color: #3d3d3d;
+  /* border: "2px solid #073516"; */
+
+  align-items: center;
+/* border: whitesmoke; */
+/* border-radius: 4vh;
+border-width: thin; */
+border-style: solid;
+border-width: 1px;
+
 }
+
+.Toastify__close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px; /* Adjust the margin as needed */
+  cursor: pointer;
+  color: #fff; /* Close icon color */
+}
+
+.Toastify__progress-bar {
+  height: 1vh;
+  border: 0.2vh solid transparent;
+  border-radius: 0.2vh;
+  padding: 0;
+}
+
+.Toastify__progress-bar--success {
+  background-color: #0a520c;
+}
+
+.Toastify__progress-bar--error {
+  background-color: #740303;
+}
+
+.divColor { 
+  align-items: center;
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: 073516;
+  border-width: 1px;
+  border-radius: 4vh;
+  /* background-color: #04511D; */
+  background-color: #18522a;
+}
+
+
+

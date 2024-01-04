@@ -43,17 +43,6 @@ const FavoritesScreen = () => {
       console.log(responseData);
     }
   };
-
-
-  //  const toastSuccess = () => {
-  //   toast.success(`success`,   {
-  //     style: {
-  //     backgroundColor: "red",
-  //     color: "yellow", 
-  //     height: "30px"
-  //   }});
-  // };
-
   
   const toastSuccess = () => {
     toast.success(`success`);
@@ -67,15 +56,15 @@ const FavoritesScreen = () => {
   return (
     <>
       <NavigationBar />
-      <div>
-        <p>buttons for testing</p>
+      <div className="divColor" style={{
+          display: "flex",
+          flexDirection: "column",
+        }}>
+        <h4>buttons for testing</h4>
         <button onClick={handleClick}>info in console</button>
         <button onClick={fetchUserFavorites}>
           display favorites table from sql
         </button>
-
-        <br></br>
-        <br></br>
         <br></br>
         <button onClick={toastSuccess}>toast success</button>
         <button onClick={toastError}>toast error</button>

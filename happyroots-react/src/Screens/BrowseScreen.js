@@ -100,15 +100,11 @@ const BrowseScreen = () => {
           }}
         >
           {dataList?.map((species) => (
-            <div
+            <div className="divColor"
               key={species.id}
               style={{
                 width: "33%",
                 marginBottom: "20px",
-                boxSizing: "border-box",
-                border: "2px solid #073516",
-                borderRadius: "4vh",
-                backgroundColor: "#04511D",
               }}
             >
               <h3>{species.common_name}</h3>

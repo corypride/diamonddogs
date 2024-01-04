@@ -54,20 +54,14 @@ const SpeciesDisplay = ({ fave, refresh }) => {
       style={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
         marginBottom: "20px",
       }}
     >
-      <div
+      <div className="divColor"
         key={fave.id}
         style={{
           display: "flex",
           flexDirection: "row",
-          alignItems: "center",
-          boxSizing: "border-box",
-          border: "2px solid #073516",
-          borderRadius: "4vh",
-          backgroundColor: "#04511D",
         }}
       >
         <img
