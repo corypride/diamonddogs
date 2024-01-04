@@ -106,9 +106,9 @@ const BrowseScreen = () => {
                 width: "33%",
                 marginBottom: "20px",
                 boxSizing: "border-box",
-                border: "5px solid #ccd",
+                border: "2px solid #073516",
                 borderRadius: "4vh",
-                backgroundColor: "#cce",
+                backgroundColor: "#04511D",
               }}
             >
               <h3>{species.common_name}</h3>
@@ -125,8 +125,7 @@ const BrowseScreen = () => {
                 style={{ width: "100%", borderRadius: "8px" }}
               />
               <span>
-
-              <p>Scientific Name : {species.scientific_name}</p>
+                <p>Scientific Name : {species.scientific_name}</p>
               </span>
               <p>Cycle : {species.cycle}</p>
               {/* <p>Sunlight : {species.sunlight}</p> */}
