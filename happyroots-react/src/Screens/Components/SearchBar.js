@@ -14,27 +14,48 @@ import { Alert, Box } from "@mui/material";
 import { toast } from "react-toastify";
 import ReactGA from 'react-ga4';
 import SpeciesDisplay from "./SpeciesDisplay";
+import { apiKey } from "..//../Config/perenualApiKey";
+const baseUrl = "https://perenual.com/api";
+
 
 
 const SearchBar = ({ setResults }) => {
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("");
+  //const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const fetchData = (value) => {
-    fetch("https://perenual.com/api/species-list?key=sk-p0RY6572ddd57bba23207")
+  const handleSearch = async => {
+    
+  }
+
+  
+
+  /*const searchPlants = async (input, setResults, maxPages = 405) => {
+    const endpoint = `https://perenual.com/api/species-list?key=sk-p0RY6572ddd57bba23207`;
+    for (let page = 1; page <= maxPages; page++) {
+      const url = `${endpoint}?page=${page}
+    }
+  }*/
+
+
+
+   const fetchData = async (value) => {
+    await fetch(`https://perenual.com/api/species-list?key=${apiKey}&q=${input}`)
       .then((response) => response.json())
       .then((json) => {
-      const results = json.data.filter((plant) => {
+      const results = json.data.filter((species) => {
         return (
           value &&
-          plant &&
-          plant.common_name && 
-          plant.common_name.toLowerCase().includes(value)
+          species &&
+          species.common_name && 
+          species.common_name.toLowerCase().includes(value)
         );
       });
-      console.log(json);
+      //console.log(json);
       setResults(results);
     });
   }
+
 
   const handleChange = (value) => {
     setInput(value)
@@ -46,7 +67,7 @@ const SearchBar = ({ setResults }) => {
     setResults([])
   };
 
-  function Debounce(func, timeout = 300){
+  /*function Debounce(func, timeout = 300){
     let timer;
     return (...args) => {
       clearTimeout(timer);
@@ -57,15 +78,14 @@ const SearchBar = ({ setResults }) => {
     console.log('Saving data');
   }
   
-  const processChange = Debounce(() => saveInput());
+  const processChange = Debounce(() => saveInput());*/
 
   return (
     <div className='input-wrapper'>
       <input 
         placeholder="Search plant names..." 
         value={input} 
-        onKeyUp={processChange}
-        onChange={(e) => handleChange(e.target.value)} 
+        onChange={(e) => handleChange(e.target.value)} //on submit?
       />
       <div className="searchIcon">
         {input.length === 0 ? (
@@ -76,6 +96,7 @@ const SearchBar = ({ setResults }) => {
       </div>
     </div>
   );
+
 };
 
 export default SearchBar;
