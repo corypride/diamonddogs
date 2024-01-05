@@ -60,9 +60,18 @@ const NavigationBar = () => {
     ) : (
       <ul>
         <li>
-          <Link to="/" onClick={logout}>
+          {/* <Link to="/" onClick={logout}>
             Logout
-          </Link>
+          </Link> */}
+          <Link to="/" onClick={(e) => {
+    if(window.confirm('Are you sure you want to log out?')) {
+        logout();
+    } else {
+        e.preventDefault();
+    }
+}}>
+    Logout
+</Link>
         </li>
       </ul>
     )}
