@@ -7,10 +7,10 @@ import useAuthentication from '../../Hooks/useAuthentication';
 import { login, logout } from '../../Controllers/AuthController';
 import { useEffect, useState } from 'react';
 import { getUserFromLocalStorage } from '../../Helpers/authHelpers';
+import { alignProperty } from '@mui/material/styles/cssUtils';
 
 const NavigationBar = () => {
   const user = useAuthentication();
-  // const navigate = useNavigate();
   // const [user, setUser] = useState(null);
 
   // useEffect(() => {
@@ -29,8 +29,9 @@ const NavigationBar = () => {
   // }, []);
 
   return (
-    <nav>
-      <ul>
+    <nav className='navDiv' style={{  display: 'flex', justifyContent: 'space-around'}}>
+        <img src="Images/nEVyjJPV.jpg" style={{ height: "10vh", borderRadius: "50%"}}></img>
+      <ul >
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -49,18 +50,22 @@ const NavigationBar = () => {
         <li>
           <Link to="/profile">Profile</Link>
         </li>
+        </ul>
         {!user ? (
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        ) : (
-          <li>
-            <Link to="/" onClick={logout}>
-              Logout
-            </Link>
-          </li>
-        )}
+      <ul>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
       </ul>
+    ) : (
+      <ul>
+        <li>
+          <Link to="/" onClick={logout}>
+            Logout
+          </Link>
+        </li>
+      </ul>
+    )}
     </nav>
   );
 };
