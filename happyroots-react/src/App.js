@@ -14,6 +14,7 @@ import "./App.css";
 import { ToastContainer } from 'react-toastify';
 import { getUserFromLocalStorage } from "./Helpers/authHelpers";
 import ReactGA from 'react-ga4';
+import { useLocation } from "react-router-dom";
 
 const TRACKING_ID = "G-BSEN65VMZT"; // YOUR_OWN_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
@@ -21,6 +22,11 @@ ReactGA.initialize(TRACKING_ID);
 function App() {
   const [user, setUser] = useState(null);
   const token = user?.stsTokenManager?.accessToken
+
+  /*const location = useLocation();
+  useEffect(() => {
+    ReactGA.pageview(location.pathname + location.search);
+  }, [location]);*/
 
   useEffect(() => {
     const alreadyLoggedInUser = getUserFromLocalStorage();
