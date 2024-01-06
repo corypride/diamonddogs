@@ -72,22 +72,13 @@ console.log(results);
     <div>
         <div className="search-bar-container">
           <SearchBar setResults={setResults} />
-          <SearchResultsList results={results}/>
-          <button onClick={showResults}>Search</button>
+          {/* <SearchResultsList results={results}/> */}
+          {/* <button onClick={showResults}>Search</button> */}
         </div>
       <input type="search" ></input>
-    </div>
-    <div>
-            <h2>Plant Species</h2>
-            
-            {/* BUTTONS */}
-            {/* <button onClick={() => handlePreviousPage()}>Previous Page</button>
-            <button onClick={() => handleNextPage()}>Next Page</button> */}
-            <br></br>
-            <br></br>
-    
-            {/* LIST */}
-            {results?.map((species) => (
+      <h2>Search Results</h2>
+      {/* LIST */}
+      {results?.map((species) => (
               <div key={species.id}>
                 <img src={species.default_image?.thumbnail}></img>
                 <p>Common Name : {species.common_name}</p>
@@ -103,6 +94,17 @@ console.log(results);
                 <br></br>
               </div>
             ))}
+    </div>
+    <div>
+
+            
+            {/* BUTTONS */}
+            {/* <button onClick={() => handlePreviousPage()}>Previous Page</button>
+            <button onClick={() => handleNextPage()}>Next Page</button> */}
+            <br></br>
+            <br></br>
+    
+            
     
             {/* BUTTONS */}
             {/* <button onClick={() => handlePreviousPage()}>Previous Page</button>
