@@ -1,5 +1,6 @@
 import { apiKey } from "../Config/perenualApiKey";
-import SearchBar from "../Screens/Components/SearchBar";
+import {results} from "../Screens/Components/SearchBar";
+
 
 const baseUrl = "https://perenual.com/api";
 

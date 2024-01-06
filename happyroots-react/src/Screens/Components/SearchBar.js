@@ -28,17 +28,6 @@ const SearchBar = ({ setResults }) => {
     
   }
 
-  
-
-  /*const searchPlants = async (input, setResults, maxPages = 405) => {
-    const endpoint = `https://perenual.com/api/species-list?key=sk-p0RY6572ddd57bba23207`;
-    for (let page = 1; page <= maxPages; page++) {
-      const url = `${endpoint}?page=${page}
-    }
-  }*/
-
-
-
    const fetchData = async (value) => {
     await fetch(`https://perenual.com/api/species-list?key=${apiKey}&q=${input}`)
       .then((response) => response.json())
@@ -51,7 +40,6 @@ const SearchBar = ({ setResults }) => {
           species.common_name.toLowerCase().includes(value)
         );
       });
-      //console.log(json);
       setResults(results);
     });
   }
@@ -100,3 +88,5 @@ const SearchBar = ({ setResults }) => {
 };
 
 export default SearchBar;
+
+

@@ -8,6 +8,7 @@ import {
   getSpeciesById,
   getAllSpecies,
   saveFavorites,
+  getSpeciesByInput
 } from "../Controllers/PerenualApiController";
 import { mockData, speciesList } from "../Controllers/mockData";
 import { saveUserFavorites } from "../Controllers/FavoritesController";
@@ -21,7 +22,9 @@ import { useNavigate } from 'react-router-dom';
 
 const SearchScreen = () => {
   const [results, setResults] = useState([]);
+  
   const navigate = useNavigate();
+
 
   const showResults = (event, query) => {
     console.log("button clicked")
@@ -29,21 +32,39 @@ const SearchScreen = () => {
     navigate(`/search-result`);
   }
 
-  console.log(results);
+  const fetchSave = async (data) => {
+    try {
+      const responseData = await saveUserFavorites(data);
+      // No need to update state here
+      return responseData; // Return the response data
+    } catch (error) {
+      console.error("Error saving user favorites:", error);
+      throw error;
+    }
+  };
 
-    /*
-    async function getPlants() {
-      const urls = Array.from( { length: 0 }, (v,i) => `https://perenual.com/api/species-list?key=sk-p0RY6572ddd57bba23207&page=${i + 1}` );
-      const promises = urls.map(url => fetch(url).then(res => res.json()).then(data => data.results));
-      const plantData = (await Promise.all(promises)).flat();
-      console.log(`Results for ${plantData.length} plants downloaded...`);
-      console.log('Results:', plantData);
-  }
-  
-  getPlants()*/
+  const handleSave = async (data) => {
+    try {
+      const response = await fetchSave(data);
+
+      if (response) {
+        // After saving, refetch the species data to update the list
+        //await fetchSpecies();
+        toast.success(`${data.common_name} has been saved to your garden`, {
+          className: 'toastify-success',
+        });
+      }
+
+    } catch (error) {
+      console.error("Error saving data:", error);
+      toast.error(`Error saving ${data.common_name}to the garden. Please try again.`, {
+        className: 'toastify-error',
+      });
+    }
+  };
 
 
-
+console.log(results);
 
   return (
   <>
@@ -56,6 +77,37 @@ const SearchScreen = () => {
         </div>
       <input type="search" ></input>
     </div>
+    <div>
+            <h2>Plant Species</h2>
+            
+            {/* BUTTONS */}
+            {/* <button onClick={() => handlePreviousPage()}>Previous Page</button>
+            <button onClick={() => handleNextPage()}>Next Page</button> */}
+            <br></br>
+            <br></br>
+    
+            {/* LIST */}
+            {results?.map((species) => (
+              <div key={species.id}>
+                <img src={species.default_image?.thumbnail}></img>
+                <p>Common Name : {species.common_name}</p>
+                <p>Cycle : {species.cycle}</p>
+                <p>Sunlight : {species.sunlight}</p>
+                <p>Watering : {species.watering}</p>
+                <div>
+                  <button onClick={() => handleSave(species)}>
+                    Save {species.common_name} to garden
+                  </button>
+                </div>
+                <br></br>
+                <br></br>
+              </div>
+            ))}
+    
+            {/* BUTTONS */}
+            {/* <button onClick={() => handlePreviousPage()}>Previous Page</button>
+            <button onClick={() => handleNextPage()}>Next Page</button> */}
+          </div>
   </>
   );
 
