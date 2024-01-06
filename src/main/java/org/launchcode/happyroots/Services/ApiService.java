@@ -166,7 +166,7 @@ public class ApiService {
         CareDataItem responseItem = apiResponse.getData().get(0);
         CareInformation careInfo = new CareInformation();
 
-        careInfo.setId(responseItem.getId());
+//        careInfo.setId(responseItem.getId());
         careInfo.setSpeciesId(responseItem.getSpeciesId());
         updateCareInformation(careInfo, responseItem.getSection());
 

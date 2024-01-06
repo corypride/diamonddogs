@@ -52,3 +52,30 @@ const getTokenAndUid = () => {
   }
   return null;
 };
+
+// // Function to get token before API calls to place into header
+// export const authenticatedFetch = async (url, options = {}) => {
+//   const token = await auth.currentUser?.getIdToken(true);
+//   if (!token) {
+//     throw new Error('User token is not available');
+//   }
+
+//   // Set up headers
+//   const headers = new Headers(options.headers || {});
+//   headers.append('Authorization', `Bearer ${token}`);
+
+//   // Create the full options object, including the headers
+//   const fetchOptions = {
+//     ...options,
+//     headers,
+//   };
+
+//   // Perform the fetch call with the token
+//   const response = await fetch(url, fetchOptions);
+//   if (!response.ok) {
+//     throw new Error(`HTTP error! status: ${response.status}`);
+//   }
+
+//   return response.json();
+// };
+

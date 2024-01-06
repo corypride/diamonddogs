@@ -13,6 +13,7 @@ import SearchScreen from "./Screens/SearchScreen";
 import BrowseScreen from "./Screens/BrowseScreen";
 import GardenScreen from "./Screens/GardenScreen";
 import NotFound from './Screens/NotFound';
+import PlantScreen from './Screens/PlantScreen';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/search" element={<SearchScreen />} />
           <Route exact path="/browse" element={<BrowseScreen />} />
           <Route exact path="/garden" element={<GardenScreen />} />
+          <Route path="/plant/:id" element={<PlantScreen />} />
           <Route path='*' element={<NotFound />}/>
         </Routes>
     </BrowserRouter>

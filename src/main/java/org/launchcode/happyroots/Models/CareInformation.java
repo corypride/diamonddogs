@@ -7,10 +7,11 @@ import jakarta.persistence.*;
 public class CareInformation {
 
 //    Fields
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private int id;
 
+    @Id
     @JsonProperty("species_id")
     private int speciesId;
 
@@ -21,8 +22,7 @@ public class CareInformation {
 //  Constructors
     public CareInformation (){}
 
-    public CareInformation(int id, int speciesId, String wateringDesc, String sunlightDesc, String pruningDesc) {
-        this.id = id;
+    public CareInformation(int speciesId, String wateringDesc, String sunlightDesc, String pruningDesc) {
         this.speciesId = speciesId;
         this.wateringDesc = wateringDesc;
         this.sunlightDesc = sunlightDesc;
@@ -30,13 +30,6 @@ public class CareInformation {
     }
 
     //  Getter/Setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getSpeciesId() {
         return speciesId;

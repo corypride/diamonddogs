@@ -8,8 +8,7 @@ public class Plant {
 
 //    Fields
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int speciesId;
 
     @OneToOne(cascade = CascadeType.ALL)
     private CareInformation careInformation;
@@ -18,13 +17,11 @@ public class Plant {
     private String thumbnail;
     private String originalUrl;
     private String cycle;
-    private int speciesId;
 
 //  Constructor
     public Plant() {}
 
-    public Plant(int id, CareInformation careInformation, String commonName, String thumbnail, String originalUrl, String cycle, int speciesId) {
-        this.id = id;
+    public Plant(CareInformation careInformation, String commonName, String thumbnail, String originalUrl, String cycle, int speciesId) {
         this.careInformation = careInformation;
         this.commonName = commonName;
         this.thumbnail = thumbnail;
@@ -34,13 +31,6 @@ public class Plant {
     }
 
     //  Getters/Setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getCommonName() {
         return commonName;
