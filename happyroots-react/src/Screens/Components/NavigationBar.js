@@ -1,13 +1,13 @@
 // NavigationBar.js
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import '../styles/navbar.css';
-import useAuthentication from '../../Hooks/useAuthentication';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/navbar.css";
+import useAuthentication from "../../Hooks/useAuthentication";
 
-import { login, logout } from '../../Controllers/AuthController';
-import { useEffect, useState } from 'react';
-import { getUserFromLocalStorage } from '../../Helpers/authHelpers';
-import { alignProperty } from '@mui/material/styles/cssUtils';
+import { login, logout } from "../../Controllers/AuthController";
+import { useEffect, useState } from "react";
+import { getUserFromLocalStorage } from "../../Helpers/authHelpers";
+import { alignProperty } from "@mui/material/styles/cssUtils";
 
 const NavigationBar = () => {
   const user = useAuthentication();
@@ -29,9 +29,15 @@ const NavigationBar = () => {
   // }, []);
 
   return (
-    <nav className='navDiv' style={{  display: 'flex', justifyContent: 'space-around'}}>
-        <img src="Images/nEVyjJPV.jpg" style={{ height: "10vh", borderRadius: "50%"}}></img>
-      <ul >
+    <nav
+      className="navDiv"
+      style={{ display: "flex", justifyContent: "space-around" }}
+    >
+      <img
+        src="Images/nEVyjJPV.jpg"
+        style={{ height: "10vh", borderRadius: "50%" }}
+      ></img>
+      <ul>
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -50,31 +56,34 @@ const NavigationBar = () => {
         <li>
           <Link to="/profile">Profile</Link>
         </li>
-        </ul>
-        {!user ? (
-      <ul>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
       </ul>
-    ) : (
-      <ul>
-        <li>
-          {/* <Link to="/" onClick={logout}>
+      {!user ? (
+        <ul>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </ul>
+      ) : (
+        <ul>
+          <li>
+            {/* <Link to="/" onClick={logout}>
             Logout
           </Link> */}
-          <Link to="/" onClick={(e) => {
-    if(window.confirm('Are you sure you want to log out?')) {
-        logout();
-    } else {
-        e.preventDefault();
-    }
-}}>
-    Logout
-</Link>
-        </li>
-      </ul>
-    )}
+            <Link
+              to="/"
+              onClick={(e) => {
+                if (window.confirm("Are you sure you want to log out?")) {
+                  logout();
+                } else {
+                  e.preventDefault();
+                }
+              }}
+            >
+              Logout
+            </Link>
+          </li>
+        </ul>
+      )}
     </nav>
   );
 };

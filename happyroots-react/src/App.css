@@ -5,7 +5,7 @@ div {
 
 button {
   max-width: 300px;
-  background-color: #4caf50; 
+  background-color: #1a751d; 
   color: white; 
   padding: 10px 20px; 
   margin: 5px; 
@@ -26,6 +26,10 @@ button:hover {
   background-color: #205e22;
 }
 
+.App {
+  background-color: #61dafb;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -38,7 +42,7 @@ button:hover {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #112f1b;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -133,7 +137,7 @@ border-width: 1px;
   border-width: 1px;
   border-radius: 4vh;
   /* background-color: #04511D; */
-  background-color: #18522a;
+  background-color: #0e2e18;
 }
 
 .navDiv {
