@@ -4,6 +4,7 @@ import { apiKey } from "../../Config/perenualApiKey";
 import { deleteUserFavorite } from "../../Controllers/FavoritesController";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 const SpeciesDisplay = ({ fave, refresh }) => {
   const [species, setSpecies] = useState(null);
@@ -57,7 +58,7 @@ const SpeciesDisplay = ({ fave, refresh }) => {
   return (
     <div key={fave.id}>
       {default_image && <img src={default_image.thumbnail} alt={`${common_name} thumbnail`} />}
-      <p>Common Name: {common_name}</p>
+      <p>Common Name: <Link to={`/plant/${species.id}`}>{species.common_name}</Link></p>
       <p>Description: {description}</p>
       <p>Cycle: {cycle}</p>
       <p>Sunlight: {sunlight}</p>
