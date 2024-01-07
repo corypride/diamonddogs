@@ -35,17 +35,26 @@ const PlantScreen = () => {
       <img src={plant.default_image?.medium_url} alt={`Image of ${plant.common_name}`} />
       <p>Description: {plant.description}</p>
       <p>Scientific Name: {plant.scientific_name}</p>
-      <p>Family: {plant.family}</p>
+      {plant.family != null && <p>Family: {plant.family}</p>}
       <p>Origin: {plant.origin.join(', ')}</p>
       <p>Type: {plant.type}</p>
-      <p>Hardiness Miniumum: {plant.hardiness.min}</p>
-      <p>Hardiness Maxiumum: {plant.hardiness.max}</p>
-
+      <p>Growth cycle: {plant.cycle}</p>
+      <p>Edible Fruits: {plant.edible_fruit ? "Yes" : "No"}</p>
+      <p>Flowers: {plant.flowers ? "Yes" : "No"}</p>
+      {plant.flowers && <p>Flower color: {plant.flower_color}</p>}
+      
+    
       <h2>{plant.common_name} Care Information</h2>
       <p>Watering Information: {careInfo.wateringDesc}</p>
       <p>Sunlight Information: {careInfo.sunlightDesc}</p>
       <p>Pruning Information: {careInfo.pruningDesc}</p>
-    </div>
+
+      <h3>{plant.common_name} Hardiness Map</h3>
+      <p>Hardiness Range: Min: {plant.hardiness.min} - Max: {plant.hardiness.max}</p>
+      {plant.hardiness_location?.full_iframe && (
+      <div dangerouslySetInnerHTML={{ __html: plant.hardiness_location.full_iframe }} />
+    )}
+  </div>
   );
   
 };
