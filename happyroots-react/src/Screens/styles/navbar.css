@@ -2,6 +2,9 @@ nav {
     background-color: #333;
     color: white;
     padding: 1rem;
+    border-style: solid;
+    border-color: 073516;
+    border-width: 1px;
   }
 
   ul {

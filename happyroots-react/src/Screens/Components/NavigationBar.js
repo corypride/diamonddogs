@@ -4,33 +4,32 @@ import { Link, useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
 import useAuthentication from "../../Hooks/useAuthentication";
 
-import { login, logout } from "../../Controllers/AuthController";
-import { useEffect, useState } from "react";
-import { getUserFromLocalStorage } from "../../Helpers/authHelpers";
-import { alignProperty } from "@mui/material/styles/cssUtils";
+import { logout } from "../../Controllers/AuthController";
+import { useState } from "react";
+
+
+import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button} from '@mui/material/';
+
 
 const NavigationBar = () => {
   const user = useAuthentication();
-  // const [user, setUser] = useState(null);
+  const [open, setOpen] = useState(false);
 
-  // useEffect(() => {
-  //   const user = getUserFromLocalStorage();
+  const handleClickOpen = () => {
+      setOpen(true);
+  };
 
-  //   if (!user) {
-  //     console.log("User not logged in");
-  //     navigate("/login");
-  //     return;
-  //   } else if (user.providerData && user.providerData.length > 0) {
-  //     console.log("User:", user);
-  //     setUser(user.providerData[0]);
-  //   } else {
-  //     console.log("User data not available");
-  //   }
-  // }, []);
+  const handleConfirmLogout = () => {
+      setOpen(false);
+      logout();
+  };
+
+  const handleClose = () => {
+      setOpen(false);
+  };
 
   return (
     <nav
-      className="navDiv"
       style={{ display: "flex", justifyContent: "space-around" }}
     >
       <img
@@ -66,21 +65,36 @@ const NavigationBar = () => {
       ) : (
         <ul>
           <li>
-            {/* <Link to="/" onClick={logout}>
-            Logout
-          </Link> */}
+          <>
             <Link
-              to="/"
-              onClick={(e) => {
-                if (window.confirm("Are you sure you want to log out?")) {
-                  logout();
-                } else {
-                  e.preventDefault();
-                }
-              }}
+                to="/"
+                onClick={(e) => {
+                    e.preventDefault();
+                    handleClickOpen();
+                }}
             >
-              Logout
+                Logout
             </Link>
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">{"Confirm Logout"}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        Are you sure you want to log out?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleConfirmLogout} autoFocus>
+                        Logout
+                    </Button>
+                </DialogActions>
+            </Dialog>
+        </>
           </li>
         </ul>
       )}

@@ -68,18 +68,18 @@ const FavoritesScreen = () => {
   return (
     <>
       <NavigationBar />
-      {/* <div className="divColor" style={{
+      <div className="divColor" style={{
           display: "flex",
           flexDirection: "column",
-        }}> */}
-        <div>
+        }}>
+        {/* <div> */}
         <h4>buttons for testing</h4>
         <button onClick={handleClick}>info in console</button>
         <button onClick={fetchUserFavorites}>
           display favorites table from sql
         </button>
         <button onClick={fetchUserSpeciesIdList}>
-          display species id list
+          display favorites array by species id
         </button>
         <button onClick={reload}>reload</button>
         <br></br>

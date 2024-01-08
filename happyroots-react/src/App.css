@@ -5,7 +5,7 @@ div {
 
 button {
   max-width: 300px;
-  background-color: #1a751d; 
+  background-color: #249345; 
   color: white; 
   padding: 10px 20px; 
   margin: 5px; 
@@ -23,7 +23,7 @@ button {
 }
 
 button:hover {
-  background-color: #205e22;
+  background-color: #29752b;
 }
 
 .App {
@@ -42,7 +42,7 @@ button:hover {
 }
 
 .App-header {
-  background-color: #112f1b;
+  background-color: #205b34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -130,6 +130,7 @@ border-width: 1px;
 }
 
 .divColor { 
+  color: aliceblue;
   align-items: center;
   box-sizing: border-box;
   border-style: solid;
@@ -137,7 +138,7 @@ border-width: 1px;
   border-width: 1px;
   border-radius: 4vh;
   /* background-color: #04511D; */
-  background-color: #0e2e18;
+  background-color: #205b34;
 }
 
 .navDiv {
