@@ -4,9 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import NavigationBar from './Components/NavigationBar';
 import { updateDisplayImage, updateUsername } from '../Controllers/AuthController';
 import './styles/profile.css';
-import { getTokenAndUid} from '../Controllers/FavoritesController';
 import '../App.css';
-import useAuthentication from '../Hooks/useAuthentication';
 
 
 const ProfileScreen = () => {
@@ -61,7 +59,7 @@ const ProfileScreen = () => {
     }
   };
 
-  const updateUsername = async () => {
+  const updateUsernameHandler = async () => {
     try {
       var userData = getUserFromLocalStorage();
       const updatedUser = await updateUsername(userData.stsTokenManager.accessToken, username);
@@ -101,7 +99,7 @@ const ProfileScreen = () => {
                   <label className="edit-mode-label">
                     Username: <input type="text" name="username" value={username} onChange={handleInputChange} className="edit-mode-input" />
                   </label>
-                  <button onClick={updateUsername} className="edit-buttons-button">Change username</button>
+                  <button onClick={updateUsernameHandler} className="edit-buttons-button">Change username</button>
                   <br />
 
                   <label className="edit-mode-label">
