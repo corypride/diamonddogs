@@ -3,35 +3,36 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
 import useAuthentication from "../../Hooks/useAuthentication";
-
 import { logout } from "../../Controllers/AuthController";
 import { useState } from "react";
-
-
-import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button} from '@mui/material/';
-
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Button,
+} from "@mui/material/";
 
 const NavigationBar = () => {
   const user = useAuthentication();
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
-      setOpen(true);
+    setOpen(true);
   };
 
   const handleConfirmLogout = () => {
-      setOpen(false);
-      logout();
+    setOpen(false);
+    logout();
   };
 
   const handleClose = () => {
-      setOpen(false);
+    setOpen(false);
   };
 
   return (
-    <nav
-      style={{ display: "flex", justifyContent: "space-around" }}
-    >
+    <nav style={{ display: "flex", justifyContent: "space-around" }}>
       <img
         src="Images/nEVyjJPV.jpg"
         style={{ height: "10vh", borderRadius: "50%" }}
@@ -65,36 +66,38 @@ const NavigationBar = () => {
       ) : (
         <ul>
           <li>
-          <>
-            <Link
+            <>
+              <Link
                 to="/"
                 onClick={(e) => {
-                    e.preventDefault();
-                    handleClickOpen();
+                  e.preventDefault();
+                  handleClickOpen();
                 }}
-            >
+              >
                 Logout
-            </Link>
-            <Dialog
+              </Link>
+              <Dialog
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">{"Confirm Logout"}</DialogTitle>
+              >
+                <DialogTitle id="alert-dialog-title">
+                  {"Confirm Logout"}
+                </DialogTitle>
                 <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                        Are you sure you want to log out?
-                    </DialogContentText>
+                  <DialogContentText id="alert-dialog-description">
+                    Are you sure you want to log out?
+                  </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleConfirmLogout} autoFocus>
-                        Logout
-                    </Button>
+                  <Button onClick={handleClose}>Cancel</Button>
+                  <Button onClick={handleConfirmLogout} autoFocus>
+                    Logout
+                  </Button>
                 </DialogActions>
-            </Dialog>
-        </>
+              </Dialog>
+            </>
           </li>
         </ul>
       )}

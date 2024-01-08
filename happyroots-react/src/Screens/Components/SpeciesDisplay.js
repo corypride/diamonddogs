@@ -4,8 +4,14 @@ import { apiKey } from "../../Config/perenualApiKey";
 import { deleteUserFavorite } from "../../Controllers/FavoritesController";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button} from '@mui/material/';
-
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Button,
+} from "@mui/material/";
 
 const SpeciesDisplay = ({ fave, refresh }) => {
   const [species, setSpecies] = useState(null);
@@ -48,16 +54,16 @@ const SpeciesDisplay = ({ fave, refresh }) => {
 
   const handleClickOpen = () => {
     setOpen(true);
-};
+  };
 
-const handleConfirmDelete = () => {
+  const handleConfirmDelete = () => {
     setOpen(false);
     fetchDelete(fave.id);
-};
+  };
 
-const handleClose = () => {
+  const handleClose = () => {
     setOpen(false);
-};
+  };
 
   if (!species) {
     return <p>Loading...</p>;
@@ -74,7 +80,8 @@ const handleClose = () => {
         marginBottom: "20px",
       }}
     >
-      <div className="divColor"
+      <div
+        className="divColor"
         key={fave.id}
         style={{
           display: "flex",
@@ -98,28 +105,34 @@ const handleClose = () => {
           </p>
           <p>Watering: {watering}</p>
           <div>
-            <button                 onClick={(e) => {
-                    e.preventDefault();
-                    handleClickOpen();
-                }}>Delete {common_name}</button>
-            <Dialog
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                handleClickOpen();
+              }}
             >
-                <DialogTitle id="alert-dialog-title">{"Confirm Delete"}</DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                        Are you sure you want to delete {common_name}?
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleConfirmDelete} autoFocus>
-                        Delete
-                    </Button>
-                </DialogActions>
+              Delete {common_name}
+            </button>
+            <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">
+                {"Confirm Delete"}
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  Are you sure you want to delete {common_name} from garden?
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose}>Cancel</Button>
+                <Button onClick={handleConfirmDelete} autoFocus>
+                  Delete
+                </Button>
+              </DialogActions>
             </Dialog>
           </div>
         </div>
