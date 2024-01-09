@@ -6,7 +6,7 @@ import useAuthentication from '../../Hooks/useAuthentication';
 
 import { login, logout } from '../../Controllers/AuthController';
 import { useEffect, useState } from 'react';
-import { getUserFromLocalStorage } from '../../Helpers/authHelpers';
+import { getUserFromLocalStorage } from '../../Helpers/localStorageHelper';
 
 const NavigationBar = () => {
   const user = useAuthentication();

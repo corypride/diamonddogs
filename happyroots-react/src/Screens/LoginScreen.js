@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {  signInWithEmailAndPassword   } from 'firebase/auth';
-import { auth } from '../Helpers/firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
-import { saveUserToLocalStorage } from '../Helpers/authHelpers';
 import './styles/login.css';
 import { login } from '../Controllers/AuthController';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { saveUserToLocalStorage } from '../Helpers/localStorageHelper';
+import { auth } from '../Helpers/firebase';
  
 const LoginScreen = () => {
     const navigate = useNavigate();
@@ -32,7 +32,7 @@ const LoginScreen = () => {
     }
     return (
       <>
-        <div className="App-header"> 
+        <div className="login-form"> 
           <p>Happy Roots</p>                       
           <form>                                             
             <div>

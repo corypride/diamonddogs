@@ -1,6 +1,6 @@
 // useAuthentication.js
 import { useEffect, useState } from 'react';
-import { getUserFromLocalStorage } from '../Helpers/authHelpers';
+import { getUserFromLocalStorage } from '../Helpers/localStorageHelper';
 import { useNavigate } from 'react-router-dom';
 
 const useAuthentication = () => {

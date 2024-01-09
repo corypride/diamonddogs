@@ -44,6 +44,13 @@ const RegisterScreen = () => {
 
     if (password !== password2) {
       alert("Passwords don't match!");
+      setPassword('');
+      setPassword2('');
+      return;
+    }
+
+    if (password.length < 6) {
+      alert('The password needs to be no less than 6 characters.');
       return;
     }
 
@@ -106,16 +113,10 @@ const RegisterScreen = () => {
               required
             />
           </div>
-
           <button type="submit">Register</button>
         </form>
         <hr className="divider" />
-        <p className="login-link">
-          <Link to="/login">Login</Link>
-        </p>
-        <button onClick={handleTestClick} className="test-button">
-          Click me to test
-        </button>
+        <p className="login-link">Got an account?  <Link to="/login">Login</Link></p>
       </header>
     </div>
   );
