@@ -1,4 +1,4 @@
-import { getUserFromLocalStorage } from '../Helpers/authHelpers';
+import { getUserFromLocalStorage } from '../Helpers/localStorageHelper';
 
 export const getTokenAndUid = () => {
   const user = getUserFromLocalStorage();
