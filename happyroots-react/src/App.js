@@ -15,7 +15,7 @@ import { ToastContainer } from 'react-toastify';
 import { getUserFromLocalStorage } from "./Helpers/authHelpers";
 import ReactGA from 'react-ga4';
 import { useLocation } from "react-router-dom";
-import PlantSearchScreen from './Screens/PlantSearchResults';
+//import PlantSearchResults from './Screens/PlantSearchResults';
 
 const TRACKING_ID = "G-BSEN65VMZT"; // YOUR_OWN_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
@@ -55,7 +55,7 @@ function App() {
           <Route exact path="/garden" element={<GardenScreen />} />
           <Route exact path="/profile" element={<ProfileScreen uid={user?.uid} token={token}/>} />
           <Route exact path="/search" element={<SearchScreen />} />
-          <Route exact path="/search-result" element={<PlantSearchScreen />} />
+          {/* <Route exact path="/search-result" element={<PlantSearchResults />} /> */}
           <Route path='*' element={<NotFound />}/>
         </Routes>
     </BrowserRouter>
