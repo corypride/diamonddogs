@@ -5,11 +5,11 @@ div {
 
 button {
   max-width: 300px;
-  background-color: #249345; 
-  color: white; 
-  padding: 10px 20px; 
-  margin: 5px; 
-  cursor: pointer; 
+  background-color: #249345;
+  color: white;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
   border: none;
   border-radius: 5px;
 }
@@ -61,18 +61,22 @@ button:hover {
     transform: rotate(0deg) scale(0.5);
     opacity: 0.7;
   }
+
   25% {
     transform: rotate(90deg) scale(1);
     opacity: 1;
   }
+
   50% {
     transform: rotate(180deg) scale(0.5);
     opacity: 0.7;
   }
+
   75% {
     transform: rotate(270deg) scale(1);
     opacity: 1;
   }
+
   100% {
     transform: rotate(360deg) scale(0.5);
     opacity: 0.7;
@@ -80,11 +84,11 @@ button:hover {
 }
 
 a {
-  color:#45a049;
+  color: #45a049;
 }
 
 link {
-  color:#45a049;
+  color: #45a049;
 }
 
 
@@ -96,11 +100,11 @@ link {
   /* border: "2px solid #073516"; */
 
   align-items: center;
-/* border: whitesmoke; */
-/* border-radius: 4vh;
+  /* border: whitesmoke; */
+  /* border-radius: 4vh;
 border-width: thin; */
-border-style: solid;
-border-width: 1px;
+  border-style: solid;
+  border-width: 1px;
 
 }
 
@@ -109,9 +113,11 @@ border-width: 1px;
   top: 0;
   right: 0;
   width: 20px;
-  margin: 10px; /* Adjust the margin as needed */
+  margin: 10px;
+  /* Adjust the margin as needed */
   cursor: pointer;
-  color: #fff; /* Close icon color */
+  color: #fff;
+  /* Close icon color */
 }
 
 .Toastify__progress-bar {
@@ -122,14 +128,14 @@ border-width: 1px;
 }
 
 .Toastify__progress-bar--success {
-  background-color: #0a520c;
+  background-color: #138017;
 }
 
 .Toastify__progress-bar--error {
-  background-color: #740303;
+  background-color: #d21f1f;
 }
 
-.divColor { 
+.divColor {
   color: aliceblue;
   align-items: center;
   box-sizing: border-box;
@@ -148,6 +154,3 @@ border-width: 1px;
   border-color: 073516;
   border-width: 1px;
 }
-
-
-
