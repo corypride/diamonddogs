@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, BrowserRouter, useHistory } from 'react-router-dom';
-import { getUserFromLocalStorage } from './Helpers/authHelpers';
+import { getUserFromLocalStorage } from './Helpers/localStorageHelper';
 import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

@@ -38,7 +38,6 @@ const HomeScreen = () => {
           <li className="newbutton"><button onClick={logout}>Logout</button></li>
         </ul>
         
-        
     </div>
   </>
   );
