@@ -55,8 +55,8 @@ const PlantScreen = () => {
       <p>Pest Susceptibility: {plant.pest_susceptibility.join(', ')}</p>)}
 
 
-      <h3>{plant.common_name} Hardiness Map</h3>
-      <p>Hardiness Range: Min: {plant.hardiness.min} - Max: {plant.hardiness.max}</p>
+      <h2>{plant.common_name} Hardiness Map</h2>
+      <h4>Hardiness Range: Min: {plant.hardiness.min} - Max: {plant.hardiness.max}</h4>
       {plant.hardiness_location?.full_iframe && (
       <div dangerouslySetInnerHTML={{ __html: plant.hardiness_location.full_iframe }} />
     )}
