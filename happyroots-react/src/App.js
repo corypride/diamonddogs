@@ -1,3 +1,9 @@
+import { useState, useEffect } from 'react';
+import { Routes, Route, BrowserRouter, useHistory } from 'react-router-dom';
+import { getUserFromLocalStorage } from './Helpers/localStorageHelper';
+import { ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import React, {useState, useEffect} from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Link } from "react-router-dom";
@@ -24,11 +30,6 @@ function App() {
   const [user, setUser] = useState(null);
   const token = user?.stsTokenManager?.accessToken
 
-  /*const location = useLocation();
-  useEffect(() => {
-    ReactGA.pageview(location.pathname + location.search);
-  }, [location]);*/
-
   useEffect(() => {
     const alreadyLoggedInUser = getUserFromLocalStorage();
     if (alreadyLoggedInUser) {
@@ -45,17 +46,11 @@ function App() {
           <Route exact path="/" element={<HomeScreen token={token}/>} />
           <Route exact path="/login" element={<LoginScreen token={token}/>} />
           <Route exact path="/favorites" element={<FavoritesScreen />} />
-          <Route exact path="/" element={<HomeScreen token={token}/>} />
-          <Route exact path="/login" element={<LoginScreen token={token}/>} />
-          <Route exact path="/favorites" element={<FavoritesScreen uid={user?.uid} token={token}/>} />
           <Route exact path="/signup" element={<RegisterScreen />} />
           <Route exact path="/profile" element={<ProfileScreen />} />
           <Route exact path="/search" element={<SearchScreen />} />
           <Route exact path="/browse" element={<BrowseScreen />} />
           <Route exact path="/garden" element={<GardenScreen />} />
-          <Route exact path="/profile" element={<ProfileScreen uid={user?.uid} token={token}/>} />
-          <Route exact path="/search" element={<SearchScreen />} />
-          {/* <Route exact path="/search-result" element={<PlantSearchResults />} /> */}
           <Route path='*' element={<NotFound />}/>
         </Routes>
     </BrowserRouter>
