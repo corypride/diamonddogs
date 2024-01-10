@@ -3,9 +3,6 @@ import { Routes, Route, BrowserRouter, useHistory } from 'react-router-dom';
 import { getUserFromLocalStorage } from './Helpers/localStorageHelper';
 import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import React, {useState, useEffect} from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import RegisterScreen from "./Screens/RegisterScreen";
 import LoginScreen from "./Screens/LoginScreen";
@@ -17,8 +14,6 @@ import BrowseScreen from "./Screens/BrowseScreen";
 import GardenScreen from "./Screens/GardenScreen";
 import NotFound from './Screens/NotFound';
 import "./App.css";
-import { ToastContainer } from 'react-toastify';
-import { getUserFromLocalStorage } from "./Helpers/authHelpers";
 import ReactGA from 'react-ga4';
 import { useLocation } from "react-router-dom";
 //import PlantSearchResults from './Screens/PlantSearchResults';
