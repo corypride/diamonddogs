@@ -98,7 +98,7 @@ export const getPlantFaq = async (tags) => {
 
 try {
     const response = await fetch (
-      `${baseUrl}/plant/faq/{tags}`, {
+      `${baseUrl}/plant/faq/${tags}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -106,7 +106,7 @@ try {
   );
   
   if (!response.ok) {
-    throw new Error('Error fetching species', error);
+    throw new Error('Error fetching species');
     return null;
   }
 

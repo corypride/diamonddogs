@@ -14,6 +14,7 @@ import BrowseScreen from "./Screens/BrowseScreen";
 import GardenScreen from "./Screens/GardenScreen";
 import NotFound from './Screens/NotFound';
 import PlantScreen from './Screens/PlantScreen';
+import FaqScreen from './Screens/FaqScreen';
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
           <Route exact path="/browse" element={<BrowseScreen />} />
           <Route exact path="/garden" element={<GardenScreen />} />
           <Route path="/plant/:id" element={<PlantScreen />} />
+          <Route path="/faqs" element={<FaqScreen />} />
           <Route path='*' element={<NotFound />}/>
         </Routes>
     </BrowserRouter>
