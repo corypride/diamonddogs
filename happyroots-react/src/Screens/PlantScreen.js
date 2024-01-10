@@ -25,7 +25,7 @@ const PlantScreen = () => {
   }, [id]);
 
   if (!plant || !careInfo) {
-    return <div>Loading...</div>;
+    return <div>Loading....</div>;
   }
 
   return (
