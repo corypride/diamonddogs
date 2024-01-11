@@ -4,42 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14180e3f-84b1-40dc-af1b-ebc66ef6a4e0" name="Changes" comment="Merged latest from main">
-      <change afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/org/launchcode/happyroots/Config/SecurityConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/org/launchcode/happyroots/Controllers/HomeController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/org/launchcode/happyroots/Models/UserData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/profile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/launchcode/happyroots/Controllers/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/org/launchcode/happyroots/Config/SecurityConfig$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/org/launchcode/happyroots/Config/SecurityConfig$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/org/launchcode/happyroots/Config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/org/launchcode/happyroots/Config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Controllers/AuthController.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Controllers/AuthController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Controllers/FavoritesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Controllers/FavoritesController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Helpers/authHelpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Helpers/localStorageHelper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Hooks/useAuthentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Hooks/useAuthentication.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/NavigationBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/HomeScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/LoginScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/ProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/ProfileScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/RegisterScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/RegisterScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/signup.css" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/signup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/launchcode/happyroots/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/launchcode/happyroots/Config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/launchcode/happyroots/Controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/launchcode/happyroots/Controllers/HomeController.java" afterDir="false" />
+    <list default="true" id="14180e3f-84b1-40dc-af1b-ebc66ef6a4e0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/launchcode/happyroots/HappyrootsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/launchcode/happyroots/HappyrootsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/launchcode/happyroots/Models/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/launchcode/happyroots/Models/UserData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +29,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand />
@@ -99,18 +77,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merging search",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.General"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;search&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="diamonddogs [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootRun" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.diamonddogs [bootRun]" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
