@@ -8,8 +8,29 @@ import { login, logout } from '../../Controllers/AuthController';
 import { useEffect, useState } from 'react';
 import { getUserFromLocalStorage } from '../../Helpers/localStorageHelper';
 
+
 const NavigationBar = () => {
-  const user = useAuthentication();
+
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+
+
+  useEffect(() => {
+    const user = getUserFromLocalStorage();
+
+    if (user) {
+        console.log('User:', user);
+        setUser(user.providerData[0]);
+    } else {
+        console.log('User not logged in');
+        navigate('/login');
+    }
+}, []);
+
+
+
+  //const user = useAuthentication();
   // const navigate = useNavigate();
   // const [user, setUser] = useState(null);
 

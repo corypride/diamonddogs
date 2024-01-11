@@ -3,7 +3,7 @@ import { Routes, Route, BrowserRouter, useHistory } from 'react-router-dom';
 import { getUserFromLocalStorage } from './Helpers/localStorageHelper';
 import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { Link } from "react-router-dom";
 import RegisterScreen from "./Screens/RegisterScreen";
 import LoginScreen from "./Screens/LoginScreen";
 import HomeScreen from "./Screens/HomeScreen";
@@ -13,7 +13,13 @@ import SearchScreen from "./Screens/SearchScreen";
 import BrowseScreen from "./Screens/BrowseScreen";
 import GardenScreen from "./Screens/GardenScreen";
 import NotFound from './Screens/NotFound';
+import "./App.css";
+import ReactGA from 'react-ga4';
+import { useLocation } from "react-router-dom";
+//import PlantSearchResults from './Screens/PlantSearchResults';
 
+const TRACKING_ID = "G-BSEN65VMZT"; // YOUR_OWN_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
   const [user, setUser] = useState(null);
@@ -30,7 +36,7 @@ function App() {
 
   return (
     <div>
-    <BrowserRouter>      
+    <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<HomeScreen token={token}/>} />
           <Route exact path="/login" element={<LoginScreen token={token}/>} />
