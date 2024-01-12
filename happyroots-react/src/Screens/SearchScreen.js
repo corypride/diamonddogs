@@ -1,37 +1,36 @@
-import React from 'react';
-import NavigationBar from './Components/NavigationBar';
-import '../App.css';
-import SearchBar from './Components/SearchBar';
+import React from "react";
+import NavigationBar from "./Components/NavigationBar";
+import "../App.css";
+import SearchBar from "./Components/SearchBar";
 import SearchResultsList from "./Components/SearchResultsList";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   getSpeciesById,
   getAllSpecies,
   saveFavorites,
-  getSpeciesByInput
+  getSpeciesByInput,
 } from "../Controllers/PerenualApiController";
 import { mockData, speciesList } from "../Controllers/mockData";
 import { saveUserFavorites } from "../Controllers/FavoritesController";
 import "../Controllers/PerenualApiController";
 import { Alert, Box } from "@mui/material";
 import { toast } from "react-toastify";
-import ReactGA from 'react-ga4';
+import ReactGA from "react-ga4";
 import SpeciesDisplay from "./Components/SpeciesDisplay";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
 
 const SearchScreen = () => {
   const [results, setResults] = useState([]);
-  
+  const imgLink = "Images/no image found.jpg";
+
   const navigate = useNavigate();
 
-
   const showResults = (event, query) => {
-    console.log("button clicked")
+    console.log("button clicked");
     event.preventDefault();
     navigate(`/search-result`);
-  }
+  };
 
   const fetchSave = async (data) => {
     try {
@@ -52,68 +51,81 @@ const SearchScreen = () => {
         // After saving, refetch the species data to update the list
         //await fetchSpecies();
         toast.success(`${data.common_name} has been saved to your garden`, {
-          className: 'toastify-success',
+          className: "toastify-success",
         });
       }
-
     } catch (error) {
       console.error("Error saving data:", error);
-      toast.error(`Error saving ${data.common_name}to the garden. Please try again.`, {
-        className: 'toastify-error',
-      });
+      toast.error(
+        `Error saving ${data.common_name}to the garden. Please try again.`,
+        {
+          className: "toastify-error",
+        }
+      );
     }
   };
 
-
-console.log(results);
+  console.log(results);
 
   return (
-  <>
-    <NavigationBar />
-    <div>
+    <>
+      <NavigationBar />
+      <div>
         <div className="search-bar-container">
           <SearchBar setResults={setResults} />
           {/* <SearchResultsList results={results}/> */}
           {/* <button onClick={showResults}>Search</button> */}
         </div>
-      <input type="search" ></input>
-      <h2>Search Results</h2>
-      {/* LIST */}
-      {results?.map((species) => (
-              <div key={species.id}>
-                <img src={species.default_image?.thumbnail}></img>
-                <p>Common Name: <Link to={`/plant/${species.id}`}>{species.common_name}</Link></p>
-                <p>Cycle : {species.cycle}</p>
-                <p>Sunlight : {species.sunlight}</p>
-                <p>Watering : {species.watering}</p>
-                <div>
-                  <button onClick={() => handleSave(species)}>
-                    Save {species.common_name} to garden
-                  </button>
-                </div>
-                <br></br>
-                <br></br>
-              </div>
-            ))}
-    </div>
-    <div>
-
-            
-            {/* BUTTONS */}
-            {/* <button onClick={() => handlePreviousPage()}>Previous Page</button>
-            <button onClick={() => handleNextPage()}>Next Page</button> */}
+        <input type="search"></input>
+        <h2>Search Results</h2>
+        {/* LIST */}
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
+        {results?.map((species) => (
+          <div className="divColor"
+              key={species.id}
+              style={{
+                width: "33%",
+                marginBottom: "20px",
+              }}
+            >
+            <img src={species.default_image?.thumbnail || imgLink}></img>
+            <p>
+              Common Name:{" "}
+              <Link to={`/plant/${species.id}`}>{species.common_name}</Link>
+            </p>
+            <p>Cycle : {species.cycle}</p>
+            <p>Sunlight : {species.sunlight}</p>
+            <p>Watering : {species.watering}</p>
+            <div>
+              <button onClick={() => handleSave(species)}>
+                Save {species.common_name} to garden
+              </button>
+            </div>
             <br></br>
             <br></br>
-    
-            
-    
-            {/* BUTTONS */}
-            {/* <button onClick={() => handlePreviousPage()}>Previous Page</button>
-            <button onClick={() => handleNextPage()}>Next Page</button> */}
           </div>
-  </>
-  );
+        ))}
+        </div>
+      </div>
+      <div>
+        {/* BUTTONS */}
+        {/* <button onClick={() => handlePreviousPage()}>Previous Page</button>
+            <button onClick={() => handleNextPage()}>Next Page</button> */}
+        <br></br>
+        <br></br>
 
-}
+        {/* BUTTONS */}
+        {/* <button onClick={() => handlePreviousPage()}>Previous Page</button>
+            <button onClick={() => handleNextPage()}>Next Page</button> */}
+      </div>
+    </>
+  );
+};
 
 export default SearchScreen;

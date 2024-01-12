@@ -17,7 +17,7 @@ const SpeciesDisplay = ({ fave, refresh }) => {
   const [species, setSpecies] = useState(null);
   const [open, setOpen] = useState(false);
 
-  const imgLink = 'Images/no image found.jpg'
+  const imgLink = "Images/no image found.jpg";
 
   useEffect(() => {
     fetchSpecies(fave.speciesId, apiKey);
