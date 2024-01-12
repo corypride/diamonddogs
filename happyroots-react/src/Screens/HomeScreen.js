@@ -6,6 +6,7 @@ import NavigationBar from './Components/NavigationBar';
 import '../App.css';
 import { getTokenAndUid } from '../Controllers/FavoritesController';
 
+
 const HomeScreen = () => {
   const {token, uid} = getTokenAndUid() || {};
   const navigate = useNavigate();
@@ -27,7 +28,8 @@ const HomeScreen = () => {
     <NavigationBar />
     <div>
       
-        <img src="https://cdn.openai.com/labs/images/A%20cat%20riding%20a%20motorcycle.webp?v=1" className="App-logo" alt="logo" />
+        {/* <img src="https://cdn.openai.com/labs/images/A%20cat%20riding%20a%20motorcycle.webp?v=1" className="App-logo" alt="logo" /> */}
+        <img src="Images/nEVyjJPV.jpg" className="App-logo" style={{borderRadius: "50vw"}}/>
         <br></br>
         <br></br>
         <br></br>

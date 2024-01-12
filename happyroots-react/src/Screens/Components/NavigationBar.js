@@ -1,56 +1,42 @@
 // NavigationBar.js
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import '../styles/navbar.css';
-import useAuthentication from '../../Hooks/useAuthentication';
-
-import { login, logout } from '../../Controllers/AuthController';
-import { useEffect, useState } from 'react';
-import { getUserFromLocalStorage } from '../../Helpers/localStorageHelper';
-
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/navbar.css";
+import useAuthentication from "../../Hooks/useAuthentication";
+import { logout } from "../../Controllers/AuthController";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Button,
+} from "@mui/material/";
 
 const NavigationBar = () => {
+  const user = useAuthentication();
+  const [open, setOpen] = useState(false);
 
-  const navigate = useNavigate();
-  const [user, setUser] = useState(null);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
+  const handleConfirmLogout = () => {
+    setOpen(false);
+    logout();
+  };
 
-
-  useEffect(() => {
-    const user = getUserFromLocalStorage();
-
-    if (user) {
-        console.log('User:', user);
-        setUser(user.providerData[0]);
-    } else {
-        console.log('User not logged in');
-        navigate('/login');
-    }
-}, []);
-
-
-
-  //const user = useAuthentication();
-  // const navigate = useNavigate();
-  // const [user, setUser] = useState(null);
-
-  // useEffect(() => {
-  //   const user = getUserFromLocalStorage();
-
-  //   if (!user) {
-  //     console.log("User not logged in");
-  //     navigate("/login");
-  //     return;
-  //   } else if (user.providerData && user.providerData.length > 0) {
-  //     console.log("User:", user);
-  //     setUser(user.providerData[0]);
-  //   } else {
-  //     console.log("User data not available");
-  //   }
-  // }, []);
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
-    <nav>
+    <nav style={{ display: "flex", justifyContent: "space-around" }}>
+      <img
+        src="Images/nEVyjJPV.jpg"
+        style={{ height: "10vh", borderRadius: "50%" }}
+      ></img>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -70,18 +56,51 @@ const NavigationBar = () => {
         <li>
           <Link to="/profile">Profile</Link>
         </li>
-        {!user ? (
+      </ul>
+      {!user ? (
+        <ul>
           <li>
             <Link to="/login">Login</Link>
           </li>
-        ) : (
+        </ul>
+      ) : (
+        <ul>
           <li>
-            <Link to="/" onClick={logout}>
-              Logout
-            </Link>
+            <>
+              <Link
+                to="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleClickOpen();
+                }}
+              >
+                Logout
+              </Link>
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+              >
+                <DialogTitle id="alert-dialog-title">
+                  {"Confirm Logout"}
+                </DialogTitle>
+                <DialogContent>
+                  <DialogContentText id="alert-dialog-description">
+                    Are you sure you want to log out?
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose}>Cancel</Button>
+                  <Button onClick={handleConfirmLogout} autoFocus>
+                    Logout
+                  </Button>
+                </DialogActions>
+              </Dialog>
+            </>
           </li>
-        )}
-      </ul>
+        </ul>
+      )}
     </nav>
   );
 };
