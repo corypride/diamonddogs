@@ -23,20 +23,6 @@ const FavoritesScreen = () => {
   console.log(user);
   const [alert, setAlert] = useState();
 
-  const SuccessAlert = () => (
-    // <Stack spacing={2} sx={{ width: '100%' }}>
-    //   <Alert severity="success">
-    //   has been deleted from the garden
-    //   </Alert>
-    // </Stack>
-    <Alert>test</Alert>
-  );
-
-  const ErrorAlert = () => (
-    <Stack spacing={2} sx={{ width: "100%" }}>
-      <Alert severity="error">Error deleting from the garden</Alert>
-    </Stack>
-  );
 
   const handleClick = () => {
     console.log(uid);
@@ -73,18 +59,15 @@ const FavoritesScreen = () => {
     });
   };
 
-  const handleSuccess = () => {
-    setAlert(SuccessAlert);
-  };
 
-  const handleError = () => {
-    setAlert(ErrorAlert);
-  };
 
   return (
     <>
       <NavigationBar />
-      <div>
+      <div className="divColor" style={{
+          display: "flex",
+          flexDirection: "column",
+        }}>
         <p>buttons for testing</p>
         <button onClick={handleClick}>info in console</button>
         <button onClick={fetchUserFavorites}>
@@ -96,8 +79,7 @@ const FavoritesScreen = () => {
         <br></br>
         <button onClick={toastSuccess}>toast success</button>
         <button onClick={toastError}>toast error</button>
-        <button onClick={handleSuccess}>success</button>
-        <button onClick={handleError}>error</button>
+
 
         {data?.map((favorite) => (
           <ul key={favorite.id}>
