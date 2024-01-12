@@ -17,7 +17,7 @@ import PlantScreen from './Screens/PlantScreen';
 import "./App.css";
 import ReactGA from 'react-ga4';
 import { useLocation } from "react-router-dom";
-//import PlantSearchResults from './Screens/PlantSearchResults';
+
 
 
 const TRACKING_ID = "G-BSEN65VMZT"; // YOUR_OWN_TRACKING_ID
