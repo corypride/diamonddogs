@@ -11,6 +11,7 @@ import { mockData, speciesList } from "../Controllers/mockData";
 import { saveUserFavorites } from "../Controllers/FavoritesController";
 import { Alert, Box } from "@mui/material";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const BrowseScreen = () => {
   const [page, setPage] = useState(1);
@@ -20,11 +21,11 @@ const BrowseScreen = () => {
   console.log("in state page", page);
 
   useEffect(() => {
-    document.body.onLoad = fetchSpecies();
+    fetchSpecies();
   }, [page]); // refire when page value changes
 
   const fetchSpecies = async () => {
-    const responseData = await getAllSpecies(apiKey, page);
+    const responseData = await getAllSpecies(page);
     if (responseData) {
       setData(responseData);
     }
@@ -90,10 +91,10 @@ const BrowseScreen = () => {
         <br></br>
 
         {/* LIST */}
-        {dataList?.map((species) => (
+        {data?.map((species) => (
           <div key={species.id}>
             <img src={species.default_image?.thumbnail}></img>
-            <p>Common Name : {species.common_name}</p>
+            <p>Common Name: <Link to={`/plant/${species.id}`}>{species.common_name}</Link></p>
             <p>Cycle : {species.cycle}</p>
             <p>Sunlight : {species.sunlight}</p>
             <p>Watering : {species.watering}</p>

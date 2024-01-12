@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 import ReactGA from 'react-ga4';
 import SpeciesDisplay from "./Components/SpeciesDisplay";
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 
 const SearchScreen = () => {
@@ -81,7 +82,7 @@ console.log(results);
       {results?.map((species) => (
               <div key={species.id}>
                 <img src={species.default_image?.thumbnail}></img>
-                <p>Common Name : {species.common_name}</p>
+                <p>Common Name: <Link to={`/plant/${species.id}`}>{species.common_name}</Link></p>
                 <p>Cycle : {species.cycle}</p>
                 <p>Sunlight : {species.sunlight}</p>
                 <p>Watering : {species.watering}</p>
