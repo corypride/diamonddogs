@@ -4,10 +4,20 @@ import { apiKey } from "../../Config/perenualApiKey";
 import { deleteUserFavorite } from "../../Controllers/FavoritesController";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Button,
+} from "@mui/material/";
 
 const SpeciesDisplay = ({ fave, refresh }) => {
   const [species, setSpecies] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  const imgLink = 'Images/no image found.jpg'
 
   useEffect(() => {
     fetchSpecies(fave.speciesId, apiKey);
@@ -21,7 +31,6 @@ const SpeciesDisplay = ({ fave, refresh }) => {
       }
     } catch (error) {
       console.error("Error fetching species:", error);
-      // Handle error if needed
     }
   };
 
@@ -29,47 +38,104 @@ const SpeciesDisplay = ({ fave, refresh }) => {
     try {
       const responseData = await deleteUserFavorite(id);
       if (responseData) {
-        // Refresh the data without reloading the entire page
         refresh();
-        // Notify user with a success toast
-        toast.success(`${species.common_name} has been deleted from the garden`);
+        toast.success(
+          `${species.common_name} has been deleted from the garden`
+        );
       }
     } catch (error) {
       console.error("Error deleting data:", error);
-      // Notify user with an error toast
-      toast.error(`Error deleting ${species?.common_name || 'species'} from the garden`);
+      toast.error(
+        `Error deleting ${species?.common_name || "species"} from the garden`
+      );
     }
   };
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleConfirmDelete = () => {
+    setOpen(false);
+    fetchDelete(fave.id);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   if (!species) {
-    // Optionally, you can render a loading state here
     return <p>Loading...</p>;
   }
 
-  const {
-    common_name,
-    description,
-    watering,
-    cycle,
-    sunlight,
-    default_image,
-  } = species;
+  const { common_name, description, watering, cycle, sunlight, default_image } =
+    species;
 
   return (
-    <div key={fave.id}>
-      {default_image && <img src={default_image.thumbnail} alt={`${common_name} thumbnail`} />}
-      <p>Common Name: <Link to={`/plant/${species.id}`}>{species.common_name}</Link></p>
-      <p>Description: {description}</p>
-      <p>Cycle: {cycle}</p>
-      <p>Sunlight: {sunlight}</p>
-      <p>Watering: {watering}</p>
-      <div>
-        <button onClick={() => fetchDelete(fave.id)}>
-          Delete {common_name} from garden
-        </button>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        marginBottom: "20px",
+      }}
+    >
+      <div
+        className="divColor"
+        key={fave.id}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+        }}
+      >
+        <img
+          src={default_image?.medium_url || default_image?.thumbnail || imgLink}
+          alt={`${common_name} thumbnail`}
+        />
+
+        <div style={{ marginLeft: "20px" }}>
+          <h3>Common Name: {common_name}</h3>
+          <p>Description:</p> <p>{description}</p>
+          <p>Cycle: {cycle}</p>
+          <p>
+            Sunlight:{" "}
+            {species.sunlight.map((sun, index) => (
+              <p key={index}>{sun} </p>
+            ))}
+          </p>
+          <p>Watering: {watering}</p>
+          <div>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                handleClickOpen();
+              }}
+            >
+              Delete {common_name}
+            </button>
+            <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">
+                {"Confirm Delete"}
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  Are you sure you want to delete {common_name} from garden?
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose}>Cancel</Button>
+                <Button onClick={handleConfirmDelete} autoFocus>
+                  Delete
+                </Button>
+              </DialogActions>
+            </Dialog>
+          </div>
+        </div>
       </div>
-      <br />
-      <br />
     </div>
   );
 };
