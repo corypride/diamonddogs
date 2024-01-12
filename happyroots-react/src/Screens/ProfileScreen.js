@@ -78,7 +78,6 @@ const ProfileScreen = () => {
 
   return (
         <>
-          <NavigationBar />
           <div className="container">
             <div className="user-info">
               <p>Email: {user.email}</p>

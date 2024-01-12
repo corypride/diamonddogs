@@ -68,8 +68,10 @@ export const getAllSpecies = async (page) => {
 };
 
 
-export const getCareInformation = async  (speciesId) => {
- const token = await getToken();
+export const getCareInformation = async  (speciesId, token) => {
+//  const token = await getToken();
+ console.log("🚀 ~ getCareInformation ~ token:", token)
+
 
 
  if (!token) {

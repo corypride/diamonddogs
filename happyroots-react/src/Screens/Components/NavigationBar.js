@@ -18,6 +18,7 @@ const NavigationBar = () => {
   const user = useAuthentication();
   const [open, setOpen] = useState(false);
 
+
   const handleClickOpen = () => {
     setOpen(true);
   };

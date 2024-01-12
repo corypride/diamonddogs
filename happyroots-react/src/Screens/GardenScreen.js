@@ -20,7 +20,6 @@ const GardenScreen = () => {
 
   return (
     <>
-      <NavigationBar />
       <div>
         {faves.map((fave) => <SpeciesDisplay key={fave.id} fave={fave} refresh={() => fetchUserFavorites()}/>)}
       </div>

@@ -17,6 +17,7 @@ import PlantScreen from './Screens/PlantScreen';
 import "./App.css";
 import ReactGA from 'react-ga4';
 import { useLocation } from "react-router-dom";
+import NavigationBar from './Screens/Components/NavigationBar';
 
 
 
@@ -42,6 +43,7 @@ function App() {
  return (
    <div>
    <BrowserRouter>
+   <NavigationBar />
        <Routes>
          <Route exact path="/" element={<HomeScreen token={token}/>} />
          <Route exact path="/login" element={<LoginScreen token={token}/>} />
@@ -51,7 +53,7 @@ function App() {
          <Route exact path="/search" element={<SearchScreen />} />
          <Route exact path="/browse" element={<BrowseScreen />} />
          <Route exact path="/garden" element={<GardenScreen />} />
-         <Route path="/plant/:id" element={<PlantScreen />} />
+         <Route path="/plant/:id" element={<PlantScreen token={token}/>} />
          <Route path='*' element={<NotFound />}/>
        </Routes>
    </BrowserRouter>

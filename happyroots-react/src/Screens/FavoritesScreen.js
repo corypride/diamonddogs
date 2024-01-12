@@ -63,7 +63,6 @@ const FavoritesScreen = () => {
 
   return (
     <>
-      <NavigationBar />
       <div className="divColor" style={{
           display: "flex",
           flexDirection: "column",

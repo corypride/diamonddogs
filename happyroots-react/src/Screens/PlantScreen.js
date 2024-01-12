@@ -4,25 +4,27 @@ import { useParams } from 'react-router-dom';
 import { getSpeciesById, getCareInformation } from '../Controllers/PerenualApiController';
 import { apiKey } from '../Config/perenualApiKey';
 
-const PlantScreen = () => {
+const PlantScreen = ({token}) => {
   const { id } = useParams();
   const [plant, setPlant] = useState(null);
   const [careInfo, setCareInfo] = useState(null);
+  console.log("load plant screen")
 
   useEffect(() => {
+    console.log("run useEffect")
     const fetchPlantDetails = async () => {
       const data = await getSpeciesById(id, apiKey);
       setPlant(data);
     };
 
     const fetchCareInformation = async () => {
-        const careData = await getCareInformation(id);
+        const careData = await getCareInformation(id, token);
         setCareInfo(careData);
     };
 
     fetchPlantDetails();
     fetchCareInformation();
-  }, [id]);
+  }, [id, token]);
 
   if (!plant || !careInfo) {
     return <div>Loading....</div>;
@@ -30,7 +32,9 @@ const PlantScreen = () => {
 
   return (
     <div>
-      <NavigationBar />
+      <div
+        className="divColor"
+      >
       <h1>{plant.common_name}</h1>
       <h4>Scientific Name: {plant.scientific_name}</h4>
       <img src={plant.default_image?.medium_url} alt={`Image of ${plant.common_name}`} />
@@ -60,6 +64,7 @@ const PlantScreen = () => {
       {plant.hardiness_location?.full_iframe && (
       <div dangerouslySetInnerHTML={{ __html: plant.hardiness_location.full_iframe }} />
     )}
+    </div>
   </div>
   );
   

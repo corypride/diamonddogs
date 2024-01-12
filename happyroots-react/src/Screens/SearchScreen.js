@@ -69,7 +69,6 @@ const SearchScreen = () => {
 
   return (
     <>
-      <NavigationBar />
       <div>
         <div className="search-bar-container">
           <SearchBar setResults={setResults} />
