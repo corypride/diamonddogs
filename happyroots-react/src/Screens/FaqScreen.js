@@ -43,7 +43,7 @@ const FaqScreen = () => {
             <form onSubmit={handleSearchSubmit}>
                 <input
                     type="text"
-                    placeholder="Search FAQs"
+                    placeholder="Search FAQs by keyword..."
                     value={searchTerm}
                     onChange={handleSearchChange}
                 />
