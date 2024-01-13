@@ -11,6 +11,11 @@ import { mockData, speciesList } from "../Controllers/mockData";
 import { saveUserFavorites } from "../Controllers/FavoritesController";
 import { Alert, Box } from "@mui/material";
 import { toast } from "react-toastify";
+import ReactGA from "react-ga4";
+//import { saveSpecies } from "../Utilities/google-analytics/Events/SaveSpecies"; 
+
+const TRACKING_ID = "G-BSEN65VMZT"; // YOUR_OWN_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
 
 const BrowseScreen = () => {
   const [page, setPage] = useState(1);
@@ -77,6 +82,15 @@ const BrowseScreen = () => {
     setPage(newPage);
   };
 
+  const saveSpecies = (event) => {
+    //event.preventDefault();
+    ReactGA.event({
+     category: 'Save',
+     action: 'saveClick',
+     label: 'save species'
+   });
+}
+
   return (
     <>
       <NavigationBar />
@@ -98,7 +112,7 @@ const BrowseScreen = () => {
             <p>Sunlight : {species.sunlight}</p>
             <p>Watering : {species.watering}</p>
             <div>
-              <button onClick={() => handleSave(species)}>
+              <button onClick={() => {handleSave(species); saveSpecies("save");}}>
                 Save {species.common_name} to garden
               </button>
             </div>
