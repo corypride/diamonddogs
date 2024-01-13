@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
-import { Routes, Route, BrowserRouter, useHistory } from 'react-router-dom';
-import { getUserFromLocalStorage } from './Helpers/localStorageHelper';
-import { ToastContainer} from "react-toastify";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
+import { getUserFromLocalStorage } from "./Helpers/localStorageHelper";
 import RegisterScreen from "./Screens/RegisterScreen";
 import LoginScreen from "./Screens/LoginScreen";
 import HomeScreen from "./Screens/HomeScreen";
@@ -12,57 +11,65 @@ import FavoritesScreen from "./Screens/FavoritesScreen";
 import SearchScreen from "./Screens/SearchScreen";
 import BrowseScreen from "./Screens/BrowseScreen";
 import GardenScreen from "./Screens/GardenScreen";
-import NotFound from './Screens/NotFound';
-import PlantScreen from './Screens/PlantScreen';
+import NotFound from "./Screens/NotFound";
+import PlantScreen from "./Screens/PlantScreen";
+import NavigationBar from "./Screens/Components/NavigationBar";
 import "./App.css";
-import ReactGA from 'react-ga4';
-import { useLocation } from "react-router-dom";
-import NavigationBar from './Screens/Components/NavigationBar';
-
-
+import ReactGA from "react-ga4";
 
 const TRACKING_ID = "G-BSEN65VMZT"; // YOUR_OWN_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
 
-
 function App() {
- const [user, setUser] = useState(null);
- const token = user?.stsTokenManager?.accessToken
+  const [user, setUser] = useState(null);
+  const token = user?.stsTokenManager?.accessToken;
+  console.log("🚀 ~ App ~ token:", token)
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log("🚀 ~ App ~ location:", location)
 
+  
+  const checkAuth = async () => {
+    const alreadyLoggedInUser = getUserFromLocalStorage();
+    if (alreadyLoggedInUser) {
+      setUser(alreadyLoggedInUser);
+    } else {
+      // Redirect unauthenticated user to login page
+      const unprotectedPathnames = ['/signup']
+      if (!unprotectedPathnames.includes(location.pathname)) {
+        return navigate("/login");
+      }
 
- useEffect(() => {
-   const alreadyLoggedInUser = getUserFromLocalStorage();
-   if (alreadyLoggedInUser) {
-     setUser(alreadyLoggedInUser)
-   } else {
-     console.log('User not logged in');
-   }
- }, []);
+      
+    }
+  };
 
+  useEffect(() => {
 
- return (
-   <div>
-   <BrowserRouter>
-   <NavigationBar />
-       <Routes>
-         <Route exact path="/" element={<HomeScreen token={token}/>} />
-         <Route exact path="/login" element={<LoginScreen token={token}/>} />
-         <Route exact path="/favorites" element={<FavoritesScreen />} />
-         <Route exact path="/signup" element={<RegisterScreen />} />
-         <Route exact path="/profile" element={<ProfileScreen />} />
-         <Route exact path="/search" element={<SearchScreen />} />
-         <Route exact path="/browse" element={<BrowseScreen />} />
-         <Route exact path="/garden" element={<GardenScreen />} />
-         <Route path="/plant/:id" element={<PlantScreen token={token}/>} />
-         <Route path='*' element={<NotFound />}/>
-       </Routes>
-   </BrowserRouter>
-   <ToastContainer position="bottom-left"/>
+      checkAuth();
 
+  }, [location.pathname]);
 
-   </div>
- );
+  return (
+    <div>
+        {/* Only show NavigationBar when logged in */}
+        {token && <NavigationBar />}
+        <Routes>
+          <Route path="/" element={<HomeScreen token={token} />} /> 
+          <Route path="/login" element={<LoginScreen token={token} />} />
+          <Route path="/signup" element={<RegisterScreen />} />
+          <Route path="/favorites" element={<FavoritesScreen />} />
+          <Route path="/profile" element={<ProfileScreen />} />
+          <Route path="/search" element={<SearchScreen />} />
+          <Route path="/browse" element={<BrowseScreen />} />
+          <Route path="/garden" element={<GardenScreen />} />
+          <Route path="/plant/:id" element={<PlantScreen />} />
+          {/* Handle bad route paths with 404 page */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      <ToastContainer position="bottom-left" />
+    </div>
+  );
 }
-
 
 export default App;

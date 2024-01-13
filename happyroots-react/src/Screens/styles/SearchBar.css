@@ -11,13 +11,12 @@
 }
 
 input {
-    background-color: transparent;
+    /* background-color: transparent; */
     border: none;
     height: 100%;
     font-size: 0.75rem;
     width: 100%;
     margin-left: 5px;
-    margin-top: 15px;
 }
 
 input:focus {

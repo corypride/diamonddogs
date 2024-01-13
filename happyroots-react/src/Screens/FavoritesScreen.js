@@ -63,6 +63,7 @@ const FavoritesScreen = () => {
 
   return (
     <>
+
       <div className="divColor" style={{
           display: "flex",
           flexDirection: "column",

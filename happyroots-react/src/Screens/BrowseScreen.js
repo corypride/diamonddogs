@@ -80,7 +80,7 @@ const BrowseScreen = () => {
 
   return (
     <>
-
+      
       <div>
         <h2>Plant Species</h2>
 
