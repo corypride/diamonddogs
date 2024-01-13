@@ -12,11 +12,12 @@ import { saveUserFavorites } from "../Controllers/FavoritesController";
 import { Alert, Box } from "@mui/material";
 import { toast } from "react-toastify";
 import ReactGA from "react-ga4";
+import { Link } from "react-router-dom";
 //import { saveSpecies } from "../Utilities/google-analytics/Events/SaveSpecies";
 
 const TRACKING_ID = "G-BSEN65VMZT"; // YOUR_OWN_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
-import { Link } from "react-router-dom";
+
 
 const BrowseScreen = () => {
   const [page, setPage] = useState(1);

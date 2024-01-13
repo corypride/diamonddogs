@@ -19,6 +19,7 @@ import ReactGA from 'react-ga4';
 import SpeciesDisplay from "./Components/SpeciesDisplay";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import saveSpecies from '../Utilities/google-analytics/Events/SaveSpecies';
 
 
 const SearchScreen = () => {
@@ -87,7 +88,7 @@ console.log(results);
                 <p>Sunlight : {species.sunlight}</p>
                 <p>Watering : {species.watering}</p>
                 <div>
-                  <button onClick={() => handleSave(species)}>
+                  <button onClick={() => {handleSave(species); saveSpecies("save")}}>
                     Save {species.common_name} to garden
                   </button>
                 </div>
