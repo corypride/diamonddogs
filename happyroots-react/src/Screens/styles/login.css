@@ -4,12 +4,12 @@ body {
   background-color: #f0f0f0;
 }
 
-.App-header {
-  /* display: flex; */
-  /* flex-direction: column; */
+.login-form {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 160vh;
+  height: 100vh; 
   background-color: #282c34;
   color: #61dafb;
   text-align: center;
@@ -19,55 +19,54 @@ form {
   display: flex;
   flex-direction: column;
   width: 300px;
-  margin: 20px auto; 
+  margin: 20px auto;
   align-items: center;
 }
-  
+
 label {
   margin-bottom: 8px;
   padding-right: 8px;
   font-size: 14px;
   color: #61dafb;
 }
-  
-  input {
-    padding: 12px; 
-    margin-bottom: 16px;
-    border: 1px solid #61dafb;
-    border-radius: 4px;
-  }
-  
-  button {
-    padding: 12px; 
-    background-color: #61dafb;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #2185d0;
-  }
-  
-  .text-sm {
-    font-size: 14px;
-  }
-  
-  .text-white {
-    color: #fff;
-  }
-  
-  .text-center {
-    text-align: center;
-  }
-  
-  .NavLink {
-    color: #61dafb;
-    text-decoration: none;
-  }
-  
-  .NavLink:hover {
-    text-decoration: underline;
-  }
-  
+
+input {
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #61dafb;
+  border-radius: 4px;
+}
+
+button {
+  padding: 12px;
+  background-color: #61dafb;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2185d0;
+}
+
+.text-sm {
+  font-size: 14px;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.NavLink {
+  color: #61dafb;
+  text-decoration: none;
+}
+
+.NavLink:hover {
+  text-decoration: underline;
+}

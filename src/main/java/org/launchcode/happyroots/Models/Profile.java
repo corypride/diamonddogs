@@ -21,6 +21,7 @@ public class Profile extends AbstractEntity {
     private String phoneNumber;
     private String imageUrl;
 
+
     public String getName() {
         return name;
     }

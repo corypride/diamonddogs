@@ -23,6 +23,7 @@ public class HappyrootsApplication {
 			FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
 
 			FirebaseOptions options = FirebaseOptions.builder()
+					.setStorageBucket("happyroots-84e90.appspot.com")
 					.setCredentials(GoogleCredentials.fromStream(serviceAccount))
 					.build();
 
