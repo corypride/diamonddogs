@@ -45,6 +45,9 @@ const NavigationBar = () => {
           <Link to="/search">Search</Link>
         </li>
         <li>
+          <Link to="/faqs">FAQs</Link>
+        </li>
+        <li>
           <Link to="/browse">Browse</Link>
         </li>
         <li>
