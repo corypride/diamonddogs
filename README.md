@@ -11,11 +11,13 @@ Authentication: each user will be able to create their own profile with an email
 
 Profile customization: users will be able to customize their profile name and upload a unique photo for their profile.
 
-Enhanced Plant Listings: Each plant listing includes in-depth care information, description of each plant, photos, and a hardiness map. All informmation will be pulled from the Perenual API (perenual.com).
+External API Usage: all plant information will be pulled from the Perenual API (perenual.com).
 
-Search: Our users will be able to search our entire database of plants by common name. Search results will link to a more detailed plant page.
+Enhanced Plant Listings: Each plant listing includes in-depth care information, description of each plant, photos, and a hardiness map. 
 
 FAQ: Users will be able to search our database by keyword for commonly asked plant questions.
+
+Search: Our users will be able to search our entire database of plants by common name. Search results will link to a more detailed plant page.
 
 Full CRUD Functionality: Users will be able to create gardens and add/delete favorite plants from them.
 
