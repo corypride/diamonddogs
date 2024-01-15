@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14180e3f-84b1-40dc-af1b-ebc66ef6a4e0" name="Changes" comment="Merged with main.">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SpeciesDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SpeciesDisplay.js" afterDir="false" />
-    </list>
+    <list default="true" id="14180e3f-84b1-40dc-af1b-ebc66ef6a4e0" name="Changes" comment="Fixed issue with plant link not appearing in garden page. Happy Roots logo still not appearing on plant page." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -147,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705171602853</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fixed issue with plant link not appearing in garden page. Happy Roots logo still not appearing on plant page.">
+      <option name="closed" value="true" />
+      <created>1705359688988</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1705359688988</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -173,6 +174,7 @@
     <MESSAGE value="merged with main" />
     <MESSAGE value="Merged with main and tested with no errors." />
     <MESSAGE value="Merged with main." />
-    <option name="LAST_COMMIT_MESSAGE" value="Merged with main." />
+    <MESSAGE value="Fixed issue with plant link not appearing in garden page. Happy Roots logo still not appearing on plant page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue with plant link not appearing in garden page. Happy Roots logo still not appearing on plant page." />
   </component>
 </project>

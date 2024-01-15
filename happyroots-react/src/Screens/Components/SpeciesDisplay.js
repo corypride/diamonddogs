@@ -94,7 +94,7 @@ const SpeciesDisplay = ({ fave, refresh }) => {
         />
 
         <div style={{ marginLeft: "20px" }}>
-          <p>Common Name: <Link to={`/plant/${species.id}`}>{common_name}</Link></p>
+          <h3>Common Name: <Link to={`/plant/${species.id}`}>{common_name}</Link></h3>
           <p>Description:</p> <p>{description}</p>
           <p>Cycle: {cycle}</p>
           <p>
