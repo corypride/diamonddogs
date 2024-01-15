@@ -109,7 +109,12 @@ const BrowseScreen = () => {
             <img src={species.default_image?.thumbnail || 'Images/no image found.jpg'}></img>
             <p>Common Name: <Link to={`/plant/${species.id}`}>{species.common_name}</Link></p>
             <p>Cycle : {species.cycle}</p>
-            <p>Sunlight : {species.sunlight}</p>
+            <p>
+            Sunlight:{" "}
+            {species.sunlight.map((sun, index) => (
+              <p key={index}>{sun} </p>
+            ))}
+          </p>
             <p>Watering : {species.watering}</p>
             <div>
               <button onClick={() => handleSave(species)}>
