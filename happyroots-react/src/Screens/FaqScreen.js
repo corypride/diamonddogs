@@ -45,6 +45,7 @@ const FaqScreen = () => {
         <h2>Frequently Asked Questions</h2>
         <form onSubmit={handleSearchSubmit}>
           <input
+          className="inputBar"
             type="text"
             placeholder="Search FAQs by keyword..."
             value={searchTerm}
