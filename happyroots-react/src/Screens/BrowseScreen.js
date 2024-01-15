@@ -106,7 +106,7 @@ const BrowseScreen = () => {
                 marginBottom: "20px",
               }}
             >
-            <img src={species.default_image?.thumbnail}></img>
+            <img src={species.default_image?.thumbnail || imgLink}></img>
             <p>Common Name: <Link to={`/plant/${species.id}`}>{species.common_name}</Link></p>
             <p>Cycle : {species.cycle}</p>
             <p>Sunlight : {species.sunlight}</p>
