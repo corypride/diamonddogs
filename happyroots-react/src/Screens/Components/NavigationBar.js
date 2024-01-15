@@ -33,10 +33,13 @@ const NavigationBar = () => {
 
   return (
     <nav style={{ display: "flex", justifyContent: "space-around" }}>
+    <Link to="/">
+
       <img
         src="Images/nEVyjJPV.jpg"
         style={{ height: "10vh", borderRadius: "50%" }}
       ></img>
+    </Link>
       <ul>
         <li>
           <Link to="/">Home</Link>
