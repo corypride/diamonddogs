@@ -91,12 +91,30 @@ const BrowseScreen = () => {
         <br></br>
 
         {/* LIST */}
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
         {data?.map((species) => (
-          <div key={species.id}>
-            <img src={species.default_image?.thumbnail}></img>
+          <div className="divColor"
+              key={species.id}
+              style={{
+                width: "33%",
+                marginBottom: "20px",
+              }}
+            >
+            <img src={species.default_image?.thumbnail || 'Images/no image found.jpg'}></img>
             <p>Common Name: <Link to={`/plant/${species.id}`}>{species.common_name}</Link></p>
             <p>Cycle : {species.cycle}</p>
-            <p>Sunlight : {species.sunlight}</p>
+            <p>
+            Sunlight:{" "}
+            {species.sunlight.map((sun, index) => (
+              <p key={index}>{sun} </p>
+            ))}
+          </p>
             <p>Watering : {species.watering}</p>
             <div>
               <button onClick={() => handleSave(species)}>
@@ -107,6 +125,7 @@ const BrowseScreen = () => {
             <br></br>
           </div>
         ))}
+        </div>
 
         {/* BUTTONS */}
         <button onClick={() => handlePreviousPage()}>Previous Page</button>

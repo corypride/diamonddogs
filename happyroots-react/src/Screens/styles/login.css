@@ -10,8 +10,8 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh; 
-  background-color: #282c34;
-  color: #61dafb;
+  background-color: #205b34;
+  color: aliceblue;
   text-align: center;
 }
 
@@ -27,7 +27,7 @@ label {
   margin-bottom: 8px;
   padding-right: 8px;
   font-size: 14px;
-  color: #61dafb;
+  color: aliceblue;
 }
 
 input {
