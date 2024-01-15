@@ -1,25 +1,24 @@
 # diamonddogs
-Project Concept: Happy Roots - Online Plant Shop
+Project Concept: Happy Roots
 
-Purpose: To create an interactive, user-friendly online platform dedicated to selling plants, providing detailed plant care information, and fostering a community of plant enthusiasts.
+Purpose: An interactive, user-friendly platform dedicated to researching plants, providing detailed plant care information, and allowing users to save plants for gardening projects. We decided to build this website because the Perenual API has an extensive database of information and media that will allow us to provide a unique and informative experience for our users. Designing the website as a gardening tool will allow us to implement all base features as well as some unique features that will show off our technical knowledge and skills.
 
-Core Features:
-User Account Management: Secure login and profile customization for a personalized shopping experience.
-Enhanced Product Listings: Each plant listing includes in-depth care information pulled from the Perenual API (perenual.com), alongside user-generated content.
-Advanced Search and Filter: Robust search and filtering options based on plant type, care requirements, and other attributes from the Perenual API.
-E-Commerce Functionality: A seamless shopping cart and checkout process, integrating Stripe for secure transactions.
-Review and Rating System: Customers can rate and review plants, aiding others in making informed decisions.
-Plant Care Blog: Educational content, care guides, and tips powered by the Perenual API, establishing the site as an authoritative source on plant care.
-Rewards System: Points and rewards for purchases and community engagement, enhancing user loyalty.
-Online calendar of events. Ability to create, display, and delete events.
-Mobile Responsiveness: Ensuring the website is accessible and efficient across various devices.
-Photo Uploads: Users can upload images of their plants, fostering community sharing and interaction.
-Interactive Plant Care Tools: Tools like care reminders or plant suggestion quizzes, leveraging the Perenual API for data.
-User Dashboard: For tracking orders, favorites, and rewards.
-Admin Panel: For site management and overseeing user activity and content.
+
+Core Features--
+
+Authentication: each user will be able to create their own profile with an email and password to use our site.
+Profile customization: users will be able to customize their profile name and upload a unique photo for their profile.
+Enhanced Plant Listings: Each plant listing includes in-depth care information, description of each plant, photos, and a hardiness map. All informmation will be pulled from the Perenual API (perenual.com).
+Search: Our users will be able to search our entire database of plants by common name. Search results will link to a more detailed plant page.
+FAQ: Users will be able to search our database by keyword for commonly asked plant questions.
+Full CRUD Functionality: Users will be able to create gardens and add/delete favorite plants from them.
+Relational Database: Users favorite plants will be stored in MySQL database that will appear in their garden.
+Custom 404 page: if our users navigate to an area of our site that doesn't exist, we will have a custom 404 page to display.
+Google analytics: this will be built into our site to track how our users interact with our website.
+Browse page: This page will allow our users to explore our database without having to know the plant name. Photos and short description of each plant will appear here.
 
 Additional Aspects:
 Technologies: Java/JS for backend, MySQL for database, React for frontend.
-External APIs: Stripe for payments, Google Maps for location-based features, and the Perenual API for plant data.
+External APIs: Perenual API for plant data.
 Development Approach: Agile methodology, with a focus on clean code and documentation.
 
