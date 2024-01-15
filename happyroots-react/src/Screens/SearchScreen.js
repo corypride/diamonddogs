@@ -94,7 +94,7 @@ const SearchScreen = () => {
                 marginBottom: "20px",
               }}
             >
-              <img src={species.default_image?.thumbnail}></img>
+              <img src={species.default_image?.thumbnail  || 'Images/no image found.jpg'}></img>
               <p>
                 Common Name:{" "}
                 <Link to={`/plant/${species.id}`}>{species.common_name}</Link>
