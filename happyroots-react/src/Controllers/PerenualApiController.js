@@ -122,3 +122,34 @@ export const getSpeciesByInput = async () => {
    return null;
  }
 };
+
+export const getPlantFaq = async (tags) => {
+  const token = await getToken();
+
+  if (!token) {
+    console.log("No firebase token available");
+    return null;
+  }
+
+try {
+    const response = await fetch (
+      `${baseUrl}/plant/faq/${tags}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+      }
+  );
+  
+  if (!response.ok) {
+    throw new Error('Error fetching species');
+    return null;
+  }
+
+  const data = await response.json();
+  return data;
+
+} catch (error) {
+  console.error('Error fetching faq', error);
+  return null;
+  }
+};

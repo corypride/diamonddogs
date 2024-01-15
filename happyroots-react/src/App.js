@@ -17,6 +17,7 @@ import PlantScreen from './Screens/PlantScreen';
 import "./App.css";
 import ReactGA from 'react-ga4';
 import { useLocation } from "react-router-dom";
+import FaqScreen from "./Screens/FaqScreen"
 
 
 
@@ -52,6 +53,7 @@ function App() {
          <Route exact path="/browse" element={<BrowseScreen />} />
          <Route exact path="/garden" element={<GardenScreen />} />
          <Route path="/plant/:id" element={<PlantScreen />} />
+         <Route path="/faqs" element={<FaqScreen />} />
          <Route path='*' element={<NotFound />}/>
        </Routes>
    </BrowserRouter>
