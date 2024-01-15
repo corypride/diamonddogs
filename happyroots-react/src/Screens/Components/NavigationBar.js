@@ -51,9 +51,6 @@ const NavigationBar = () => {
           <Link to="/browse">Browse</Link>
         </li>
         <li>
-          <Link to="/favorites">Favorites</Link>
-        </li>
-        <li>
           <Link to="/garden">Garden</Link>
         </li>
         <li>

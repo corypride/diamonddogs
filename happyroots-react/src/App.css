@@ -27,7 +27,7 @@ button:hover {
 }
 
 .App {
-  background-color: #61dafb;
+  background-color: #205b34;
 }
 
 .App-logo {
@@ -153,4 +153,12 @@ border-width: thin; */
   border-style: solid;
   border-color: 073516;
   border-width: 1px;
+}
+
+.inputBar {
+  background-color: #fff;
+  border-style: solid;
+  border-color: #3d3d3d;
+  border-width: 2px;
+  max-height: 40px;
 }
