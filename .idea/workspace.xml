@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14180e3f-84b1-40dc-af1b-ebc66ef6a4e0" name="Changes" comment="Merged with main." />
+    <list default="true" id="14180e3f-84b1-40dc-af1b-ebc66ef6a4e0" name="Changes" comment="Fixed issue with plant link not appearing in garden page. Happy Roots logo still not appearing on plant page." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +38,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -72,7 +77,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "faq-page",
+    "git-widget-placeholder": "minor-fixes",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -105,6 +110,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.diamonddogs [bootRun]" />
+        <item itemvalue="Gradle.diamonddogs [bootRun]" />
+        <item itemvalue="Gradle.diamonddogs [bootRun]" />
       </list>
     </recent_temporary>
   </component>
@@ -133,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705171602853</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fixed issue with plant link not appearing in garden page. Happy Roots logo still not appearing on plant page.">
+      <option name="closed" value="true" />
+      <created>1705359688988</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1705359688988</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,6 +174,7 @@
     <MESSAGE value="merged with main" />
     <MESSAGE value="Merged with main and tested with no errors." />
     <MESSAGE value="Merged with main." />
-    <option name="LAST_COMMIT_MESSAGE" value="Merged with main." />
+    <MESSAGE value="Fixed issue with plant link not appearing in garden page. Happy Roots logo still not appearing on plant page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue with plant link not appearing in garden page. Happy Roots logo still not appearing on plant page." />
   </component>
 </project>

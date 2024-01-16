@@ -12,6 +12,7 @@ import {
   DialogTitle,
   Button,
 } from "@mui/material/";
+import { Link } from "react-router-dom";
 
 const SpeciesDisplay = ({ fave, refresh }) => {
   const [species, setSpecies] = useState(null);
@@ -93,7 +94,7 @@ const SpeciesDisplay = ({ fave, refresh }) => {
         />
 
         <div style={{ marginLeft: "20px" }}>
-          <h3>Common Name: {common_name}</h3>
+          <h3>Common Name: <Link to={`/plant/${species.id}`}>{common_name}</Link></h3>
           <p>Description:</p> <p>{description}</p>
           <p>Cycle: {cycle}</p>
           <p>
