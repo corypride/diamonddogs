@@ -77,16 +77,18 @@ const RegisterScreen = () => {
   };
 
   return (
-    <div className="App">
+    <div className="login-form">
       <header className="App-header">
         <p className="header-text">Register below:</p>
         <form onSubmit={handleSubmit} className="form-container">
           <div className="form-group">
             <label htmlFor="email">Email:</label>
             <input
+            className="inputBar"
               type="email"
               id="email"
               value={email}
+              placeholder="Email address"
               onChange={(e) => setEmail(e.target.value)}
               required
             />
@@ -95,8 +97,10 @@ const RegisterScreen = () => {
           <div className="form-group">
             <label htmlFor="password">Password:</label>
             <input
+            className="inputBar"
               type="password"
               id="password"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -106,8 +110,10 @@ const RegisterScreen = () => {
           <div className="form-group">
             <label htmlFor="password2">Repeat password:</label>
             <input
+            className="inputBar"
               type="password"
               id="password2"
+              placeholder="Repeat Password"
               value={password2}
               onChange={(e) => setPassword2(e.target.value)}
               required

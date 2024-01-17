@@ -38,6 +38,7 @@ const LoginScreen = () => {
             <div>
               <label htmlFor="email-address">Email address</label>
               <input
+              className="inputBar"
                 id="email-address"
                 name="email"
                 type="email"                                    
@@ -50,6 +51,7 @@ const LoginScreen = () => {
             <div>
               <label htmlFor="password">Password</label>
               <input
+              className="inputBar"
                 id="password"
                 name="password"
                 type="password"                                    
