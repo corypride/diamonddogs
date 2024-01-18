@@ -4,7 +4,61 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14180e3f-84b1-40dc-af1b-ebc66ef6a4e0" name="Changes" comment="Fixed issue with plant link not appearing in garden page. Happy Roots logo still not appearing on plant page." />
+    <list default="true" id="14180e3f-84b1-40dc-af1b-ebc66ef6a4e0" name="Changes" comment="Fixed issue with plant link not appearing in garden page. Happy Roots logo still not appearing on plant page.">
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/0JZf17_J.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/4ah8LwNT.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/4dU3AfCy.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/6W9yy_Ip.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/8bS2sP8D.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/91Qd8Fna.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/ClsyTkA9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/FJE1R4gl.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/HGgxal53.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/K1fDKxWA.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/KxAFKCOV.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/MJfoLyyX.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/MmTguBhK.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/Tw0es9X1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/XPo0SvyC.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/atdKDQ7D.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/cqfGrAbA.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/d2W4O6Yk.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/dCZzYey_.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/g25GzSlu.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/image-not-found.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/jfri3Q3E.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/nAYous_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/nEVyjJPV.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/no image found.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/pi1CDZH2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/r1b42lrX.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/public/Images/tza8nz_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/src/Data/speciesData.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/FaqScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Controllers/PerenualApiController.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Controllers/PerenualApiController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/BrowseScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/BrowseScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/NavigationBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SpeciesDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/Components/SpeciesDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/FavoritesScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/FavoritesScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/LoginScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/PlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/RegisterScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/RegisterScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/SearchScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/SearchScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/signup.css" beforeDir="false" afterPath="$PROJECT_DIR$/happyroots-react/src/Screens/styles/signup.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,7 +131,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "minor-fixes",
+    "git-widget-placeholder": "Merging google-analytics-tracking",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",

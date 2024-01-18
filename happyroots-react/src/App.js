@@ -20,6 +20,14 @@ import { useLocation } from "react-router-dom";
 import FaqScreen from "./Screens/FaqScreen"
 
 
+//import PlantSearchResults from './Screens/PlantSearchResults';
+import TagManager from 'react-gtm-module'
+
+const tagManagerArgs = {
+    gtmId: 'GTM-K39F56BJ'
+}
+
+TagManager.initialize(tagManagerArgs)
 
 const TRACKING_ID = "G-BSEN65VMZT"; // YOUR_OWN_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
